@@ -4,7 +4,7 @@
  */
 @font-face {
   font-family: XWing;
-  src: url("xwing-miniatures.ttf"); }
+  src: url("fonts/xwing-miniatures.ttf"); }
 
 i.xwing-miniatures-font {
   font-family: XWing;
@@ -496,7 +496,7 @@ i.xwing-miniatures-font-unique:before {
  */
 @font-face {
   font-family: XWingShip;
-  src: url("xwing-miniatures-ships.ttf"); }
+  src: url("fonts/xwing-miniatures-ships.ttf"); }
 
 i.xwing-miniatures-ship {
   font-family: XWingShip;
