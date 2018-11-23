@@ -1,0 +1,174 @@
+@font-face{
+	font-family: "Eurostile";
+	src:url("css/fonts/eurostile.ttf");
+}
+
+
+
+@media print{
+	.no-print, .no-print *{
+		display: none !important;
+	}
+	
+	div {
+		page-break-inside: avoid;
+	}
+}
+
+:root{
+	--primary-color: #37474F;
+	--primary-color-light: #455A64;
+	--primary-color-dark: #263238;
+	--primary-text: #FFFFFF;
+	--secondary-color: #283593;
+	--secondary-color-light: #303F9F;
+	--secondary-color-dark: #1A237E;
+	--secondary-text: #FFFFFF;
+	
+	--rebel-background: #CFD8DC;
+	--rebel-color: #F44336;
+	
+	--empire-background: #78909C;
+	--empire-color: #FFFFFF;
+	
+	--scum-background: #33691E;
+	--scum-color: #FFFFFF;
+}
+
+#canvasCard{
+	display: none;
+}
+
+body{
+	font-family: 'Eurostile', sans-serif;
+}
+
+hr{
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	color: var(--secondary-color-light);
+	background-image: linear-gradient(90deg, transparent, var(--secondary-text), 	var(--secondary-text), var(--secondary-text), transparent);
+	border: 0 none;
+	height: 1px;
+}
+
+.card{
+	position: relative;
+	width: 2.5in;
+	height: 3.5in;
+	background-color: var(--primary-color);
+	border-radius: 10px;
+	margin-top: 25px;
+}
+
+.ship-bar{
+	position: relative;
+	vertical-align: middle;
+}
+
+.faction *{
+	position: relative;
+	float: left;
+	height: 0.455in;
+	width: 0.375in;
+	left: 0.125in;
+	text-align: center;
+}
+.faction .rebel{
+	background-color: var(--rebel-background);
+	color: var(--rebel-color);
+	font-size: 0.28in;
+}
+.faction .empire{
+	background-color: var(--empire-background);
+	color: var(--empire-color);
+}
+.faction .scum{
+	background-color: var(--scum-background);
+	color: var(--scum-color);
+}
+.ship-name{
+	color: var(--primary-text);
+	display: block;
+	position: relative;
+	top: 0.0675in;
+	float: left;
+	width: 1.5in;
+	margin-left: 0.125in;
+	text-align: center;
+	font-variant: small-caps;
+	letter-spacing: 1px;
+	font-size: 0.15in;
+	}
+
+.long-name{
+	font-size: 0.1in;
+}
+.sourceID{
+	font-size: 0.1in;
+}
+
+.ship-image{
+	color: var(--primary-text);
+	position: relative;
+	right: 0.125in;
+	float: right;
+	height: 0.455in;
+	width: 0.375in;
+	font-size: 0.3in;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.background-wrap{
+	position: relative;
+	background: linear-gradient(rgba(48,63,159,0.45), rgba(48,63,159,0.45)),url("images/background.png");
+	height: 2.87in;
+	width: 2.5in;
+	top: 0.455in;
+}
+
+.main{
+	background-color: var(--primary-color-dark);
+	position: absolute;
+	border: 1px solid var(--secondary-color-light);
+	top: 0.35in;
+	left: 0.175in;
+	right: 0.175in;
+	bottom: 0.175in;
+	
+	clip-path:polygon(5% 0, 100% 0, 100% 100%, 0 100%, 0 5%); 
+}
+
+.pilot{
+	padding: 0.05in;
+}
+
+.pilot table{
+	text-align: left;
+	color: var(--primary-text);
+}
+
+.pilot table .multi-ship-pilot-name{
+	font-size: 0.12in;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+.pilot table canvas{
+	width: 100%;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.pilot table .upgrade{
+	width: 45%;
+	font-size: 0.1in;
+	font-weight: lighter;
+}
+.pilot table .symbol{
+	width: 5%;
+	font-variant:none;
+	font-size: 0.08in;
+}
