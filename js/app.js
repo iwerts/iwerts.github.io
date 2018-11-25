@@ -1,4 +1,3 @@
-$(document).foundation()
 jQuery(document).ready(function(){
     // This button will increment the value
     $('[data-quantity="plus"]').click(function(e){
