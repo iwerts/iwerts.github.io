@@ -1,4 +1,7 @@
+
 jQuery(document).ready(function(){
+    $(document).foundation()
+
     // This button will increment the value
     $('[data-quantity="plus"]').click(function(e){
         // Stop acting like a button
