@@ -501,7 +501,7 @@
   },
   {
     "name": "YT-2400 Freighter Expansion Pack (1e)",
-    "ships": [],
+    "ships": ["yt2400lightfreighter"],
     "pilots": [],
     "upgrades": {
       "astromech": [],
