@@ -1,0 +1,94 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/xwing-miniatures.css">
+<link rel="stylesheet" href="css/cards.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/collectionmanager.js"></script>
+<script>
+
+function drawThreatBar(canvasName, threatLevel){
+
+var canvas = document.getElementById(canvasName);
+var ctx = canvas.getContext("2d");
+
+
+
+ctx.clearRect(0,0,canvas.width, canvas.height);
+
+  ctx.fillStyle = "#FF0000";
+ctx.strokeStyle = "#000000"
+
+var cellWidth = 29.76;
+var individualCellWidth = 4.8;
+var cellHeight = 4.8;
+
+var yPosition = 6.24;
+var currentPosition = 6.24;
+   
+  if (threatLevel == 6){
+    canvas.width = 180.48 + 29.76 + 4.8 + 6.24;
+  } else {
+    canvas.width = canvas.width;
+  }
+  
+  for (var groups = 0; groups < 5; groups++) {
+    if (groups < threatLevel){
+        switch(threatLevel){
+          case 1:
+            ctx.fillStyle = "#81C784";
+            break;
+          case 2: 
+            ctx.fillStyle = "#FFF176";
+           break;
+         case 3:
+           ctx.fillStyle = "#FFB74D";
+           break;
+         case 4:
+           ctx.fillStyle = "#E57373";
+           break;
+         case 5:
+           ctx.fillStyle = "#BA68C8";
+           break;
+         case 6:
+           ctx.fillStyle = "#9575CD";
+           break;
+      } 
+   } else {
+        ctx.fillStyle = "#FFFFFF";
+      }
+   
+
+  var currentGroupWidth = 29.76;  
+   for (var subGroups = 0; subGroups < groups; subGroups++){
+      ctx.fillRect(currentPosition, yPosition, individualCellWidth, cellHeight);
+      ctx.rect(currentPosition, yPosition, individualCellWidth, cellHeight);
+      
+     currentPosition += 6.24;
+      currentGroupWidth -= 6.24;
+    }
+  
+  ctx.fillRect(currentPosition, yPosition, currentGroupWidth, cellHeight);
+  ctx.rect(currentPosition, yPosition, currentGroupWidth, cellHeight);
+  currentPosition += currentGroupWidth;
+  currentPosition += cellHeight;
+}
+
+if (threatLevel == 6){
+  for (var subGroups = 0; subGroups < 6; subGroups++){
+    var heightOffset = yPosition - (yPosition/6)*subGroups;
+    ctx.fillRect(currentPosition, heightOffset, individualCellWidth, cellHeight+yPosition-heightOffset);
+      ctx.rect(currentPosition, heightOffset, individualCellWidth, cellHeight+yPosition-heightOffset);
+      
+     currentPosition += 6.24;
+      currentGroupWidth -= 6.24;
+  }
+}
+
+ctx.stroke();
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
