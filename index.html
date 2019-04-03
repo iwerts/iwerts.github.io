@@ -3,11 +3,11 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        $.getJSON('./xwsquickbuilds.json', function(data){
-            alert(data[0].expansion);
-            for (var i = 0; i <= data.length; i++){
+        $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
+            alert(quickBuilds[0].expansion);
+            for (var i = 0; i <= quickBuilds.length; i++){
                 
-                $('#SELECT_LIST').append('<option value"' + data[i].expansion + '">' + data[i].ship + '</option>');
+                $('#SELECT_LIST').append('<option value"' + quickBuilds[i].expansion + '">' + quickBuilds[i].ship + '</option>');
             }
         });
     </script>
