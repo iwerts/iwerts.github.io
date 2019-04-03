@@ -4,11 +4,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(function(){
-    var data = $.getJSON('xwsquickbuilds.json');
-    $.each(data, function(i, option){
+    var data = $.getJSON('xwsquickbuilds.json',function(){
         $('#sel').append($('<option/>').attr("value", option.id).text(option.name));
     });
-        })</script>
+    });
+ </script>
 </head>
 
 <body>
