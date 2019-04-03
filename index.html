@@ -4,7 +4,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $.getJSON('./xwsquickbuilds.json', function(data){
+            alert(data[0].expansion);
             for (var i = 0; i <= data.length; i++){
+                
                 $('#SELECT_LIST').append('<option value"' + data[i].expansion + '">' + data[i].ship + '</option>');
             }
         });
