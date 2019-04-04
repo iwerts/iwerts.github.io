@@ -12,13 +12,11 @@
                 console.log(products.includes(val.expansion));
                 if (!(products.includes(val.expansion))){
                     products.push(val.expansion);
+                     $('#product').append('<option value="' + val.expansion + '">' + val.expansion + '</option>');
                 }
             });
         });
 
-        for (var i = 0; i < products.length; i++){
-            $('#product').append('<option value="' + products[i] + '">' + products[i] + '</option>');
-        }
 
     </script>
 </head>
