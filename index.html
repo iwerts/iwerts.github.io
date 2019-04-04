@@ -3,21 +3,28 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        quickBuilds = $.getJSON('./xwsquickbuilds.json');
-        
-        quickBuilds.filter(function(i, n){
-            return n.expansion ==='galactic-republic';
+        var filtered = [];
+        var products = [];
+        $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
+            $.each(quickBuilds, function(index, val){
+                filtered[index] = val;
+                if (!products.includes(val.expansion)){
+                    products.push(val.expansion);
+                }
+            });
         });
 
-        for (var i = 0; i < quickBuilds.length; i++){    
-            $('#sel').append('<option value="' + quickBuilds[i].expansion + '">' + quickBuilds[i].expansion + '</option>');
+        for (var i = 0; i < products.length; i++){
+            $('#product').append('<option value="' + products[i] + '">' + products[i] + '</option>');
         }
 
     </script>
 </head>
 
+
+
 <body>
-    <select id="sel">
+    <select id="product">
         
     </select>
 </body>
