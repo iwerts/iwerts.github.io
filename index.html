@@ -3,11 +3,16 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
-            for (var i = 0; i < quickBuilds.length; i++){    
-                $('#sel').append('<option value="' + quickBuilds[i].expansion + '">' + quickBuilds[i].expansion + '</option>');
-            }
+        quickBuilds = $.getJSON('./xwsquickbuilds.json');
+        
+        quickBuilds.filter(function(i, n){
+            return n.expansion ==='galactic-republic';
         });
+
+        for (var i = 0; i < quickBuilds.length; i++){    
+            $('#sel').append('<option value="' + quickBuilds[i].expansion + '">' + quickBuilds[i].expansion + '</option>');
+        }
+
     </script>
 </head>
 
