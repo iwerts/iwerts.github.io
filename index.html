@@ -8,7 +8,7 @@
         $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
             $.each(quickBuilds, function(index, val){
                 filtered[index] = val;
-                if (!products.includes(val.expansion)){
+                if (!(products.includes(val.expansion))){
                     products.push(val.expansion);
                 }
             });
