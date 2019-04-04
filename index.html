@@ -9,6 +9,7 @@
             $.each(quickBuilds, function(index, val){
                 filtered[index] = val;
                 console.log(val.expansion);
+                console.log(products.includes(val.expansion));
                 if (!(products.includes(val.expansion))){
                     products.push(val.expansion);
                 }
