@@ -16,6 +16,11 @@
                 }
             });
         });
+        $.getJSON('./xwing-data2/data/pilots/rebel-alliance/t65-xwing.json', function(xwings){
+            $.each(xwings.pilots, function(index, val){
+                $('#xwing').append('<option value="'+index+'">'+val.name+'</option>');
+            });
+        });
 
 
     </script>
@@ -26,6 +31,9 @@
 <body>
     <select id="product">
         
+    </select>
+    <select id="xwing">
+
     </select>
 </body>
 </html>
