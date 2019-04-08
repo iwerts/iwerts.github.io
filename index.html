@@ -69,7 +69,9 @@
     </select>
 
     <script>
-    console.log($('#faction option:selected').val());
+        $("#faction").change(function(){
+            alert($('#faction option:selected').val());
+        });
     </script>
 </body>
 </html>
