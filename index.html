@@ -5,7 +5,7 @@
     <script>
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
-                $.each(faction, function(index, val){
+                $.each(factions, function(index, val){
                     console.log(val);
                     $("#faction").append('<option value="'+val.xws+'">'+val.name+'</option>');
                 }); 
