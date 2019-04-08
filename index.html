@@ -6,14 +6,14 @@
         var factions = '';
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             factions = manifest.factions[0];
-            console.log(factions);
+            $.getJSON(factions, function(faction){
+                $.each(faction, function(index, val){
+                    $('#faction').append('<option value="'+faction.xws+'">'+val.name+'</option>');
+                }
+            });
         });
         $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
             $.each(quickBuilds, function(index, val){
-                filtered[index] = val;
-                console.log(val.expansion);
-                console.log(products.includes(val.expansion));
-                if (!(products.includes(val.expansion))){
                     products.push(val.expansion);
                      $('#product').append('<option value="' + val.expansion + '">' + val.expansion + '</option>');
                 }
@@ -28,10 +28,6 @@
     <select id="faction">
 
     </select>
-    <select id="xwing">
-
-    </select>
-
     <script>
         $("#faction").change(function(){
             
