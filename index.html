@@ -39,8 +39,8 @@
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             console.log(manifest.pilots[i].ships[j].name);
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ships){
-                                $.each(ships.pilots, function(index, val){
-                                    $("#pilot").append('<option value="'+val.xws+'">'+val.name+'</option>');
+                                $.each(ships, function(index, val){
+                                    $("#ship").append('<option value="'+val.xws+'">'+val.name+'</option>');
                                 });
                             });
                         }
