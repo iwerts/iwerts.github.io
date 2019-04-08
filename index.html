@@ -3,57 +3,14 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var filtered = [];
-        var products = [];
-        $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
-            $.each(quickBuilds, function(index, val){
-                filtered[index] = val;
-                console.log(val.expansion);
-                console.log(products.includes(val.expansion));
-                if (!(products.includes(val.expansion))){
-                    products.push(val.expansion);
-                     $('#product').append('<option value="' + val.expansion + '">' + val.expansion + '</option>');
-                }
-            });
-        });
-        $.getJSON('./xwing-data2/data/factions/factions.json', function(factions){
-            $.each(factions, function(index, val){
-                $('#faction').append('<option value="'+val.xws+'">'+val.name+'</option>');
-            });
-        });
-        $.getJSON('./xwing-data2/data/pilots/rebel-alliance/t-65-x-wing.json', function(xwings){
-            $.each(xwings.pilots, function(index, val){
-                $('#xwing').append('<option value="'+index+'">'+val.name+'</option>');
+        $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
+            $.getJSON(manifest.factions[0], function(factions){
+                $.each(faction, function(index, val){
+                    $("#faction").append('<option value="'+val.xws+'>'+val.name+'</option>');
+                }); 
             });
         });
 
-        function getFaction(faction){
-            var ret = "";
-            switch(faction){
-                case "rebelalliance":
-                    ret = "rebel-alliance";
-                    break;
-                case "galacticempire":
-                    ret = "galactic-empire";
-                    break;
-                case "scumandvillainy":
-                    ret = "scum-and-villainy";
-                    break;
-                case "resistance":
-                    ret = "resistance";
-                    break;
-                case "firstorder":
-                    ret = "first-order";
-                    break;
-                case "galacticrepublic":
-                    ret = "galactic-republic";
-                    break;
-                case "separatistalliance":
-                    ret = "separatist-alliance";
-                    break;
-            }
-            return ret;
-        }
 
     </script>
 </head>
@@ -64,15 +21,11 @@
     <select id="faction">
 
     </select>
-    <select id="xwing">
+    <select id="ship">
 
     </select>
+    <select id="pilot">
 
-    <script>
-        $("#faction").change(function(){
-            var path = './xwing-data2/data/pilots/'+getFaction($("#faction option:selected").val())+"/";
-            console.log(path);
-        });
-    </script>
+    </select>
 </body>
 </html>
