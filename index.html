@@ -16,7 +16,7 @@
                 }
             });
         });
-        $.getJSON('./xwing-data2/data/pilots/rebel-alliance/t65-xwing.json', function(xwings){
+        $.getJSON('./xwing-data2/data/pilots/rebel-alliance/t-65-x-wing.json', function(xwings){
             $.each(xwings.pilots, function(index, val){
                 $('#xwing').append('<option value="'+index+'">'+val.name+'</option>');
             });
