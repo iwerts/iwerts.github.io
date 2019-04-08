@@ -47,26 +47,7 @@
                 }
             });
         });
-        $('#ship').change(function(){
-            
-            $("#pilot option").remove();
-            $.getJSON('./xwing-data2/data/manifest.json', function(manifest){     
-                for (var i = 0; i < manifest.pilots.length; i++){
-                    console.log(manifest.pilots[i]);
-                    if ($("#faction option:selected").val() === manifest.pilots[i].faction){
-                        for (var j = 0; j < manifest.pilots[i].ships.length; j++){
-                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
-                                if (ship.xws === $('#ship option:selected').val()){
-                                    $.each(ship.pilots, function(index, val){
-                                    $("#ship").append('<option value="'+val.xws+'">'+val.name+'</option>');       
-                                        )};
-                                }
-                                 });
-                        }
-                    }
-                }
-            });
-        });
+        
     </script>
 </body>
 </html>
