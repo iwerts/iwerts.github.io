@@ -70,7 +70,8 @@
 
     <script>
         $("#faction").change(function(){
-            alert($('#faction option:selected').val());
+            var path = './xwing-data2/data/pilots/'+getFaction($("#faction option:selected").val())+"/";
+            console.log(path);
         });
     </script>
 </body>
