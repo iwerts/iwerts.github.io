@@ -34,7 +34,7 @@
             $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
                 
                 for (var i = 0; i < manifest.pilots.length; i++){
-                    if ($("#faction option::selected").val() == manifest.pilots[i].xws){
+                    if ($("#faction option:selected").val() == manifest.pilots[i].xws){
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ships){
