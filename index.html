@@ -3,8 +3,11 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var manifest = $.getJSON('./xwing-data2/data/manifest.json');
-        var factions = $.getJSON(manifest.factions[0]);
+        var factions = '';
+        $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
+            factions = manifest.factions;
+            console.log(factions);
+        });
         $.getJSON('./xwsquickbuilds.json', function(quickBuilds){
             $.each(quickBuilds, function(index, val){
                 filtered[index] = val;
