@@ -37,12 +37,9 @@
                     console.log(manifest.pilots[i]);
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
-                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ships){
-                                $.each(ships, function(index, val){
-                                    console.log(val.name);
-                                    $("#ship").append('<option value="'+val.xws+'">'+val.name+'</option>');
+                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
+                                    $("#ship").append('<option value="'+ship.xws+'">'+ship.name+'</option>');
                                 });
-                            });
                         }
                     }
                 }
