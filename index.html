@@ -23,7 +23,7 @@
         });
         $.getJSON('./xwing-data2/data/factions/factions.json', function(factions){
             $.each(factions, function(index, val){
-                $('#xwing').append('<option value="'+index+'">'+val.name+'</option>');
+                $('#faction').append('<option value="'+index+'">'+val.name+'</option>');
             });
         });
 
