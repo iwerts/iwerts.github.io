@@ -16,16 +16,44 @@
                 }
             });
         });
+        $.getJSON('./xwing-data2/data/factions/factions.json', function(factions){
+            $.each(factions, function(index, val){
+                $('#faction').append('<option value="'+val.xws+'">'+val.name+'</option>');
+            });
+        });
         $.getJSON('./xwing-data2/data/pilots/rebel-alliance/t-65-x-wing.json', function(xwings){
             $.each(xwings.pilots, function(index, val){
                 $('#xwing').append('<option value="'+index+'">'+val.name+'</option>');
             });
         });
-        $.getJSON('./xwing-data2/data/factions/factions.json', function(factions){
-            $.each(factions, function(index, val){
-                $('#faction').append('<option value="'+index+'">'+val.name+'</option>');
-            });
-        });
+
+        function getFaction(faction){
+            var ret = "";
+            switch(faction){
+                case "rebelalliance":
+                    ret = "rebel-alliance";
+                    break;
+                case "galacticempire":
+                    ret = "galactic-empire";
+                    break;
+                case "scumandvillainy":
+                    ret = "scum-and-villainy";
+                    break;
+                case "resistance":
+                    ret = "resistance";
+                    break;
+                case "firstorder":
+                    ret = "first-order";
+                    break;
+                case "galacticrepublic":
+                    ret = "galactic-republic";
+                    break;
+                case "separatistalliance":
+                    ret = "separatist-alliance";
+                    break;
+            }
+            return ret;
+        }
 
     </script>
 </head>
@@ -39,5 +67,9 @@
     <select id="xwing">
 
     </select>
+
+    <script>
+    console.log($('#faction option:selected').value());
+    </script>
 </body>
 </html>
