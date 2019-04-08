@@ -4,7 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
-            $.getJSON(manifest.factions[0], function(factions){
+            $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
                 $.each(faction, function(index, val){
                     $("#faction").append('<option value="'+val.xws+'">'+val.name+'</option>');
                 }); 
