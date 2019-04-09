@@ -97,7 +97,10 @@
         $('form').change(function(){
             $('#ship_name').text(current_ship.name);
             $('#pilot_name').text(current_pilot.name);
-            $('#pilot_title').text(current_pilot.caption);
+            if (current_pilot).hasOwnProperty('caption'){
+            $('#pilot_title').text(current_pilot.caption);}else{
+            $('#pilot_title').text('');
+            }
         });
          
     </script>
