@@ -19,6 +19,7 @@
 
 
 <body>
+    <form>
     <select id="faction">
         <option selected>Select Faction</option>
     </select>
@@ -28,8 +29,15 @@
     <select id="pilot" disabled>
         <option selected>Select Pilot</option>
     </select>
-
+        <h2 id="ship_name"></h2>
+        <h3 id="pilot_name"></h3>
+        <h4 id="pilot_title"></h4>        
+    </form>
     <script>
+        var current_faction = '';
+        var current_ship = '';
+        var current_pilot = '';
+        
         $('#faction').change(function(){
            
             $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
@@ -37,6 +45,7 @@
                 for (var i = 0; i < manifest.pilots.length; i++){
                     console.log(manifest.pilots[i]);
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
+                        current_faction = manifest.pilots[i];
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $("#ship").empty();
@@ -65,6 +74,7 @@
                             $("#pilot").removeAttr("disabled");
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                 if (ship.xws === $('#ship option:selected').val()){
+                                    current_ship = ship;
                                     $('#pilot').append('<option selected>Select Pilot</option>');
                                     for (var k = 0; k < ship.pilots.length; k++){
                                     $("#pilot").append('<option value="'+ship.pilots[k].xws+'">'+ship.pilots[k].name+'</option>');
@@ -75,6 +85,21 @@
                 }
         });
         });
+        
+        $('#pilot').change(function(){
+            for (var i = 0; i < current_ship.pilots.length; i++){
+                if (current_ship.pilots[i].xws === $('#pilot option:selected').val()){
+                    current_pilot = current_ship.pilots[i];
+                }
+            }
+        });
+        
+        $('form').change(function(){
+            $('#ship_name').text(current_ship.name);
+            $('#pilot_name').text(current_pilot.name);
+            $('#pilot_title').text(current_pilot.caption);
+        });
+         
     </script>
 </body>
 </html>
