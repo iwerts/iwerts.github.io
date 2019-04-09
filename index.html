@@ -48,7 +48,23 @@
                 }
             });
         });
-        
+        $('#ship').change(function(){
+             for (var i = 0; i < manifest.pilots.length; i++){
+                    console.log(manifest.pilots[i]);
+                    if ($("#faction option:selected").val() === manifest.pilots[i].faction){
+                        for (var j = 0; j < manifest.pilots[i].ships.length; j++){
+                            
+                            $("#pilot").empty();
+                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
+                                if (ship.xws === $('#ship option:selected').val()){
+                                    for (var k = 0; k < ship.pilots.length; k++){
+                                    $("#pilot").append('<option value="'+ship.pilots[k].xws+'">'+ship.pilots[k].name+'</option>');
+                                }}
+                            });
+                        }
+                    }
+                }
+        });
     </script>
 </body>
 </html>
