@@ -39,7 +39,10 @@
         var current_pilot = '';
         
         $('#faction').change(function(){
-           
+            $('#ship_name').text('');
+            $('#pilot_name').text('');
+            $('#pilot_title').text('');
+            
             $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
                 
                 for (var i = 0; i < manifest.pilots.length; i++){
@@ -63,6 +66,10 @@
             });
         });
         $('#ship').change(function(){
+            
+            $('#ship_name').text('');
+            $('#pilot_name').text('');
+            $('#pilot_title').text('');
               $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
              for (var i = 0; i < manifest.pilots.length; i++){
                     console.log(manifest.pilots[i]);
@@ -87,6 +94,7 @@
         });
         
         $('#pilot').change(function(){
+            
             for (var i = 0; i < current_ship.pilots.length; i++){
                 if (current_ship.pilots[i].xws === $('#pilot option:selected').val()){
                     current_pilot = current_ship.pilots[i];
