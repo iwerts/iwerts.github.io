@@ -31,7 +31,7 @@
 
     <script>
         $('#faction').change(function(){
-            
+           
             $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
                 
                 for (var i = 0; i < manifest.pilots.length; i++){
@@ -40,8 +40,9 @@
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $("#ship").empty();
-                          
-                            $('#ship').append('<option selected>Select Pilot</option>');
+                            $('#pilot').empty();               
+                            $('#ship').append('<option selected>Select Ship</option>');
+                            $('#pilot').append('<option selected>Select Pilot</option>');
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                     $("#ship").append('<option value="'+ship.xws+'">'+ship.name+'</option>');
                                 });
