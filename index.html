@@ -22,10 +22,10 @@
     <select id="faction">
         <option selected>Select Faction</option>
     </select>
-    <select id="ship">
+    <select id="ship" disabled>
         <option selected>Select Ship</option>
     </select>
-    <select id="pilot">
+    <select id="pilot" disabled>
         <option selected>Select Pilot</option>
     </select>
 
@@ -40,7 +40,9 @@
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $("#ship").empty();
+                            $("#ship").removeAttr("disabled");
                             $('#pilot').empty();               
+                            $('#pilot').attr("disabled");
                             $('#ship').append('<option selected>Select Ship</option>');
                             $('#pilot').append('<option selected>Select Pilot</option>');
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
@@ -59,6 +61,8 @@
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $("#pilot").empty();
+                            
+                            $("#pilot").removeAttr("disabled");
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                 if (ship.xws === $('#ship option:selected').val()){
                                     $('#pilot').append('<option selected>Select Pilot</option>');
