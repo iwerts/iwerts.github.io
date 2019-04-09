@@ -40,6 +40,8 @@
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
                             $("#ship").empty();
+                          
+                            $('#ship').append('<option selected>Select Pilot</option>');
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                     $("#ship").append('<option value="'+ship.xws+'">'+ship.name+'</option>');
                                 });
@@ -58,6 +60,7 @@
                             $("#pilot").empty();
                             $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                 if (ship.xws === $('#ship option:selected').val()){
+                                    $('#pilot').append('<option selected>Select Pilot</option>');
                                     for (var k = 0; k < ship.pilots.length; k++){
                                     $("#pilot").append('<option value="'+ship.pilots[k].xws+'">'+ship.pilots[k].name+'</option>');
                                 }}
