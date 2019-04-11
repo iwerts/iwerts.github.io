@@ -171,12 +171,16 @@
             }
             
             if((current_pilot).hasOwnProperty('shipAbility')){
-                $('#ship_ability').text(current_pilot.shipAbility.name+' : ' + current_pilot.shipAbility.text);
+                $('#ship_ability').text(convertText(current_pilot.shipAbility.name+' : ' + current_pilot.shipAbility.text));
             } else {
                 $('#ship_ability').text('');
             }
         });
          
+        
+       function convertText(var text){
+            return text;
+       };
     </script>
 </body>
 </html>
