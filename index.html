@@ -68,9 +68,7 @@
 
 
 <body>
-    <form>
-    
-    <div>    <select id="faction">
+    <select id="faction">
         <option selected>Select Faction</option>
     </select>
     <select id="ship" disabled>
@@ -78,17 +76,20 @@
     </select>
     <select id="pilot" disabled>
         <option selected>Select Pilot</option>
-    </select></div>
-    <div class="container">
-        <legend>Pilot Info:</legend>
-        <h4 id="ship_name"></h4>
+    </select>
+   
+    <div class="w3-card-4" id="pilot_card">
+    <header class="w3-container w3-blue">
         <h1 id="pilot_name"></h1>
-        <h4 id="pilot_title"></h4>
-        <div id="ship_ability">
-        
+        <span id="pilot_title"></span>
+        </header>
+        <div class="w3-container">
+            <div id="ship_ability"></div>
+            <div id="pilot_ability"></div>
+            <div id="flavor_text"></div>
         </div>
-        <p class="ability"></p>
-    </div></form>
+    </div>
+   
     <script>
         var current_faction = '';
         var current_ship = '';
@@ -176,6 +177,21 @@
                 $('#ship_ability').append("<hr>");
             } else {
                 $('#ship_ability').text('');
+            }
+            
+            if((current_pilot).hasOwnProperty('ability')){
+                $('#pilot_ability').text(current_pilot.ability.text);
+                $('#pilot_ability').append("<hr>");
+            } else {
+                $('#pilot_ability').text('');
+            }
+            
+            if((current_pilot).hasOwnProperty('text')){
+                $('#flavor_text').append("<i>");
+                $('#flavor_text').append(current_pilot.text);
+                $('#flavor_text').append("</i>");
+            } else {
+                $('#flavor_text').text('');
             }
         });
     </script>
