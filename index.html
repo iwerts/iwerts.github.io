@@ -138,8 +138,9 @@
             }
             
             if((current_pilot).hasOwnProperty('shipAbility')){
-                $('#ship_ability_name').text(current_pilot.shipAbility.name+" : ");
-                $('#ship_ability_text').text(current_pilot.shipAbility.text);
+                $('#ship_ability_name').append(current_pilot.shipAbility.name);
+                $('#ship_ability_name').append(' : ');
+                $('#ship_ability_text').append(current_pilot.shipAbility.text);
             } else {
                 $('#ship_ability_name').text('');
                 $('#ship_ability_text').text('');
