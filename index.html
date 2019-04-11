@@ -68,21 +68,7 @@
 
 <body>
     <form>
-    <div class="container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <label for="password-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="password-repeat" required>
-        <hr>
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        <button type="submit" class="registerbtn">Register</button>
-    </div>
+    
     <div>    <select id="faction">
         <option selected>Select Faction</option>
     </select>
@@ -96,7 +82,11 @@
         <legend>Pilot Info:</legend>
         <h4 id="ship_name"></h4>
         <h1 id="pilot_name"></h1>
-        <h4 id="pilot_title"></h4>        
+        <h4 id="pilot_title"></h4>
+        <div id="ship_ability">
+        
+        </div>
+        <p class="ability"></p>
     </div></form>
     <script>
         var current_faction = '';
@@ -178,6 +168,12 @@
             
                 $('#pilot_title').text('');
             
+            }
+            
+            if((current_pilot).hasOwnProperty('shipAbility')){
+                $('#ship_ability').text('<b>'+current_pilot.shipAbility.name+'</b>: ' + current_pilot.shipAbility.text);
+            } else {
+                $('#ship_ability').text('');
             }
         });
          
