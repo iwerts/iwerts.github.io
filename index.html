@@ -115,6 +115,13 @@
         });
         
         $('form').change(function(){
+            $('#ship_name').empty();
+            $('#pilot_name').empty();
+            $('#pilot_title').empty();
+            $('#ship_ability').empty();
+            $('#pilot_ability').empty();
+            $('#flavor_text').empty();
+            
             $('#ship_name').text(current_ship.name);
             $('#pilot_name').text(current_pilot.name);
             if ((current_pilot).hasOwnProperty('caption')){
