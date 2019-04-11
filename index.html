@@ -39,7 +39,10 @@
         <div class="w3-container">
             <i id="pilot_title"></i>
             
-            <div id="ship_ability"></div>
+            <div id="ship_ability">
+                <b id="ship_ability_name"></b>
+                <p id="ship_ability_text"></p>
+            </div>
             <div id="pilot_ability"></div>
             <i id="flavor_text"></i>
         </div>
@@ -135,12 +138,11 @@
             }
             
             if((current_pilot).hasOwnProperty('shipAbility')){
-                $('#ship_ability').append("<b>");
-                $('#ship_ability').append(current_pilot.shipAbility.name+"</b>");
-                $('#ship_ability').append(current_pilot.shipAbility.text);
-                $('#ship_ability').append("<hr>");
+                $('#ship_ability_name').text(current_pilot.shipAbility.name+" : ");
+                $('#ship_ability_text').text(current_pilot.shipAbility.text);
             } else {
-                $('#ship_ability').text('');
+                $('#ship_ability_name').text('');
+                $('#ship_ability_text').text('');
             }
             
             if((current_pilot).hasOwnProperty('ability')){
