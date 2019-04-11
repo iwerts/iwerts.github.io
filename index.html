@@ -82,12 +82,13 @@
     <div class="w3-card-4" id="pilot_card">
     <header class="w3-container w3-blue">
         <h1 id="pilot_name"></h1>
-        <span id="pilot_title"></span>
         </header>
         <div class="w3-container">
+            <p id="pilot_title"></p>
+            
             <div id="ship_ability"></div>
             <div id="pilot_ability"></div>
-            <div id="flavor_text"></div>
+            <i id="flavor_text"></i>
         </div>
     </div>
    
@@ -174,7 +175,10 @@
             }
             
             if((current_pilot).hasOwnProperty('shipAbility')){
-                $('#ship_ability').text(current_pilot.shipAbility.name+' : ' + current_pilot.shipAbility.text);
+                $('#ship_ability').append("<b>");
+                $('#ship_ability').append(current_pilot.shipAbility.name);
+                $('#ship_ability').append("</b>");
+                $('#ship_ability').append(current_pilot.shipAbility.text);
                 $('#ship_ability').append("<hr>");
             } else {
                 $('#ship_ability').text('');
@@ -182,15 +186,12 @@
             
             if((current_pilot).hasOwnProperty('ability')){
                 $('#pilot_ability').text(current_pilot.ability);
-                $('#pilot_ability').append("<hr>");
             } else {
                 $('#pilot_ability').text('');
             }
             
             if((current_pilot).hasOwnProperty('text')){
-                $('#flavor_text').append("<i>");
                 $('#flavor_text').append(current_pilot.text);
-                $('#flavor_text').append("</i>");
             } else {
                 $('#flavor_text').text('');
             }
