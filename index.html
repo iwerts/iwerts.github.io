@@ -34,7 +34,7 @@
     </form>
     <div class="w3-card-4" style="max-width: 500px; max-height: 700px;">
         <div class="w3-display-container">
-            <img src="https://via.placeholder.com/700" alt="pilot image" style="width:100%;">
+            <img src="#" alt="pilot image" style="width:100%;" class="card-field" id="card_image">
             <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name card-field"></span>
             <br>
                 <span id="pilot_title" class="w3-medium card-field" style="font-style: italic;"></span>
@@ -159,6 +159,7 @@
                 $('#flavor_text').text('');
             }
             $('#pilot_initiative').append(updateField('initiative'));
+            $('#ship_image').src("https://via.placeholder.com/700");
         });
         
         function updateField(field){
