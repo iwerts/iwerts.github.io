@@ -163,13 +163,16 @@
             } else {
                 $('#flavor_text').text('');
             }
-            
-            if((current_pilot).hasOwnProperty('initiative')){
-                $('#pilot_initiative').append(current_pilot.initiative);
-            } else {
-                $('#pilot_initiative').text('');
-            }
+            $('#pilot_initiative').append(updateField('initiative'));
         });
+        
+        function updateField(var field){
+            if ((current_pilot).hasOwnProperty(field)){
+                return current.pilot[field];
+            } else {
+                return '';
+            }
+        };
     </script>
 </body>
 </html>
