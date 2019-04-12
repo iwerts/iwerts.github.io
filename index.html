@@ -124,7 +124,7 @@
         });
         
         $('form').change(function(){
-            $('#pilot_image').attr('src', "https://via.placeholder.com/700x100.png?text="+encodeURI(updateField(current_pilot, 'name')));
+            $('#pilot_image').attr('src', "https://via.placeholder.com/700x100.png");
             $('#ship_name').append(updateField(current_ship, 'name'));
             $('#pilot_initiative').append(updateField(current_pilot, 'initiative'));
             $('#flavor_text').append(updateField(current_pilot, 'text'));
