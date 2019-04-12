@@ -124,13 +124,14 @@
         });
         
         $('form').change(function(){
-            $('#ship_name').append(updateField(current_ship, 'name'));
+            $('#pilot_image').attr('src', "https://via.placeholder.com/700x100.png?text=" +encodeURI(updateField(current_pilot, 'name')));
             $('#ship_name').append(updateField(current_ship, 'name'));
             $('#pilot_initiative').append(updateField(current_pilot, 'initiative'));
             $('#flavor_text').append(updateField(current_pilot, 'text'));
             $('#pilot_title').append(updateField(current_pilot, 'caption'));
-            $('#pilot_name').append(updateField(current_pilot, 'initiative'));
+            $('#pilot_name').append(updateField(current_pilot, 'name'));
             $('#pilot_ability').append(updateField(current_pilot, 'ability'));
+            $('#pilot_image').
         });
         
         function updateField(item, field){
