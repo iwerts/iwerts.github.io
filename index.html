@@ -7,7 +7,6 @@
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
                 $.each(factions, function(index, val){
-                    console.log(val);
                     $("#faction").append('<option value="'+val.xws+'">'+val.name+'</option>');
                 }); 
             });
@@ -132,7 +131,6 @@
             $('#pilot_name').append(updateField(current_pilot, 'name'));
             $('#pilot_ability').append(updateField(current_pilot, 'ability'));
             console.log(updateField(current_pilot, 'shipAbility'));
-            console.log(updateField(updateField(current_pilot, 'shipAbility'), 'name');
             
             $('#ship_ability_name').append(updateField(updateField(current_pilot, 'shipAbility'), 'name'));
             $('#ship_ability_text').append(updateField(updateField(current_pilot, 'shipAbility'), 'text'));
