@@ -130,10 +130,9 @@
             $('#pilot_title').append(updateField(current_pilot, 'caption'));
             $('#pilot_name').append(updateField(current_pilot, 'name'));
             $('#pilot_ability').append(updateField(current_pilot, 'ability'));
-            console.log(updateField(current_pilot, 'shipAbility').name);
             
-            $('#ship_ability_name').append(updateField(updateField(current_pilot, 'shipAbility'), 'name'));
-            $('#ship_ability_text').append(updateField(updateField(current_pilot, 'shipAbility'), 'text'));
+            $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
+            $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
         });
         
         function updateField(item, field){
