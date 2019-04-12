@@ -47,7 +47,6 @@
                 <span id="ship_name" class="w3-medium w3-display-top card_field"></span><br>
                 <span id="ship_ability_name" class="card_field" style="font-weight: bold;"></span><br>
                 <span id="ship_ability_text" class="card_field"></span>
-                <span id="ship_ability_separator" class="card_field"></span>
             </div>
             <div id="pilot_ability" class="card_field"></div>
             <i id="flavor_text" class="card_field"></i>
@@ -135,9 +134,6 @@
             
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
-            if (updateField(current_pilot, 'shipAbility') != ''){
-            $('#ship_ability_separator').append('<hr>');    
-            }
         });
         
         function updateField(item, field){
