@@ -34,23 +34,23 @@
     </form>
     <div class="w3-card-4" style="max-width: 500px; max-height: 700px;">
         <div class="w3-display-container">
-            <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image">
-            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name"></span>
+            <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image" class="card_field">
+            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name" class="card_field"></span>
             <br>
-                <span id="pilot_title" class="w3-medium" style="font-style: italic;"></span>
+                <span id="pilot_title" class="w3-medium card_field" style="font-style: italic;"></span>
             </div>
-            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding"></span>
+            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding card_field"></span>
             <div class="w3-xlarge w3-display-topleft w3-padding w3-light-grey">
-                <span id="pilot_initiative"></span>
+                <span id="pilot_initiative" class="card_field"></span>
             </div>
         </div>
         <div class="w3-container">
-            <div id="ship_ability">
-                <b id="ship_ability_name"></b>
-                <p id="ship_ability_text"></p>
+            <div id="ship_ability" class="card_field">
+                <b id="ship_ability_name" class="card_field"></b>
+                <p id="ship_ability_text" class="card_field"></p>
             </div>
-            <div id="pilot_ability"></div>
-            <i id="flavor_text"></i>
+            <div id="pilot_ability" class="card_field"></div>
+            <i id="flavor_text" class="card_field"></i>
         </div>
     </div>
    
@@ -124,6 +124,7 @@
         });
         
         $('form').change(function(){
+            $('.card_field').empty();
             $('#ship_name').append(updateField(current_ship, 'name'));
             $('#pilot_initiative').append(updateField(current_pilot, 'initiative'));
             $('#flavor_text').append(updateField(current_pilot, 'text'));
