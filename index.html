@@ -35,22 +35,22 @@
     <div class="w3-card-4" style="max-width: 500px; max-height: 700px;">
         <div class="w3-display-container">
             <img src="https://via.placeholder.com/700" alt="pilot image" style="width:100%;">
-            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name"></span>
+            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name card-field"></span>
             <br>
-                <span id="pilot_title" class="w3-medium" style="font-style: italic;"></span>
+                <span id="pilot_title" class="w3-medium card-field" style="font-style: italic;"></span>
             </div>
-            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding"></span>
+            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding card-field"></span>
             <div class="w3-xlarge w3-display-topleft w3-padding w3-light-grey">
-                <span id="pilot_initiative"></span>
+                <span id="pilot_initiative card-field"></span>
             </div>
         </div>
         <div class="w3-container">
             <div id="ship_ability">
-                <b id="ship_ability_name"></b>
-                <p id="ship_ability_text"></p>
+                <b id="ship_ability_name card-field"></b>
+                <p id="ship_ability_text card-field"></p>
             </div>
-            <div id="pilot_ability"></div>
-            <i id="flavor_text"></i>
+            <div id="pilot_ability card-field"></div>
+            <i id="flavor_text card-field"></i>
         </div>
     </div>
    
@@ -124,13 +124,7 @@
         });
         
         $('form').change(function(){
-            $('#pilot_initiative').empty();
-            $('#ship_name').empty();
-            $('#pilot_name').empty();
-            $('#pilot_title').empty();
-            $('#ship_ability').empty();
-            $('#pilot_ability').empty();
-            $('#flavor_text').empty();
+            $(.card-field).empty();
             
             $('#ship_name').text(current_ship.name);
             $('#pilot_name').text(current_pilot.name);
