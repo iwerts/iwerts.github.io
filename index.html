@@ -34,23 +34,23 @@
     </form>
     <div class="w3-card-4" style="max-width: 500px; max-height: 700px;">
         <div class="w3-display-container">
-            <img src="#" alt="pilot image" style="width:100%;" class="card-field" id="card_image">
-            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name card-field"></span>
+            <img src="#" alt="pilot image" style="width:100%;" id="card_image">
+            <div class="w3-xlarge w3-display-bottomleft w3-padding"><span id="pilot_name"></span>
             <br>
-                <span id="pilot_title" class="w3-medium card-field" style="font-style: italic;"></span>
+                <span id="pilot_title" class="w3-medium" style="font-style: italic;"></span>
             </div>
-            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding card-field"></span>
+            <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding"></span>
             <div class="w3-xlarge w3-display-topleft w3-padding w3-light-grey">
-                <span id="pilot_initiative card-field"></span>
+                <span id="pilot_initiative"></span>
             </div>
         </div>
         <div class="w3-container">
             <div id="ship_ability">
-                <b id="ship_ability_name card-field"></b>
-                <p id="ship_ability_text card-field"></p>
+                <b id="ship_ability_name"></b>
+                <p id="ship_ability_text"></p>
             </div>
-            <div id="pilot_ability card-field"></div>
-            <i id="flavor_text card-field"></i>
+            <div id="pilot_ability"></div>
+            <i id="flavor_text"></i>
         </div>
     </div>
    
@@ -124,47 +124,19 @@
         });
         
         $('form').change(function(){
-            $(.card-field).empty();
-            
-            $('#ship_name').text(current_ship.name);
-            $('#pilot_name').text(current_pilot.name);
-            if ((current_pilot).hasOwnProperty('caption')){
-            
-                $('#pilot_title').text(current_pilot.caption);
-            
-            } else {
-            
-                $('#pilot_title').text('');
-            
-            }
-            
-            if((current_pilot).hasOwnProperty('shipAbility')){
-                $('#ship_ability #ship_ability_name').append(current_pilot.shipAbility.name);
-                $('#ship_ability #ship_ability_name').append(' : ');
-                $('#ship_ability #ship_ability_text').append(current_pilot.shipAbility.text);
-            } else {
-                $('#ship_ability #ship_ability_name').text('');
-                $('#ship_ability #ship_ability_text').text('');
-            }
-            
-            if((current_pilot).hasOwnProperty('ability')){
-                $('#pilot_ability').text(current_pilot.ability);
-            } else {
-                $('#pilot_ability').text('');
-            }
-            
-            if((current_pilot).hasOwnProperty('text')){
-                $('#flavor_text').append(current_pilot.text);
-            } else {
-                $('#flavor_text').text('');
-            }
-            $('#pilot_initiative').append(updateField('initiative'));
-            $('#ship_image').src("https://via.placeholder.com/700");
+            $(.card-field).empty(); 
+            $('#ship_name').append(updateField(current_ship, 'name'));
+            $('#ship_name').append(updateField(current_ship, 'name'));
+            $('#pilot_initiative').append(updateField(current_pilot, 'initiative'));
+            $('#flavor_text').append(updateField(current_pilot, 'text'));
+            $('#pilot_title').append(updateField(current_pilot, 'caption'));
+            $('#pilot_name').append(updateField(current_pilot, 'initiative'));
+            $('#pilot_ability').append(updateField(current_pilot, 'ability'));
         });
         
-        function updateField(field){
-            if ((current_pilot).hasOwnProperty(field)){
-                return current_pilot[field];
+        function updateField(item, field){
+            if ((item).hasOwnProperty(field)){
+                return item[field];
             } else {
                 return '';
             }
