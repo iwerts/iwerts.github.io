@@ -40,6 +40,9 @@
                 <span id="pilot_title" class="w3-medium" style="font-style: italic;"></span>
             </div>
             <span id="ship_name" class="w3-medium w3-display-bottomright w3-padding"></span>
+            <div class="w3-display-topleft w3-padding w3-light-grey">
+                <span id="pilot_initiative"></span>
+            </div>
         </div>
         <div class="w3-container">
             <div id="ship_ability">
@@ -159,6 +162,12 @@
                 $('#flavor_text').append(current_pilot.text);
             } else {
                 $('#flavor_text').text('');
+            }
+            
+            if((current_pilot).hasOwnProperty('initiative')){
+                $('#pilot_initiative').append(current_pilot.initiative);
+            } else {
+                $('#pilot_initiative').text('');
             }
         });
     </script>
