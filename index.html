@@ -146,10 +146,8 @@
 
         function convertIconSymbol(iconSymbol){
            $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(icons){
-            for (var i = 0; i < icons.length;i++){
-                console.log(icons[i]);
-            }
-        
+                var keys = Object.keys(icons);
+                console.log(keys);
                });
                      }
     </script>
