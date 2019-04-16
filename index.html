@@ -154,7 +154,7 @@
                });
                      }
         function convertSymbol(symbolText){
-              $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(icons){
+              $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
                   $.each(data.icons, function(key, val){
                     if (key === symbolText){
                         return val;
