@@ -158,7 +158,7 @@
                   $.each(data.icons, function(key, val){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
                     if (key === symbolText){
-                        console.log(val);
+                        return "\""+val+"\"";
                     }
                   });
                });
