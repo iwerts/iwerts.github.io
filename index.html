@@ -161,8 +161,7 @@
                   $.each(data.icons, function(key, val){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
                     if (key === symbolText){
-                        ret = val;
-                        console.log(ret);
+                        ret = val.value;
                     }
                   });
                });
