@@ -156,6 +156,7 @@
         function convertSymbol(symbolText){
               $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
                   $.each(data.icons, function(key, val){
+                    console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
                     if (key === symbolText){
                         return val;
                     }
