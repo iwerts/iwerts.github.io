@@ -155,17 +155,15 @@
                 console.log(keys);
                });
                      }
-        function convertSymbol(symbolText){
-            var ret = '';  
-            $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
-                  ret = $.each(data.icons, function(key, val){
+        function convertSymbol(symbolText){  
+            return $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
+                  return $.each(data.icons, function(key, val){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
                     if (key === symbolText){
                         return val.value;
                     }
                   });
                });
-            return ret;
         }
     </script>
 </body>
