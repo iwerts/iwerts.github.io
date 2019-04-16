@@ -156,12 +156,14 @@
                });
                      }
         function convertSymbol(symbolText){  
-            $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
-                  $.each(data.icons, function(key, val){
+            var matched = [];
+            $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data, matched){
+                  $.each(data.icons, function(key, val, matched){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
-                    return val;
+                    matched.push(val);
                   });
                });
+            return matched;
         }
     </script>
 </body>
