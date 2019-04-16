@@ -156,16 +156,12 @@
                });
                      }
         function convertSymbol(symbolText){  
-            var matched = [];
             $.getJSON('./xwing-miniatures-font/src/json/icons-map.json', function(data){
                   $.each(data.icons, function(key, val){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
-                    if (key === symbolText){
-                        matched.push(val.value);
-                    }
+                    return val;
                   });
                });
-            return matched;
         }
     </script>
 </body>
