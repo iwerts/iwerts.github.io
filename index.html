@@ -152,10 +152,19 @@
         }
 
         function convertIcon(iconSymbol){
-           return iconMap['icons'][iconSymbol];
-        }
+           return $.getJSON('./xwing-miniatures-font/src/json/icon-map.json', {
+               tags: 'icons',
+               tagmode: "any",
+               format: "json
+           }).done(function(data){
+            $.each(data, function(key, val){
+                if (iconSymbol === key){
+                    return val;
+                }
+            }
+           });
         
-       
+        }
     </script>
 </body>
 </html>
