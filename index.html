@@ -151,16 +151,8 @@
         }
 
         function convertIcon(iconSymbol){
-        var ret = '';
-            var jsonPath = './xwing-miniatures-font/src/json/icons-map.json';
-            $.getJSON(jsonPath).done(function(data){
-                $.each(data.icons, function(key, val){
-                    if (key === iconSymbol){
-                        this.ret = val;
-                    }
-                });
-            });
-            return ret;
+            var iconsMap = JSON.parse('./xwing-miniatures-font/src/json/icons-map.json');
+            return iconsMap['icons'][iconSymbol];
         }
     </script>
 </body>
