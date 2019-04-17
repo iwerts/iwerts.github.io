@@ -161,13 +161,12 @@
                   $.each(data.icons, function(key, val){
                     //console.log("Comparing " + symbolText + " with " + key + ": " + (key===symbolText));
                     if (symbolText === key){
-                        toReturn = val;
-                        console.log(toReturn);
-                        return false;
+                        return toReturn;
                     }
                   });
                 return toReturn;
                });
+            return toReturn;
         }
     </script>
 </body>
