@@ -86,7 +86,6 @@
             $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
                 
                 for (var i = 0; i < manifest.pilots.length; i++){
-                    console.log(manifest.pilots[i]);
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
                         current_faction = manifest.pilots[i];
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
@@ -112,7 +111,6 @@
             $('#pilot_title').text('');
               $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
              for (var i = 0; i < manifest.pilots.length; i++){
-                    console.log(manifest.pilots[i]);
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
                             
