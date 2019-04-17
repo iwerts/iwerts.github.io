@@ -6,6 +6,16 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>      
+        var iconsMap;
+        var oReq = new XMLHttpRequest();
+        oReq.onload = reqListener;
+        oReq.open('GET', './xwing-miniatures-font/src/json/icons-map.json', true);
+        oReq.send();
+        
+        function reqListener(e){
+            iconsMap = JSON.parse(this.responseText);
+        }
+        
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
                 $.each(factions, function(index, val){
