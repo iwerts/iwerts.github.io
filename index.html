@@ -3,12 +3,9 @@
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./xwing-miniatures-font/dist/xwing-miniatures.css">
+    <script type="text/javascript" src="./xwing-miniatures-font/src/json/icons-map.json"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        
-         $.ajaxSetup({
-             async: false
-          });
+    <script>      
         
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
@@ -154,8 +151,8 @@
             }
         }
 
-        function convertIconSymbol(iconSymbol){
-           
+        function convertIcon(iconSymbol){
+           return icons-map.icons['iconSymbol'];
         }
         
        
