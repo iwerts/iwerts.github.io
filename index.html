@@ -53,6 +53,9 @@
             <div class="w3-xlarge w3-display-topleft w3-padding w3-light-grey">
                 <span id="pilot_initiative" class="card_field"></span>
             </div>
+            <div class="w3-xlarge w3-display-topright w3-padding w3-light-grey">
+                <span id="pilot_faction" class="card_field xwing-miniatures-font"></span>
+            </div>
         </div>
         <div class="w3-container">
             <div id="ship_ability" class="w3-panel w3-light-grey">
@@ -150,6 +153,7 @@
             
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
+            $('#pilot_faction').append(convertIcon(getFaction(updateField(current_faction, 'name'))));
         });
         
         function updateField(item, field){
@@ -157,6 +161,25 @@
                 return item[field];
             } else {
                 return '';
+            }
+        }
+        
+        function getFaction(faction){
+            switch (faction){
+                case "Scum and Villainy":
+                    return "scum";
+                case "Rebel Alliance":
+                    return "rebel";
+                case "Galactic Empire": 
+                    return "empire";
+                case "Resistance":
+                    return "rebel";
+                case "First Order":
+                    return "firstorder";
+                case "Galactic Republic":
+                    return "republic";
+                case "Separatist Alliance":
+                    return "separatists";
             }
         }
 
