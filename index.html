@@ -68,7 +68,7 @@
             <hr>
             <i class="xwing-miniatures-font xwing-miniatures-font-agility"></i>
             <hr>
-            <span class="xwing-miniatures-font"><script>convertSymbol('agility');</script></span>
+            <span class="xwing-miniatures-font"></span>
             
         </div>
     </div>
@@ -151,7 +151,7 @@
             
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
-            var val = convertIcon(getFaction(updateField(current_faction, 'faction')));
+            var val = getFaction(updateField(current_faction, 'faction'));
             console.log(val);
             $('#pilot_faction').append(val);
         });
