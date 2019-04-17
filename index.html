@@ -151,11 +151,7 @@
             
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
-            console.log(current_faction);
-            console.log(getFaction(updateField(current_faction, 'name')));
-            console.log(convertIcon(getFaction(updateField(current_faction, 'name'))));
-            
-            $('#pilot_faction').append(convertIcon(getFaction(updateField(current_faction, 'name'))));
+            $('#pilot_faction').append(convertIcon(getFaction(updateField(current_faction, 'faction'))));
         });
         
         function updateField(item, field){
@@ -168,19 +164,19 @@
         
         function getFaction(faction){
             switch (faction){
-                case "Scum and Villainy":
+                case "scumandvillainy":
                     return "scum";
-                case "Rebel Alliance":
+                case "rebelalliance":
                     return "rebel";
-                case "Galactic Empire": 
+                case "galacticempire": 
                     return "empire";
-                case "Resistance":
+                case "resistance":
                     return "rebel";
-                case "First Order":
+                case "firstorder":
                     return "firstorder";
-                case "Galactic Republic":
+                case "galacticrepublic":
                     return "republic";
-                case "Separatist Alliance":
+                case "separatistalliance":
                     return "separatists";
             }
         }
