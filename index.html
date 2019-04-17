@@ -151,7 +151,7 @@
         }
 
         function convertIcon(iconSymbol){
-        ver ret = '';
+        var ret = '';
             var jsonPath = './xwing-miniatures-font/src/json/icon-map.json';
             $.getJSON(jsonPath).done(function(data){
                 $.each(data.icons, function(key, val){
@@ -160,6 +160,7 @@
                     }
                 });
             });
+            return ret;
         }
     </script>
 </body>
