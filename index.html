@@ -151,7 +151,7 @@
             
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(updateField(current_pilot, 'shipAbility').text);
-            var val = getFaction(updateField(current_faction, 'faction'));
+            var val = convertIcon(getFaction(updateField(current_faction, 'faction')));
             console.log(val);
             $('#pilot_faction').append(val);
         });
