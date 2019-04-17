@@ -151,19 +151,16 @@
         }
 
         function convertIcon(iconSymbol){
-            var iconMap = $.getJSON('./xwing-miniatures-font/src/json/icon-map.json', function(){
-                console.log('success');
-            }).done(function(){
-                console.log('second success');
-            }).fail(function(){
-                console.log('error');
-            }).always(function(){
-                console.log('complete');
+        ver ret = '';
+            var jsonPath = './xwing-miniatures-font/src/json/icon-map.json';
+            $.getJSON(jsonPath).done(function(data){
+                $.each(data.icons, function(key, val){
+                    if (key === iconSymbol){
+                        ret = val;
+                    }
+                });
             });
-            
-            return iconMap.complete(function(){
-                console.log('second complete');
-            });
+        }
     </script>
 </body>
 </html>
