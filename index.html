@@ -156,7 +156,7 @@
             $.getJSON(jsonPath).done(function(data){
                 $.each(data.icons, function(key, val){
                     if (key === iconSymbol){
-                        ret = val;
+                        this.ret = val;
                     }
                 });
             });
