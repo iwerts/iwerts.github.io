@@ -6,7 +6,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>      
-        var iconMap = require('./xwing-miniatures-font/src/json/icon-map.json');
         $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
             $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
                 $.each(factions, function(index, val){
@@ -152,19 +151,19 @@
         }
 
         function convertIcon(iconSymbol){
-           return $.getJSON('./xwing-miniatures-font/src/json/icon-map.json', {
-               tags: 'icons',
-               tagmode: "any",
-               format: "json
-           }).done(function(data){
-            $.each(data, function(key, val){
-                if (iconSymbol === key){
-                    return val;
-                }
-            }
-           });
-        
-        }
+            var iconMap = $.getJSON('./xwing-miniatures-font/src/json/icon-map.json', function(){
+                console.log('success');
+            }).done(function(){
+                console.log('second success');
+            }).fail(function(){
+                console.log('error');
+            }).always(function(){
+                console.log('complete');
+            });
+            
+            return iconMap.complete(function(){
+                console.log('second complete');
+            });
     </script>
 </body>
 </html>
