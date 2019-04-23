@@ -2,22 +2,22 @@
 
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="./xwing-miniatures-font/dist/xwing-miniatures.css">
+    <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>      
         var iconsMap;
         var oReq = new XMLHttpRequest();
         oReq.onload = reqListener;
-        oReq.open('GET', './xwing-miniatures-font/src/json/icons-map.json', true);
+        oReq.open('GET', 'https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json', true);
         oReq.send();
         
         function reqListener(e){
             iconsMap = JSON.parse(this.responseText);
         }
         
-        $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
-            $.getJSON('./xwing-data2/'+manifest.factions[0], function(factions){
+        $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
+            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.factions[0], function(factions){
                 $.each(factions, function(index, val){
                     $("#faction").append('<option value="'+val.xws+'">'+val.name+'</option>');
                 }); 
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="w3-container">
-            <div id="ship_ability" class="w3-panel w3-light-grey">
+            <div id="ship_ability" class="w3-display-container w3-light-grey">
                 <p id="ship_name" class="w3-center card_field"></p><br>
                 <p id="ship_ability_name" class="card_field" style="font-weight: bold;"></p><br>
                 <p id="ship_ability_text" class="card_field"></p>
@@ -66,23 +66,23 @@
             <div id="pilot_ability" class="card_field"></div>
             <i id="flavor_text" class="card_field"></i>
             <hr>
-            <i class="xwing-miniatures-font xwing-miniatures-font-agility"></i>
-            <hr>
-            
+            <div class="w3-panel" id="pilot_stats">
+
+            </div>
         </div>
     </div>
    
     <script>
-        var current_faction = '';
-        var current_ship = '';
-        var current_pilot = '';
+        var current_faction;
+        var current_ship;
+        var current_pilot;
         
         $('#faction').change(function(){
             $('#ship_name').text('');
             $('#pilot_name').text('');
             $('#pilot_title').text('');
             
-            $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
+            $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
                 
                 for (var i = 0; i < manifest.pilots.length; i++){
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
@@ -95,7 +95,7 @@
                             $('#pilot').prop("disabled", true);
                             $('#ship').append('<option selected>Select Ship</option>');
                             $('#pilot').append('<option selected>Select Pilot</option>');
-                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
+                            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                     $("#ship").append('<option value="'+ship.xws+'">'+ship.name+'</option>');
                                 });
                         }
@@ -108,7 +108,7 @@
             $('#ship_name').text('');
             $('#pilot_name').text('');
             $('#pilot_title').text('');
-              $.getJSON('./xwing-data2/data/manifest.json', function(manifest){
+              $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
              for (var i = 0; i < manifest.pilots.length; i++){
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction){
                         for (var j = 0; j < manifest.pilots[i].ships.length; j++){
@@ -116,7 +116,7 @@
                             $("#pilot").empty();
                             
                             $("#pilot").removeAttr("disabled");
-                            $.getJSON('./xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
+                            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
                                 if (ship.xws === $('#ship option:selected').val()){
                                     current_ship = ship;
                                     $('#pilot').append('<option selected>Select Pilot</option>');
@@ -141,6 +141,7 @@
         
         $('form').change(function(){
             $('.card_field').empty();
+            if (current_ship != null && current_faction != null && current_pilot != null){
             $('#ship_name').append(updateField(current_ship, 'name'));
             
             $('#card_image').attr('src', updateField(current_pilot, 'artwork'));
@@ -150,13 +151,93 @@
             $('#pilot_title').append(updateField(current_pilot, 'caption'));
             $('#pilot_name').append(getName());
             $('#pilot_ability').append(convertGameText(updateField(current_pilot, 'ability')));
-            
+        if (current_pilot.hasOwnProperty('shipAbility')){    
             $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
             $('#ship_ability_text').append(convertGameText(updateField(current_pilot, 'shipAbility').text));
+        
+        }
             var val = convertIcon(getFaction(updateField(current_faction, 'faction')));
-            console.log(val);
             $('#pilot_faction').append(val);
+                    
+            getActions();
+            getStats();
+
+            if (current_pilot.hasOwnProperty('force')){
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_force" style="text-align: center; color: purple;"></div>');
+                        $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('forcecharge')+'</i>');
+                        $('#pilot_force').append('<br><span>'+current_pilot.force.value);
+                        if (current_pilot.force.hasOwnProperty('recovers')){
+                            for (var i = 0; i < current_pilot.force.recovers; i++){
+                                $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('recurring')+'</i>');        
+                            }    
+                        }
+                        
+                            $('#pilot_force').append('</span>');
+                                
+
+            }
+            if (current_pilot.hasOwnProperty('charges')){
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_charges" style="text-align: center; color: orange;"></div>');
+                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge')+'</i>');
+                        $('#pilot_charges').append('<br><span>'+current_pilot.charges.value);
+                        if (current_pilot.charges.hasOwnProperty('recovers')){
+                            for (var i = 0; i < current_pilot.charges.recovers; i++){
+                                $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('recurring')+'</i>');        
+                            }    
+                        }
+                        
+                            $('#pilot_charge').append('</span>');
+                                
+
+            }}
         });
+
+        function getActions(){
+            for (var i = 0; i < current_ship.actions.length; i++){
+                if (current_ship.actions[i].hasOwnProperty('linked')){
+                    $('#ship_ability').append('<div class="card_field">'+convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + ' '+convertIcon('linked', 'black')+' '+convertIcon(current_ship.actions[i].linked.type.toString().toLowerCase().replace(/\s/g, ''), current_ship.actions[i].linked.difficulty));
+                } else {    
+                        $('#ship_ability').append('<div class="card_field">'+convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty)+'</div>');
+                }
+            }
+        }
+
+        function getStats(){
+            $('#pilot_stats').empty();
+            stats = updateField(current_ship, 'stats');
+            for (var i = 0; i < stats.length; i++){
+                switch (stats[i].type){
+                    case 'agility':
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: lightgreen;"></div>');
+                        $('#pilot_agility').append('<i class="xwing-miniatures-font">'+convertIcon('agility')+'</i>');
+                        $('#pilot_agility').append('<br><span>'+stats[i].value+'</span>');
+                        break;
+                    case 'hull':
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: yellow;"></div>');
+                        $('#pilot_hull').append('<i class="xwing-miniatures-font">'+convertIcon('hull')+'</i>');
+                        $('#pilot_hull').append('<br><span>'+stats[i].value+'</span>');
+                        break;
+                    case 'shields':
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: lightblue;"></div>');
+                        $('#pilot_shield').append('<i class="xwing-miniatures-font">'+convertIcon('shield')+'</i>');
+                        $('#pilot_shield').append('<br><span>'+stats[i].value+'</span>');
+                        break;   
+                    case 'attack':
+                              switch(stats[i].arc){
+                                  case "Front Arc":
+                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center;color: red;"></div>');
+                                    $('#pilot_front_arc').append('<i class="xwing-miniatures-font">'+convertIcon('frontarc')+'</i>');
+                                    $('#pilot_front_arc').append('<br><span>'+stats[i].value+'</span>');
+                                    break;
+                                case "Rear Arc":
+                                    break;
+                                    case "Single Turret Arc":
+                                    break;
+                              }
+                    
+                }
+            }
+        }
         
         function updateField(item, field){
             if ((item).hasOwnProperty(field)){
@@ -186,23 +267,26 @@
         }
 
         function convertIcon(iconSymbol){
-            return iconsMap['icons'][iconSymbol];
+            return convertIcon(iconSymbol, 'black');
+        }
+
+        function convertIcon(iconSymbol, color){
+            if (color==null || color.toLowerCase() == 'white'){
+                color = 'black';
+            }
+            return '<i class="xwing-miniatures-font" style="color: ' + color + ';">'+iconsMap['icons'][iconSymbol]+'</i>';
         }
 
         function convertGameText(passedText){
-            console.log(passedText);
             ret = '';
-            splitText = passedText.split(/\[[\w\s']*\]/g);
-            textToConvert = passedText.match(/\[[\w\s']*\]/g);
+            splitText = passedText.split(/\[[\w\s]*\]/g);
+            textToConvert = passedText.match(/\[[\w\s]*\]/g);
             
-            console.log(splitText);
-            console.log(textToConvert);          
             for (var i = 0; i < splitText.length; i++){
 
-                console.log(splitText[i]);
                 ret += splitText[i]
                 if (textToConvert != null && textToConvert.length > i){
-                    ret += convertText(textToConvert[i]);
+                    ret += convertText(textToConvert[i].toLowerCase().replace(/\s/g,'').match(/\w+/)[0]);
             }}
             return ret;
         }
@@ -225,85 +309,12 @@
             console.log(text);
             if (text != null){
             switch (text){
-                case '[Cannon]':
-                    return '<i class="xwing-miniatures-font">'+convertIcon('cannon')+'</i>';
-                case '[Torpedo]':
-                    return '<i class="xwing-miniatures-font">'+convertIcon('torpedo')+'</i>';
-                case '[Missile]':
-                    return '<i class="xwing-miniatures-font">'+convertIcon('missile')+'</i>';
-                case '[Charge]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('charge')+'</i>';
-                case '[Tallon Roll Left]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('trollleft')+'</i>';
-                case '[Tallon Roll Right]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('trollright')+'</i>';
-                case '[Focus]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('focus')+'</i>';
-                case '[Evade]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('evade')+'</i>';
-                case '[Hit]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('hit')+'</i>';
-                case '[Critical Hit]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('crit')+'</i>';
-                case '[Front Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('frontarc')+'</i>';
-                case '[Rear Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('reararc')+'</i>';
-                case '[Turret]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('turret')+'</i>';
-                case '[Force]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('forcecharge')+'</i>';
-                case '[Barrel Roll]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('barrelroll')+'</i>';
-                case '[Boost]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('boost')+'</i>';
-                case '[Lock]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('lock')+'</i>';
-                case '[Bullseye Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('bullseyearc')+'</i>';
-                case '[Coordinate]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('coordinate')+'</i>';
-                case '[Configuration]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('config')+'</i>';
-                case '[Bank Left]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('bankleft')+'</i>';
-                case '[Bank Right]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('bankright')+'</i>';
-                case '[Straight]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('straight')+'</i>';
-                case '[Koiogran Turn]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('kturn')+'</i>';
-                case '[Reload]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('reload')+'</i>';
-                case '[Talent]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('talent')+'</i>';
-                case '[Full Front Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('fullfrontarc')+'</i>';
-                case '[Full Rear Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('fullreararc')+'</i>';
-                case '[Calculate]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('calculate')+'</i>';
-                case "[Segnor's Loop Left]":
-                return '<i class="xwing-miniatures-font">'+convertIcon('sloopleft')+'</i>';
-                case "[Segnor's Loop Right]":
-                return '<i class="xwing-miniatures-font">'+convertIcon('sloopright')+'</i>';
-                case '[Turn Left]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('turnleft')+'</i>';
-                case '[Turn Right]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('turnright')+'</i>';
-                case '[Single Turret Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('singleturretarc')+'</i>';
-                case '[Astromech]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('astromech')+'</i>';
-                case '[Rotate Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('rotatearc')+'</i>';
-                case '[Left Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('leftarc')+'</i>';
-                case '[Right Arc]':
-                return '<i class="xwing-miniatures-font">'+convertIcon('rightarc')+'</i>';
-                
+                case 'criticalhit':
+                    return convertIcon('crit');
+                case 'force':
+                    return convertIcon('forcecharge');
                 default:
-                   return text;
+                   return convertIcon(text.toString().replace(' ','').toLowerCase());
             }}
         }
     </script>
