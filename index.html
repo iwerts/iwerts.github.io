@@ -4,12 +4,54 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
     <style>
+        @font-face {
+  font-family: Eurostile;
+  src: url("./assets/fonts/Eurostile.ttf"); }
+
+  @font-face {
+  font-family: BankGothicMedium;
+  src: url("./assets/fonts/BankGothicMediumBT.ttf"); }
+
+  @font-face {
+  font-family: Kimberly;
+  src: url("./assets/fonts/kimberley bl.ttf"); }
+
+i.xwing-miniatures-font {
+  font-family: XWing;
+  font-style: normal;
+  font-size: 1.5em; }
     #pilot_stats{
         display: flex;
         align-content: space-around;
         justify-content: center;
-        background-color: grey;
     }
+
+    #pilot_name{
+        font-family: BankGothicMedium;
+        font-size: 1.5em;
+        display:flex;
+        justify-content: center;
+    }
+
+    #pilot_name > .xwing-miniatures-font{
+        font-family: XWing;
+        font-size: 1em;
+    }
+
+    #pilot_initiative{
+        font-family: Kimberly;
+        font-size: 2em;
+        color: orange;
+    }
+
+    #pilot_stats>*{
+        font-family: Kimberly;
+        font-size: 1.5em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>      
@@ -50,16 +92,16 @@
         <option selected>Select Pilot</option>
     </select>
     </form>
-    <div class="w3-card-4" style="max-width: 500px; max-height: 700px;">
+    <div class="w3-card-4 w3-black" style="max-width: 500px; max-height: 700px;">
         <div class="w3-display-container">
             <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image" class="card_field">
-            <div class="w3-xlarge w3-display-bottomleft w3-light-grey w3-opacity-min"><span id="pilot_name" class="card_field"></span>
-            <br>
-                <span id="pilot_title" class="w3-medium card_field" style="font-style: italic;"></span>
-            </div>
-            <div class="w3-xlarge w3-display-topleft w3-padding w3-light-grey w3-opacity-min">
-                <span id="pilot_initiative" class="card_field"></span>
-            </div>
+        </div>
+        <div class="w3-display-container">
+        
+            <span id="pilot_name" class="w3-display-topmiddle card_field"></span><br>
+            <span id="pilot_title" class="w3-display-topmiddle card_field"></span>
+            
+                <span id="pilot_initiative" class="w3-display-topleft w3-padding card_field"></span>
             <div class="w3-xlarge w3-display-bottomright w3-padding w3-light-grey w3-opacity-min">
                 <i id="pilot_faction" class="card_field xwing-miniatures-font" style="font-size: 48px;"></i>
             </div>
@@ -171,28 +213,27 @@
 
             if (current_pilot.hasOwnProperty('force')){
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_force" style="text-align: center; color: purple;"></div>');
-                        $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('forcecharge')+'</i>');
-                        $('#pilot_force').append('<br><span>'+current_pilot.force.value);
+                        $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('forcecharge', 'purple')+'</i>');
                         if (current_pilot.force.hasOwnProperty('recovers')){
+                            recurring = '';
                             for (var i = 0; i < current_pilot.force.recovers; i++){
-                                $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('recurring')+'</i>');        
+                                recurring += '<i class="xwing-miniatures-font">'+convertIcon('recurring', 'purple')+'</i>';        
                             }    
                         }
-                        
-                            $('#pilot_force').append('</span>');
+                        $('#pilot_force').append('<span>'+current_pilot.force.value+recurring+'</span>');
                                 
 
             }
             if (current_pilot.hasOwnProperty('charges')){
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_charges" style="text-align: center; color: orange;"></div>');
-                        $('#pilot_charges').append(current_pilot.charges.value);
+                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge', 'orange')+'</i>');
                         if (current_pilot.charges.hasOwnProperty('recovers')){
+                            recurring = '';
                             for (var i = 0; i < current_pilot.charges.recovers; i++){
-                                $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('recurring')+'</i>');        
+                                recurring += '<i class="xwing-miniatures-font">'+convertIcon('recurring', 'orange')+'</i>';        
                             }    
                         }
-                        
-                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge')+'</i>');
+                        $('#pilot_charges').append('<span>'+current_pilot.charges.value+recurring+'</span>');
                                 
 
             }}
@@ -214,34 +255,34 @@
             for (var i = 0; i < stats.length; i++){
                 switch (stats[i].type){
                     case 'agility':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: white;"></div>');
-                        $('#pilot_agility').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('agility', 'lightgreen')+'</i>');
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: lightgreen;"></div>');
+                        $('#pilot_agility').append('<i class="xwing-miniatures-font">'+convertIcon('agility', 'lightgreen')+'</i><span>'+stats[i].value+'</span>');
                         break;
                     case 'hull':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: white;"></div>');
-                        $('#pilot_hull').append(stats[i].value +' <i class="xwing-miniatures-font">'+convertIcon('hull','yellow')+'</i>');
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: yellow;"></div>');
+                        $('#pilot_hull').append('<i class="xwing-miniatures-font">'+convertIcon('hull','yellow')+'</i><span>'+stats[i].value+'</span>');
                         break;
                     case 'shields':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: white;"></div>');
-                        $('#pilot_shield').append(stats[i].value+' ' + '<i class="xwing-miniatures-font">'+convertIcon('shield','lightblue')+'</i>')
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: lightblue;"></div>');
+                        $('#pilot_shield').append('' + '<i class="xwing-miniatures-font">'+convertIcon('shield','lightblue')+'</i><span>'+stats[i].value+'</span>')
                         break;   
                     case 'attack':
                               switch(stats[i].arc){
                                   case "Front Arc":
                                     $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center; color: red;"></div>');
-                                    $('#pilot_front_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('frontarc', 'red')+'</i>');
+                                    $('#pilot_front_arc').append('<i class="xwing-miniatures-font">'+convertIcon('frontarc', 'red')+'</i><span>'+stats[i].value+'</span>');
                                     break;
                                 case "Rear Arc":
                                     $('#pilot_stats').append('<div class="w3-panel" id="pilot_rear_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_rear_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('reararc', 'red')+'</i>');
+                                    $('#pilot_rear_arc').append('<i class="xwing-miniatures-font">'+convertIcon('reararc', 'red')+'</i><span>'+stats[i].value+'</span>');
                                     break;
                                     case "Single Turret Arc":
                                     $('#pilot_stats').append('<div class="w3-panel" id="pilot_single_turret_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_single_turret_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('singleturretarc', 'red')+'</i>');
+                                    $('#pilot_single_turret_arc').append('<i class="xwing-miniatures-font">'+convertIcon('singleturretarc', 'red')+'</i><span>'+stats[i].value+'</span>');
                                     break;
                                     case "Double Turret Arc":
                                     $('#pilot_stats').append('<div class="w3-panel" id="pilot_double_turret_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_double_turret_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('doubleturretarc','red')+'</i>');
+                                    $('#pilot_double_turret_arc').append('<i class="xwing-miniatures-font">'+convertIcon('doubleturretarc','red')+'</i><span>'+stats[i].value+'</span>');
                                     break;
                                     
                               }
