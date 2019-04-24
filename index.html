@@ -3,7 +3,14 @@
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
-    
+    <style>
+    #pilot_stats{
+        display: flex;
+        align-content: space-around;
+        justify-content: center;
+        background-color: grey;
+    }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>      
         var iconsMap;
@@ -178,15 +185,14 @@
             }
             if (current_pilot.hasOwnProperty('charges')){
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_charges" style="text-align: center; color: orange;"></div>');
-                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge')+'</i>');
-                        $('#pilot_charges').append('<br><span>'+current_pilot.charges.value);
+                        $('#pilot_charges').append(current_pilot.charges.value);
                         if (current_pilot.charges.hasOwnProperty('recovers')){
                             for (var i = 0; i < current_pilot.charges.recovers; i++){
                                 $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('recurring')+'</i>');        
                             }    
                         }
                         
-                            $('#pilot_charge').append('</span>');
+                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge')+'</i>');
                                 
 
             }}
@@ -208,31 +214,36 @@
             for (var i = 0; i < stats.length; i++){
                 switch (stats[i].type){
                     case 'agility':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: lightgreen;"></div>');
-                        $('#pilot_agility').append('<i class="xwing-miniatures-font">'+convertIcon('agility')+'</i>');
-                        $('#pilot_agility').append('<br><span>'+stats[i].value+'</span>');
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: white;"></div>');
+                        $('#pilot_agility').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('agility', 'lightgreen')+'</i>');
                         break;
                     case 'hull':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: yellow;"></div>');
-                        $('#pilot_hull').append('<i class="xwing-miniatures-font">'+convertIcon('hull')+'</i>');
-                        $('#pilot_hull').append('<br><span>'+stats[i].value+'</span>');
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: white;"></div>');
+                        $('#pilot_hull').append(stats[i].value +' <i class="xwing-miniatures-font">'+convertIcon('hull','yellow')+'</i>');
                         break;
                     case 'shields':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: lightblue;"></div>');
-                        $('#pilot_shield').append('<i class="xwing-miniatures-font">'+convertIcon('shield')+'</i>');
-                        $('#pilot_shield').append('<br><span>'+stats[i].value+'</span>');
+                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: white;"></div>');
+                        $('#pilot_shield').append(stats[i].value+' ' + '<i class="xwing-miniatures-font">'+convertIcon('shield','lightblue')+'</i>')
                         break;   
                     case 'attack':
                               switch(stats[i].arc){
                                   case "Front Arc":
-                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_front_arc').append('<i class="xwing-miniatures-font">'+convertIcon('frontarc')+'</i>');
-                                    $('#pilot_front_arc').append('<br><span>'+stats[i].value+'</span>');
+                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center; color: red;"></div>');
+                                    $('#pilot_front_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('frontarc', 'red')+'</i>');
                                     break;
                                 case "Rear Arc":
+                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_rear_arc" style="text-align: center;color: red;"></div>');
+                                    $('#pilot_rear_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('reararc', 'red')+'</i>');
                                     break;
                                     case "Single Turret Arc":
+                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_single_turret_arc" style="text-align: center;color: red;"></div>');
+                                    $('#pilot_single_turret_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('singleturretarc', 'red')+'</i>');
                                     break;
+                                    case "Double Turret Arc":
+                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_double_turret_arc" style="text-align: center;color: red;"></div>');
+                                    $('#pilot_double_turret_arc').append(stats[i].value+' <i class="xwing-miniatures-font">'+convertIcon('doubleturretarc','red')+'</i>');
+                                    break;
+                                    
                               }
                     
                 }
