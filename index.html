@@ -4,308 +4,366 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
     <style>
-        @font-face {
-  font-family: Eurostile;
-  src: url("./assets/fonts/Eurostile.ttf"); }
-
-  @font-face {
-  font-family: BankGothicMedium;
-  src: url("./assets/fonts/BankGothicMediumBT.ttf"); }
-
-  @font-face {
-  font-family: Kimberly;
-  src: url("./assets/fonts/kimberley bl.ttf"); }
-
-i.xwing-miniatures-font {
-  font-family: XWing;
-  font-style: normal;
-  font-size: 1.5em; }
     #pilot_stats{
+        width: 100%;
         display: flex;
-        align-content: space-around;
-        justify-content: center;
+        flex-direction: row;
+        align-content: space-between;
     }
-
-    #pilot_name{
-        font-family: BankGothicMedium;
-        font-size: 1.5em;
-        display:flex;
-        justify-content: center;
-    }
-
-    #pilot_name > .xwing-miniatures-font{
-        font-family: XWing;
-        font-size: 1em;
-    }
-
-    #pilot_initiative{
-        font-family: Kimberly;
-        font-size: 2em;
-        color: orange;
-    }
-
-    #pilot_stats>*{
-        font-family: Kimberly;
-        font-size: 1.5em;
+    .pilot_stat{
         display: flex;
-        justify-content: center;
-        flex-direction: column;
     }
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>      
+    <script>
         var iconsMap;
         var oReq = new XMLHttpRequest();
         oReq.onload = reqListener;
         oReq.open('GET', 'https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json', true);
         oReq.send();
-        
-        function reqListener(e){
+
+        function reqListener(e) {
             iconsMap = JSON.parse(this.responseText);
         }
-        
-        $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
-            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.factions[0], function(factions){
-                $.each(factions, function(index, val){
-                    $("#faction").append('<option value="'+val.xws+'">'+val.name+'</option>');
-                }); 
+
+        $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
+            $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.factions[0], function (factions) {
+                $.each(factions, function (index, val) {
+                    $("#faction").append('<option value="' + val.xws + '">' + val.name + '</option>');
+                });
             });
         });
 
 
     </script>
-    
+
 </head>
 
 
 
 <body>
     <form>
-    <select id="faction">
-        <option selected>Select Faction</option>
-    </select>
-    <select id="ship" disabled>
-        <option selected>Select Ship</option>
-    </select>
-    <select id="pilot" disabled>
-        <option selected>Select Pilot</option>
-    </select>
+        <select id="faction">
+            <option selected>Select Faction</option>
+        </select>
+        <select id="ship" disabled>
+            <option selected>Select Ship</option>
+        </select>
+        <select id="pilot" disabled>
+            <option selected>Select Pilot</option>
+        </select>
     </form>
-    <div class="w3-card-4 w3-black" style="max-width: 500px; max-height: 700px;">
-        <div class="w3-display-container">
-            <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image" class="card_field">
-        </div>
-        <div class="w3-display-container">
-        
-            <span id="pilot_name" class="w3-display-topmiddle card_field"></span><br>
-            <span id="pilot_title" class="w3-display-topmiddle card_field"></span>
-            
-                <span id="pilot_initiative" class="w3-display-topleft w3-padding card_field"></span>
-            <div class="w3-xlarge w3-display-bottomright w3-padding w3-light-grey w3-opacity-min">
-                <i id="pilot_faction" class="card_field xwing-miniatures-font" style="font-size: 48px;"></i>
-            </div>
-        </div>
-        <div class="w3-container">
-            <div id="ship_ability" class="w3-display-container w3-light-grey">
-                <p id="ship_name" class="w3-center card_field"></p><br>
-                <p id="ship_ability_name" class="card_field" style="font-weight: bold;"></p><br>
-                <p id="ship_ability_text" class="card_field"></p>
-            </div>
-            <div id="pilot_ability" class="card_field"></div>
-            <i id="flavor_text" class="card_field"></i>
-            <hr>
-            <div class="w3-panel" id="pilot_stats">
+    <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image" class="card_field">
 
-            </div>
-        </div>
+    <div id="name_bar" class="card_field">
     </div>
-   
+
+    <div id="card_body" class="card_field">
+
+    </div>
+
+    <div id="card_footer" class="card_field">
+    </div>
+
+
+
+    <div id="ship_ability">
+        <span id="ship_ability_name" class="card_field"></span>
+        <span id="ship_ability_text" class="card_field"></span>
+    </div>
+
+    <span id="pilot_ability" class="card_field"></span>
+    <span id="flavor_text" class="card_field"></span>
+
+    <div id="pilot_stats">
+
+    </div>
+
     <script>
         var current_faction;
         var current_ship;
         var current_pilot;
-        
-        $('#faction').change(function(){
+
+        $('#faction').change(function () {
             $('#ship_name').text('');
             $('#pilot_name').text('');
             $('#pilot_title').text('');
-            
-            $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
-                
-                for (var i = 0; i < manifest.pilots.length; i++){
-                    if ($("#faction option:selected").val() === manifest.pilots[i].faction){
+
+            $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
+
+                for (var i = 0; i < manifest.pilots.length; i++) {
+                    if ($("#faction option:selected").val() === manifest.pilots[i].faction) {
                         current_faction = manifest.pilots[i];
-                        for (var j = 0; j < manifest.pilots[i].ships.length; j++){
-                            
+                        for (var j = 0; j < manifest.pilots[i].ships.length; j++) {
+
                             $("#ship").empty();
                             $("#ship").removeAttr("disabled");
-                            $('#pilot').empty();               
+                            $('#pilot').empty();
                             $('#pilot').prop("disabled", true);
                             $('#ship').append('<option selected>Select Ship</option>');
                             $('#pilot').append('<option selected>Select Pilot</option>');
-                            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
-                                    $("#ship").append('<option value="'+ship.xws+'">'+ship.name+'</option>');
-                                });
+                            $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.pilots[i].ships[j], function (ship) {
+                                $("#ship").append('<option value="' + ship.xws + '">' + ship.name + '</option>');
+                            });
                         }
                     }
                 }
             });
         });
-        $('#ship').change(function(){
-            
+        $('#ship').change(function () {
+
             $('#ship_name').text('');
             $('#pilot_name').text('');
             $('#pilot_title').text('');
-              $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function(manifest){
-             for (var i = 0; i < manifest.pilots.length; i++){
-                    if ($("#faction option:selected").val() === manifest.pilots[i].faction){
-                        for (var j = 0; j < manifest.pilots[i].ships.length; j++){
-                            
+            $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
+                for (var i = 0; i < manifest.pilots.length; i++) {
+                    if ($("#faction option:selected").val() === manifest.pilots[i].faction) {
+                        for (var j = 0; j < manifest.pilots[i].ships.length; j++) {
+
                             $("#pilot").empty();
-                            
+
                             $("#pilot").removeAttr("disabled");
-                            $.getJSON('https://iwerts.github.io/xwing-data2/'+manifest.pilots[i].ships[j], function(ship){
-                                if (ship.xws === $('#ship option:selected').val()){
+                            $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.pilots[i].ships[j], function (ship) {
+                                if (ship.xws === $('#ship option:selected').val()) {
                                     current_ship = ship;
                                     $('#pilot').append('<option selected>Select Pilot</option>');
-                                    for (var k = 0; k < ship.pilots.length; k++){
-                                    $("#pilot").append('<option value="'+ship.pilots[k].xws+'">'+ship.pilots[k].name+'</option>');
-                                }}
+                                    for (var k = 0; k < ship.pilots.length; k++) {
+                                        $("#pilot").append('<option value="' + ship.pilots[k].xws + '">' + ship.pilots[k].name + '</option>');
+                                    }
+                                }
                             });
                         }
                     }
                 }
+            });
         });
-        });
-        
-        $('#pilot').change(function(){
-            
-            for (var i = 0; i < current_ship.pilots.length; i++){
-                if (current_ship.pilots[i].xws === $('#pilot option:selected').val()){
+
+        $('#pilot').change(function () {
+
+            for (var i = 0; i < current_ship.pilots.length; i++) {
+                if (current_ship.pilots[i].xws === $('#pilot option:selected').val()) {
                     current_pilot = current_ship.pilots[i];
                 }
             }
         });
-        
-        $('form').change(function(){
+
+        $('form').change(function () {
             $('.card_field').empty();
-            if (current_ship != null && current_faction != null && current_pilot != null){
-            $('#ship_name').append(updateField(current_ship, 'name'));
-            
-            $('#card_image').attr('src', updateField(current_pilot, 'artwork'));
-
-            $('#pilot_initiative').append(updateField(current_pilot, 'initiative'));
-            $('#flavor_text').append(updateField(current_pilot, 'text'));
-            $('#pilot_title').append(updateField(current_pilot, 'caption'));
-            $('#pilot_name').append(getName());
-            $('#pilot_ability').append(convertGameText(updateField(current_pilot, 'ability')));
-        if (current_pilot.hasOwnProperty('shipAbility')){    
-            $('#ship_ability_name').append(updateField(current_pilot, 'shipAbility').name);
-            $('#ship_ability_text').append(convertGameText(updateField(current_pilot, 'shipAbility').text));
-        
-        }
-            var val = convertIcon(getFaction(updateField(current_faction, 'faction')));
-            $('#pilot_faction').append(val);
-                    
-            getActions();
-            getStats();
-
-            if (current_pilot.hasOwnProperty('force')){
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_force" style="text-align: center; color: purple;"></div>');
-                        $('#pilot_force').append('<i class="xwing-miniatures-font">'+convertIcon('forcecharge', 'purple')+'</i>');
-                        if (current_pilot.force.hasOwnProperty('recovers')){
-                            recurring = '';
-                            for (var i = 0; i < current_pilot.force.recovers; i++){
-                                recurring += '<i class="xwing-miniatures-font">'+convertIcon('recurring', 'purple')+'</i>';        
-                            }    
-                        }
-                        $('#pilot_force').append('<span>'+current_pilot.force.value+recurring+'</span>');
-                                
-
+            if (current_pilot != null) {
+                getNameBar();
+                getCardBody();
+                getCardFooter();
             }
-            if (current_pilot.hasOwnProperty('charges')){
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_charges" style="text-align: center; color: orange;"></div>');
-                        $('#pilot_charges').append('<i class="xwing-miniatures-font">'+convertIcon('charge', 'orange')+'</i>');
-                        if (current_pilot.charges.hasOwnProperty('recovers')){
-                            recurring = '';
-                            for (var i = 0; i < current_pilot.charges.recovers; i++){
-                                recurring += '<i class="xwing-miniatures-font">'+convertIcon('recurring', 'orange')+'</i>';        
-                            }    
-                        }
-                        $('#pilot_charges').append('<span>'+current_pilot.charges.value+recurring+'</span>');
-                                
-
-            }}
         });
 
-        function getActions(){
-            for (var i = 0; i < current_ship.actions.length; i++){
-                if (current_ship.actions[i].hasOwnProperty('linked')){
-                    $('#ship_ability').append('<div class="card_field">'+convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + ' '+convertIcon('linked', 'black')+' '+convertIcon(current_ship.actions[i].linked.type.toString().toLowerCase().replace(/\s/g, ''), current_ship.actions[i].linked.difficulty));
-                } else {    
-                        $('#ship_ability').append('<div class="card_field">'+convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty)+'</div>');
+        function getNameBar() {
+            getInitiative();
+            getName();
+            getCaption();
+            getFactionIcon();
+        }
+
+        function getCardBody() {
+            getPilotTextBox();
+            getPilotStats();
+            getPilotActions();
+        }
+
+        function getCardFooter() {
+            getShipIcon();
+            getShipName();
+        }
+
+        function getPilotTextBox() {
+            $('#card_body').append('<div id="pilot_text_box"></div>');
+
+            getPilotAbility();
+            getFlavorText();
+            getShipAbility();
+        }
+
+        function getInitiative() {
+            if (current_pilot.hasOwnProperty('initiative')) {
+                $('#name_bar').append('<span id="pilot_initiative"></span>');
+                $('#pilot_initiative').append(current_pilot.initiative);
+            }
+        }
+
+        function getCaption() {
+            if (current_pilot.hasOwnProperty('caption')) {
+                $('#name_bar').append('<span id="pilot_caption"></span>')
+                $('#pilot_caption').append(current_pilot.caption);
+            }
+        }
+
+        function getFactionIcon() {
+            if (current_ship.hasOwnProperty('faction')) {
+                $('#name_bar').append('<span id="faction_icon"></span>')
+                $('#faction_icon').append(convertIcon(getFaction(current_ship.faction.toLowerCase().replace(/\s/g, ''))));
+            }
+        }
+
+        function getPilotStats() {
+            if (current_ship.hasOwnProperty('stats')) {
+                $('#card_body').append('<span id="pilot_stats"></span>');
+
+                for (var i = 0; i < current_ship.stats.length; i++) {
+                    getStat(current_ship.stats[i]);
+                }
+            }
+            if (current_pilot.hasOwnProperty('charge')){
+                
+            }
+            if (current_pilot.hasOwnProperty('force')){
+                value = current_pilot.force.value;
+                if (current_pilot.force.hasOwnProperty('recovers')){
+                    for (var i = 0; i < current_pilot.force.recovers; i++){
+                        value += '⯅';
+                    }
+                }
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge')+' </span><span class="pilot_stat_value">'+value + '</span></div>');
+            }
+        }
+
+
+        function getPilotActions() {
+            if (current_ship.hasOwnProperty('actions')) {
+                $('#card_body').append('<span id="pilot_actions"></span>');
+
+                for (var i = 0; i < current_ship.actions.length; i++) {
+                    getAction(current_ship.actions[i]);
                 }
             }
         }
 
-        function getStats(){
+        function getStat(stat) {
+            switch(stat.type){
+                case 'attack':
+                    getAttack(stat);
+                    break;
+                    case 'charge':
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charges')+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+                break;
+                case 'shields':
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('shield')+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+                break;
+                default: $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+            }
+        }
+
+        function getAction(action) {
+            if (action.hasOwnProperty('linked')) {
+                getLinkedAction(action);
+            } else {
+                $('#pilot_actions').append('<span class="pilot_action">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + '</span>');
+            }
+        }
+
+        function getLinkedAction(action) {
+            $('#pilot_actions').append('<span class="pilot_action">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', 'white') + ' ' + convertIcon(action.linked.type.toLowerCase().replace(/\s/g, ''), action.linked.difficulty) + '</span>');
+        }
+
+        function getAttack(attack) {
+            $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+attack.value + '</span></div>');
+        }
+
+        function getShipIcon() {
+
+        }
+
+        function getShipName() {
+        }
+
+        function getShipAbility() {
+            if (current_pilot.hasOwnProperty('shipAbility')) {
+                $('#pilot_text_box').append('<span id="ship_ability_name"></span><span id="ship_ability_text"></span>');
+                $('#ship_ability_name').append(current_pilot.shipAbility.name);
+                $('#ship_ability_text').append(convertGameText(current_pilot.shipAbility.text));
+            }
+        }
+
+        function getPilotAbility() {
+            if (current_pilot.hasOwnProperty('ability')) {
+                $('#pilot_text_box').append('<div id="pilot_ability">');
+                $('#pilot_ability').append(convertGameText(current_pilot.ability));
+            }
+        }
+        function getFlavorText() {
+            if (current_pilot.hasOwnProperty('text')) {
+                $('#pilot_text_box').append('<div id="flavor_text">');
+                $('#flavor_text').append(convertGameText(current_pilot.text));
+            }
+        }
+
+
+
+        function getActions() {
+            for (var i = 0; i < current_ship.actions.length; i++) {
+                if (current_ship.actions[i].hasOwnProperty('linked')) {
+                    $('#action_bar').append('<div class="card_field">' + convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + ' ' + convertIcon('linked', 'black') + ' ' + convertIcon(current_ship.actions[i].linked.type.toString().toLowerCase().replace(/\s/g, ''), current_ship.actions[i].linked.difficulty));
+                } else {
+                    $('#action_bar').append('<div class="card_field">' + convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + '</div>');
+                }
+            }
+        }
+
+        function getStats() {
             $('#pilot_stats').empty();
             stats = updateField(current_ship, 'stats');
-            for (var i = 0; i < stats.length; i++){
-                switch (stats[i].type){
+            for (var i = 0; i < stats.length; i++) {
+                switch (stats[i].type) {
                     case 'agility':
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: lightgreen;"></div>');
-                        $('#pilot_agility').append('<i class="xwing-miniatures-font">'+convertIcon('agility', 'lightgreen')+'</i><span>'+stats[i].value+'</span>');
+                        $('#pilot_agility').append('<i class="xwing-miniatures-font">' + convertIcon('agility', 'lightgreen') + '</i><span>' + stats[i].value + '</span>');
                         break;
                     case 'hull':
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: yellow;"></div>');
-                        $('#pilot_hull').append('<i class="xwing-miniatures-font">'+convertIcon('hull','yellow')+'</i><span>'+stats[i].value+'</span>');
+                        $('#pilot_hull').append('<i class="xwing-miniatures-font">' + convertIcon('hull', 'yellow') + '</i><span>' + stats[i].value + '</span>');
                         break;
                     case 'shields':
                         $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: lightblue;"></div>');
-                        $('#pilot_shield').append('' + '<i class="xwing-miniatures-font">'+convertIcon('shield','lightblue')+'</i><span>'+stats[i].value+'</span>')
-                        break;   
+                        $('#pilot_shield').append('' + '<i class="xwing-miniatures-font">' + convertIcon('shield', 'lightblue') + '</i><span>' + stats[i].value + '</span>')
+                        break;
                     case 'attack':
-                              switch(stats[i].arc){
-                                  case "Front Arc":
-                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center; color: red;"></div>');
-                                    $('#pilot_front_arc').append('<i class="xwing-miniatures-font">'+convertIcon('frontarc', 'red')+'</i><span>'+stats[i].value+'</span>');
-                                    break;
-                                case "Rear Arc":
-                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_rear_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_rear_arc').append('<i class="xwing-miniatures-font">'+convertIcon('reararc', 'red')+'</i><span>'+stats[i].value+'</span>');
-                                    break;
-                                    case "Single Turret Arc":
-                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_single_turret_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_single_turret_arc').append('<i class="xwing-miniatures-font">'+convertIcon('singleturretarc', 'red')+'</i><span>'+stats[i].value+'</span>');
-                                    break;
-                                    case "Double Turret Arc":
-                                    $('#pilot_stats').append('<div class="w3-panel" id="pilot_double_turret_arc" style="text-align: center;color: red;"></div>');
-                                    $('#pilot_double_turret_arc').append('<i class="xwing-miniatures-font">'+convertIcon('doubleturretarc','red')+'</i><span>'+stats[i].value+'</span>');
-                                    break;
-                                    
-                              }
-                    
+                        switch (stats[i].arc) {
+                            case "Front Arc":
+                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center; color: red;"></div>');
+                                $('#pilot_front_arc').append('<i class="xwing-miniatures-font">' + convertIcon('frontarc', 'red') + '</i><span>' + stats[i].value + '</span>');
+                                break;
+                            case "Rear Arc":
+                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_rear_arc" style="text-align: center;color: red;"></div>');
+                                $('#pilot_rear_arc').append('<i class="xwing-miniatures-font">' + convertIcon('reararc', 'red') + '</i><span>' + stats[i].value + '</span>');
+                                break;
+                            case "Single Turret Arc":
+                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_single_turret_arc" style="text-align: center;color: red;"></div>');
+                                $('#pilot_single_turret_arc').append('<i class="xwing-miniatures-font">' + convertIcon('singleturretarc', 'red') + '</i><span>' + stats[i].value + '</span>');
+                                break;
+                            case "Double Turret Arc":
+                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_double_turret_arc" style="text-align: center;color: red;"></div>');
+                                $('#pilot_double_turret_arc').append('<i class="xwing-miniatures-font">' + convertIcon('doubleturretarc', 'red') + '</i><span>' + stats[i].value + '</span>');
+                                break;
+
+                        }
+
                 }
             }
         }
-        
-        function updateField(item, field){
-            if ((item).hasOwnProperty(field)){
+
+        function updateField(item, field) {
+            if ((item).hasOwnProperty(field)) {
                 return item[field];
             } else {
                 return '';
             }
         }
-        
-        function getFaction(faction){
-            switch (faction){
+
+        function getFaction(faction) {
+            switch (faction) {
                 case "scumandvillainy":
                     return "scum";
                 case "rebelalliance":
                     return "rebel";
-                case "galacticempire": 
+                case "galacticempire":
                     return "empire";
                 case "resistance":
                     return "rebel";
@@ -318,57 +376,65 @@ i.xwing-miniatures-font {
             }
         }
 
-        function convertIcon(iconSymbol){
+        function convertIcon(iconSymbol) {
             return convertIcon(iconSymbol, 'black');
         }
 
-        function convertIcon(iconSymbol, color){
-            if (color==null || color.toLowerCase() == 'white'){
+        function convertIcon(iconSymbol, color) {
+            if (color == null || color.toLowerCase() == 'white') {
                 color = 'black';
             }
-            return '<i class="xwing-miniatures-font" style="color: ' + color + ';">'+iconsMap['icons'][iconSymbol]+'</i>';
+            return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
         }
 
-        function convertGameText(passedText){
+        function convertGameText(passedText) {
             ret = '';
             splitText = passedText.split(/\[[\w\s]*\]/g);
             textToConvert = passedText.match(/\[[\w\s]*\]/g);
-            
-            for (var i = 0; i < splitText.length; i++){
+
+            for (var i = 0; i < splitText.length; i++) {
 
                 ret += splitText[i]
-                if (textToConvert != null && textToConvert.length > i){
-                    ret += convertText(textToConvert[i].toLowerCase().replace(/\s/g,'').match(/\w+/)[0]);
-            }}
+                if (textToConvert != null && textToConvert.length > i) {
+                    ret += convertText(textToConvert[i].toLowerCase().replace(/\s/g, '').match(/\w+/)[0]);
+                }
+            }
             return ret;
         }
 
-        function getName(){
-            ret = '';
-            for (var i = 0; i < updateField(current_pilot, 'limited'); i++){
-                ret += '<i class="xwing-miniatures-font">'+convertIcon('unique')+'</i>';
+        function getName() {
+            if (current_pilot.hasOwnProperty('name')) {
+
+                $('#name_bar').append('<span id="pilot_name"></span>');
+                name = '';
+                if (current_pilot.hasOwnProperty('limited')) {
+                    if (current_pilot.limited > 0) {
+                        for (var i = 0; i < current_pilot.limited; i++) {
+                            name += '•';
+                        }
+                        name += ' ';
+                    }
+                }
+                name += current_pilot.name;
+                $('#pilot_name').append(name);
             }
 
-            if (updateField(current_pilot, 'limited')>0){
-                ret += ' ';
-            }
-
-            ret += updateField(current_pilot, 'name');
-            return ret;
         }
 
-        function convertText(text){
+        function convertText(text) {
             console.log(text);
-            if (text != null){
-            switch (text){
-                case 'criticalhit':
-                    return convertIcon('crit');
-                case 'force':
-                    return convertIcon('forcecharge');
-                default:
-                   return convertIcon(text.toString().replace(' ','').toLowerCase());
-            }}
+            if (text != null) {
+                switch (text) {
+                    case 'criticalhit':
+                        return convertIcon('crit');
+                    case 'force':
+                        return convertIcon('forcecharge');
+                    default:
+                        return convertIcon(text.toString().replace(' ', '').toLowerCase());
+                }
+            }
         }
     </script>
 </body>
+
 </html>
