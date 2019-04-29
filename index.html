@@ -1,8 +1,10 @@
+<meta charset="utf-8">
 <html>
 
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
+    <link rel="stylesheet" href="assets/css/stylesheet.css">
     <style>
     #pilot_stats{
         width: 100%;
@@ -16,15 +18,10 @@
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var iconsMap;
-        var oReq = new XMLHttpRequest();
-        oReq.onload = reqListener;
-        oReq.open('GET', 'https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json', true);
-        oReq.send();
+        var iconsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json');
+        var shipsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/ships-map.json');
 
-        function reqListener(e) {
-            iconsMap = JSON.parse(this.responseText);
-        }
+
 
         $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
             $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.factions[0], function (factions) {
@@ -33,7 +30,13 @@
                 });
             });
         });
-
+        
+    function returnJSON(url){
+        var http_request = new XMLHttpRequest();
+        http_request.open("GET", url, false);
+        http_request.send(null);
+        return JSON.parse(http_request.responseText);
+    }
 
     </script>
 
@@ -53,8 +56,7 @@
             <option selected>Select Pilot</option>
         </select>
     </form>
-    <img src="https://via.placeholder.com/700x350.png" alt="pilot image" style="width:100%;" id="card_image" class="card_field">
-
+   <div id="card">
     <div id="name_bar" class="card_field">
     </div>
 
@@ -64,21 +66,7 @@
 
     <div id="card_footer" class="card_field">
     </div>
-
-
-
-    <div id="ship_ability">
-        <span id="ship_ability_name" class="card_field"></span>
-        <span id="ship_ability_text" class="card_field"></span>
-    </div>
-
-    <span id="pilot_ability" class="card_field"></span>
-    <span id="flavor_text" class="card_field"></span>
-
-    <div id="pilot_stats">
-
-    </div>
-
+</div>
     <script>
         var current_faction;
         var current_ship;
@@ -112,9 +100,6 @@
         });
         $('#ship').change(function () {
 
-            $('#ship_name').text('');
-            $('#pilot_name').text('');
-            $('#pilot_title').text('');
             $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
                 for (var i = 0; i < manifest.pilots.length; i++) {
                     if ($("#faction option:selected").val() === manifest.pilots[i].faction) {
@@ -158,15 +143,25 @@
 
         function getNameBar() {
             getInitiative();
-            getName();
-            getCaption();
+            getNameSection();
             getFactionIcon();
         }
 
+        function getNameSection(){
+            $('#name_bar').append('<span id="pilot_name_section"></span>')
+            getName();
+            getCaption();
+        }
+
         function getCardBody() {
+            getPilotInfo();
+            getPilotActions();
+        }
+
+        function getPilotInfo(){
+            $('#card_body').append('<span id="pilot_info"></span>');
             getPilotTextBox();
             getPilotStats();
-            getPilotActions();
         }
 
         function getCardFooter() {
@@ -175,7 +170,7 @@
         }
 
         function getPilotTextBox() {
-            $('#card_body').append('<div id="pilot_text_box"></div>');
+            $('#pilot_info').append('<span id="pilot_text_box"></span>');
 
             getPilotAbility();
             getFlavorText();
@@ -191,7 +186,7 @@
 
         function getCaption() {
             if (current_pilot.hasOwnProperty('caption')) {
-                $('#name_bar').append('<span id="pilot_caption"></span>')
+                $('#pilot_name_section').append('<span id="pilot_caption"></span>')
                 $('#pilot_caption').append(current_pilot.caption);
             }
         }
@@ -205,7 +200,7 @@
 
         function getPilotStats() {
             if (current_ship.hasOwnProperty('stats')) {
-                $('#card_body').append('<span id="pilot_stats"></span>');
+                $('#pilot_info').append('<span id="pilot_stats"></span>');
 
                 for (var i = 0; i < current_ship.stats.length; i++) {
                     getStat(current_ship.stats[i]);
@@ -268,15 +263,18 @@
         }
 
         function getShipIcon() {
-
+            $('#card_footer').append('<span id="ship_icon"></span>');
+            $('#ship_icon').append(convertShip(current_ship.xws));
         }
 
         function getShipName() {
+            $('#card_footer').append('<span id="ship_name"></span>');
+            $('#ship_name').append(current_ship.name);
         }
 
         function getShipAbility() {
             if (current_pilot.hasOwnProperty('shipAbility')) {
-                $('#pilot_text_box').append('<span id="ship_ability_name"></span><span id="ship_ability_text"></span>');
+                $('#pilot_text_box').append('<span id="ship_ability"><span id="ship_ability_name"></span><span id="ship_ability_text"></span></span>');
                 $('#ship_ability_name').append(current_pilot.shipAbility.name);
                 $('#ship_ability_text').append(convertGameText(current_pilot.shipAbility.text));
             }
@@ -284,13 +282,13 @@
 
         function getPilotAbility() {
             if (current_pilot.hasOwnProperty('ability')) {
-                $('#pilot_text_box').append('<div id="pilot_ability">');
+                $('#pilot_text_box').append('<span id="pilot_ability"></span>');
                 $('#pilot_ability').append(convertGameText(current_pilot.ability));
             }
         }
         function getFlavorText() {
             if (current_pilot.hasOwnProperty('text')) {
-                $('#pilot_text_box').append('<div id="flavor_text">');
+                $('#pilot_text_box').append('<div id="flavor_text"></span>');
                 $('#flavor_text').append(convertGameText(current_pilot.text));
             }
         }
@@ -376,6 +374,18 @@
             }
         }
 
+        function convertShip(iconSymbol) {
+            return convertShip(iconSymbol, 'black');
+        }
+
+        function convertShip(iconSymbol, color) {
+            if (color == null || color.toLowerCase() == 'white') {
+                color = 'black';
+            }
+            console.log(shipsMap['ships'][iconSymbol]);
+            return '<i class="xwing-miniatures-ship" style="color: ' + color + ';">' + shipsMap['ships'][iconSymbol] + '</i>';
+        }
+
         function convertIcon(iconSymbol) {
             return convertIcon(iconSymbol, 'black');
         }
@@ -384,8 +394,14 @@
             if (color == null || color.toLowerCase() == 'white') {
                 color = 'black';
             }
-            return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
-        }
+            switch(iconSymbol){
+                case 'Koiogran Turn':
+                    return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons']['kturn'] + '</i>';
+                default: 
+                    return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
+                
+            }
+            }
 
         function convertGameText(passedText) {
             ret = '';
@@ -405,7 +421,7 @@
         function getName() {
             if (current_pilot.hasOwnProperty('name')) {
 
-                $('#name_bar').append('<span id="pilot_name"></span>');
+                $('#pilot_name_section').append('<span id="pilot_name"></span>');
                 name = '';
                 if (current_pilot.hasOwnProperty('limited')) {
                     if (current_pilot.limited > 0) {
@@ -429,6 +445,8 @@
                         return convertIcon('crit');
                     case 'force':
                         return convertIcon('forcecharge');
+                    case 'koiogranturn':
+                        return convertIcon('kturn');
                     default:
                         return convertIcon(text.toString().replace(' ', '').toLowerCase());
                 }

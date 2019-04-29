@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/*
+ * Icons
+ */
+@font-face {
+  font-family: Kimberly;
+  src: url('../fonts/kimberley bl.ttf'); }
+
+@font-face {
+    font-family: Eurostile;
+    src: url('../fonts/Eurostile.ttf'); }
+
+@font-face {
+        font-family: BankGothicMedium;
+        src: url('../fonts/BankGothicMediumBT.ttf'); }
+
+#card{
+    width: 500px;
+    height: 700px;
+    font-family: Eurostile;
+}
+#card>*{
+    
+    border: 1px black solid;
+}
+
+#pilot_name{
+    font-family: BankGothicMedium;
+}
+
+#pilot_initiative, .pilot_stat_value{
+    font-family: Kimberly;
+}
+
+#name_bar{
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+}
+#pilot_stats{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.pilot_stat{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#pilot_name_section, #ship_ability{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#pilot_actions{
+    overflow: hidden;
+    min-width: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    
+}
+#card_footer{
+    display: flex;
+}
+#ship_name{
+    align-self: center;
+}
+
+.pilot_action{
+    display: flex;
+    justify-content: center;
+}
+
+#pilot_text_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#flavor_text, #pilot_caption{
+    font-style: italic;
+}
+#ship_ability_name{
+    font-weight: bold;
+    font-style: italic;
+}
+#card_body{
+    display: flex;
+}
