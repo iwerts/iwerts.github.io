@@ -173,11 +173,11 @@ function getUpgradeText(upgrade){
         }
         
     if (upgrade.hasOwnProperty('force')){
-        console.log(upgrade.force);
+        console.log(upgrade.sides[0].force);
         if ($('#force_stat_value').length == 0){
-            value = upgrade.force.value;
-            if (upgrade.force.hasOwnProperty('recovers')){
-                for (var i = 0; i < upgrade.force.recovers; i++){
+            value = upgrade.sides[0].value;
+            if (upgrade.sides[0].hasOwnProperty('recovers')){
+                for (var i = 0; i < upgrade.sides[0].recovers; i++){
                     value += '⯅';
                 }
             }
