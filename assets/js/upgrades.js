@@ -24,7 +24,12 @@ function getQuickBuild(){
             }
         }
     }
-    console.log(quickBuild);
+    
+    if (quickBuild.pilots[0].upgrades.hasOwnProperty('astromech')){
+        for (var i = 0; i < quickBuild.pilots[0].upgrades.astromech.length; i++){
+            addUpgradeToPilotTextBox(getUpgradeByType('astromech',quickBuild.pilots[0].upgrades[i]);
+        }
+    }
 }
 
 function getUpgradeByType(upgradeType, upgradeXWS){
@@ -32,6 +37,10 @@ function getUpgradeByType(upgradeType, upgradeXWS){
         case 'astromech':
             return getUpdate(astromechs, upgradeXWS);
     }
+}
+
+function addUpgradeToPilotTextBox(upgrade){
+    $('#pilot_text_box').append('<span id="upgrade_ability">+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>';
 }
 
 function getUpgrade(upgrades, upgradeXWS){
