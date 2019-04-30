@@ -35,7 +35,7 @@ function getQuickBuild(){
 function getUpgradeByType(upgradeType, upgradeXWS){
     switch (upgradeType){
         case 'astromech':
-            return getUpdate(astromechs, upgradeXWS);
+            return getUpgrade(astromechs, upgradeXWS);
     }
 }
 
