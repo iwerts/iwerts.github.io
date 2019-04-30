@@ -15,3 +15,18 @@ var techs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/tech.
 var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/title.json');
 var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
+
+function getUpdateByType(updateType, updateXWS){
+    switch (updateType){
+        case 'astromech':
+            return getUpdate(astromechs, updateXWS);
+    }
+}
+
+function getUpdate(updates, updateXWS){
+    for (var i = 0; i < updates.length; i++){
+        if (updates[i].xws == updateXWS){
+            return updates[i];
+        }
+    }
+}
