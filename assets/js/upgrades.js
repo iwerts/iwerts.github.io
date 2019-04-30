@@ -16,16 +16,16 @@ var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/titl
 var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
 
-function getUpdateByType(updateType, updateXWS){
-    switch (updateType){
+function getUpdateByType(upgradeType, upgradeXWS){
+    switch (upgradeType){
         case 'astromech':
-            return getUpdate(astromechs, updateXWS);
+            return getUpgrade(astromechs, upgradeXWS);
     }
 }
 
-function getUpdate(updates, updateXWS){
-    for (var i = 0; i < updates.length; i++){
-        if (updates[i].xws == updateXWS){
+function getUpgrade(upgrade, upgradeXWS){
+    for (var i = 0; i < upgrades.length; i++){
+        if (upgrades[i].xws == upgradeXWS){
             return updates[i];
         }
     }
