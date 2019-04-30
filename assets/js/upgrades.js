@@ -1,4 +1,4 @@
-var astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/force-power.json');
+var astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/astromech.json');
 var cannons = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/cannon.json');
 var configurations = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/configuration.json');
 var crews = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/crew.json');
@@ -25,9 +25,9 @@ function getQuickBuild(){
         }
     }
     
-    if (quickBuild.pilots[0].upgrades.hasOwnProperty('force-power')){
-        for (var i = 0; i < quickBuild.pilots[0].upgrades.force-power.length; i++){
-            addUpgradeToPilotTextBox(getUpgradeByType('force-power',quickBuild.pilots[0].upgrades.force-power[i]));
+    if (quickBuild.pilots[0].upgrades.hasOwnProperty('astromech')){
+        for (var i = 0; i < quickBuild.pilots[0].upgrades.astromech.length; i++){
+            addUpgradeToPilotTextBox(getUpgradeByType('astromech',quickBuild.pilots[0].upgrades.astromech[i]));
         }
     }
     if (quickBuild.pilots[0].upgrades.hasOwnProperty('cannon')){
@@ -49,7 +49,7 @@ function getQuickBuild(){
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('force-power')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades['force-power'].length; i++){
-            addUpgradeToPilotTextBox(getUpgradeByType('force-power',quickBuild.pilots[0].upgrades.force-power[i]));
+            addUpgradeToPilotTextBox(getUpgradeByType('force-power',quickBuild.pilots[0].upgrades.force_powers[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('gunner')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.gunner.length; i++){
@@ -73,7 +73,7 @@ function getQuickBuild(){
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('tactical-relay')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades['tactical-relay'].length; i++){
-            addUpgradeToPilotTextBox(getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.tactical-relay[i]));
+            addUpgradeToPilotTextBox(getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.tactical_relays[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('talent')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.talent.length; i++){
