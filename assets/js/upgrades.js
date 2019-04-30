@@ -41,7 +41,7 @@ function getUpgradeByType(upgradeType, upgradeXWS){
 
 function addUpgradeToPilotTextBox(upgrade){
     console.log(upgrade);
-    $('#pilot_text_box').append('<span id="upgrade_ability">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
+    $('#pilot_text_box').append('<hr><span id="upgrade_ability">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
 }
 
 function getUpgrade(upgrades, upgradeXWS){
@@ -73,5 +73,5 @@ function getUpgradeText(upgrade){
             upgradeText += convertGameText(upgrade.sides[0].ability);
         }
     }
-    return '<span class="upgrade_text">'+upgradeText+'</span>';
+    return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
