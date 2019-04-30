@@ -48,7 +48,7 @@ function getQuickBuild(){
             addUpgradeToPilotTextBox(getUpgradeByType('device',quickBuild.pilots[0].upgrades.device[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('force-power')){
-        for (var i = 0; i < quickBuild.pilots[0].upgrades.force-power.length; i++){
+        for (var i = 0; i < quickBuild.pilots[0].upgrades['force-power'].length; i++){
             addUpgradeToPilotTextBox(getUpgradeByType('force-power',quickBuild.pilots[0].upgrades.force-power[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('gunner')){
@@ -72,7 +72,7 @@ function getQuickBuild(){
             addUpgradeToPilotTextBox(getUpgradeByType('sensor',quickBuild.pilots[0].upgrades.sensor[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('tactical-relay')){
-        for (var i = 0; i < quickBuild.pilots[0].upgrades.tactical-relay.length; i++){
+        for (var i = 0; i < quickBuild.pilots[0].upgrades['tactical-relay'].length; i++){
             addUpgradeToPilotTextBox(getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.tactical-relay[i]));
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('talent')){
@@ -100,8 +100,41 @@ function getQuickBuild(){
 
 function getUpgradeByType(upgradeType, upgradeXWS){
     switch (upgradeType){
-        case 'force-power':
-            return getUpgrade(force-powers, upgradeXWS);
+        case 'astromech':
+            return getUpgrade(astromechs, upgradeXWS);
+            case 'cannon':
+            return getUpgrade(cannons, upgradeXWS);
+            case 'configuration':
+            return getUpgrade(configurations, upgradeXWS);
+            case 'crew':
+            return getUpgrade(crews, upgradeXWS);
+            case 'device':
+            return getUpgrade(devices, upgradeXWS);
+            case 'force-power':
+            return getUpgrade(force_powers, upgradeXWS);
+            case 'gunner':
+            return getUpgrade(gunners, upgradeXWS);
+            case 'illicit':
+            return getUpgrade(illicits, upgradeXWS);
+            case 'missile':
+            return getUpgrade(missiles, upgradeXWS);
+            case 'modification':
+            return getUpgrade(modifications, upgradeXWS);
+            case 'sensor':
+            return getUpgrade(sensors, upgradeXWS);
+            case 'tactical-relay':
+            return getUpgrade(tactical_relays, upgradeXWS);
+            case 'talent':
+            return getUpgrade(talents, upgradeXWS);
+            case 'tech':
+            return getUpgrade(techs, upgradeXWS);
+            case 'title':
+            return getUpgrade(titles, upgradeXWS);
+            case 'torpedo':
+            return getUpgrade(torpedoes, upgradeXWS);
+            case 'turret':
+            return getUpgrade(turrets, upgradeXWS);
+
     }
 }
 
