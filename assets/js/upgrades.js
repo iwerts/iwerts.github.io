@@ -171,6 +171,19 @@ function getUpgradeText(upgrade){
         if (upgrade.sides[0].hasOwnProperty('ability')){
             upgradeText += convertGameText(upgrade.sides[0].ability);
         }
+        
+    if (upgrade.hasOwnProperty('force')){
+        if ($('#force_stat_value').length == 0){
+            value = upgrade.force.value;
+            if (upgrade.force.hasOwnProperty('recovers')){
+                for (var i = 0; i < upgrade.force.recovers; i++){
+                    value += '⯅';
+                }
+            }
+            $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge')+' </span><span class="pilot_stat_value" id="force_stat_value">'+value + '</span></div>');
+        }
     }
+    }
+
     return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
