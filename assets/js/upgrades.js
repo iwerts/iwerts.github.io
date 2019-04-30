@@ -15,18 +15,53 @@ var techs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/tech.
 var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/title.json');
 var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
+var quickBuild = '';
+function getQuickBuild(){
+    for (var i = 0; i < quickBuilds.length; i++){
+        for (var j = 0; j < quickBuilds[i].builds.length; j++){
+            if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws){
+                quickBuild = quickBuilds[i].builds[j];
+            }
+        }
+    }
+    console.log(quickBuild);
+}
 
-function getUpdateByType(upgradeType, upgradeXWS){
+function getUpgradeByType(upgradeType, upgradeXWS){
     switch (upgradeType){
         case 'astromech':
-            return getUpgrade(astromechs, upgradeXWS);
+            return getUpdate(astromechs, upgradeXWS);
     }
 }
 
-function getUpgrade(upgrade, upgradeXWS){
+function getUpgrade(upgrades, upgradeXWS){
     for (var i = 0; i < upgrades.length; i++){
         if (upgrades[i].xws == upgradeXWS){
-            return updates[i];
+            return upgrades[i];
         }
     }
+}
+
+function getUpgradeName(upgrade){
+    name = '';
+    if (upgrade.hasOwnProperty('limited')) {
+            if (upgrade.limited > 0) {
+                for (var i = 0; i < upgrade.limited; i++) {
+                    name += '•';
+                }
+                name += ' ';
+            }
+        }
+    name += upgrade.name;
+    return '<span class="upgrade_name">'+name+'</span>';
+}
+
+function getUpgradeText(upgrade){
+    upgradeText = '';
+    if (upgrade.hasOwnProperty('sides')){
+        if (upgrade.sides[0].hasOwnProperty('ability')){
+            upgradeText += convertGameText(upgrade.sides[0].ability);
+        }
+    }
+    return '<span class="upgrade_text">'+upgradeText+'</span>';
 }
