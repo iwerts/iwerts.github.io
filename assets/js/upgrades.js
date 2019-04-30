@@ -172,7 +172,7 @@ function getUpgradeText(upgrade){
             upgradeText += convertGameText(upgrade.sides[0].ability);
         }
         
-    if (upgrade.hasOwnProperty('force')){
+    if (upgrade.sides[0].hasOwnProperty('force')){
         console.log(upgrade.sides[0].force);
         if ($('#force_stat_value').length == 0){
             value = upgrade.sides[0].value;
