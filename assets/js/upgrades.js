@@ -1,4 +1,4 @@
-var force-powers = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/force-power.json');
+var astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/force-power.json');
 var cannons = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/cannon.json');
 var configurations = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/configuration.json');
 var crews = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/crew.json');
