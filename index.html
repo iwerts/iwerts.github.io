@@ -213,7 +213,7 @@ console.log(astromechs);
 
         function getPilotStats() {
             if (current_ship.hasOwnProperty('stats')) {
-                $('#pilot_info').append('<span id="pilot_stats"></span>');
+                $('#pilot_info').append('<hr><span id="pilot_stats"></span>');
 
                 for (var i = 0; i < current_ship.stats.length; i++) {
                     getStat(current_ship.stats[i]);
