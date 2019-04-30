@@ -176,8 +176,8 @@ function getUpgradeText(upgrade){
         console.log(upgrade.sides[0].force);
         if ($('#force_stat_value').length == 0){
             value = upgrade.sides[0].force.value;
-            if (upgrade.sides[0].hasOwnProperty('recovers')){
-                for (var i = 0; i < upgrade.sides[0].recovers; i++){
+            if (upgrade.sides[0].force.hasOwnProperty('recovers')){
+                for (var i = 0; i < upgrade.sides[0].force.recovers; i++){
                     value += '⯅';
                 }
             }
