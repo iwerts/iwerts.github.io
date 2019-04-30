@@ -14,6 +14,10 @@
         font-family: BankGothicMedium;
         src: url('../fonts/BankGothicMediumBT.ttf'); }
 
+hr{
+    width: 100%;
+}
+
 #card{
     width: 500px;
     height: 700px;
@@ -28,7 +32,7 @@
     font-family: BankGothicMedium;
 }
 
-#pilot_initiative, .pilot_stat_value{
+#pilot_initiative, .pilot_stat_value, #pilot_threat_value, .upgrade_stat_value{
     font-family: Kimberly;
 }
 
@@ -42,7 +46,7 @@
     align-items: center;
     justify-content: space-evenly;
 }
-.pilot_stat{
+.pilot_stat, .upgrade_stat{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -82,7 +86,7 @@
 #flavor_text, #pilot_caption{
     font-style: italic;
 }
-#ship_ability_name{
+#ship_ability_name, .quick_build_upgrade_name{
     font-weight: bold;
     font-style: italic;
 }

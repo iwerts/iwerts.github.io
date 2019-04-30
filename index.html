@@ -20,7 +20,7 @@
     <script>
         var iconsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json');
         var shipsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/ships-map.json');
-
+        var quickBuilds = returnJSON('https://iwerts.github.io/xwsquickbuilds.json');
 
 
         $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
@@ -55,6 +55,9 @@
         <select id="pilot" disabled>
             <option selected>Select Pilot</option>
         </select>
+        <br>
+        <input type="checkbox" id="quick_build">
+        <label id="quick_build_label">Quick Build?</label>
     </form>
    <div id="card">
     <div id="name_bar" class="card_field">
@@ -134,10 +137,13 @@
 
         $('form').change(function () {
             $('.card_field').empty();
+            
             if (current_pilot != null) {
                 getNameBar();
                 getCardBody();
                 getCardFooter();
+            if ($('#quick_build').prop('checked')){
+                getQuickBuild();}
             }
         });
 
@@ -145,6 +151,66 @@
             getInitiative();
             getNameSection();
             getFactionIcon();
+        }
+
+        function getQuickBuild(){
+            quickBuild = '';
+            threat = 0;
+            for (var card = 0; card < quickBuilds.length; card++){
+                for (var build = 0; build < quickBuilds[card].builds.length; build++){
+                    if (quickBuilds[card].builds[build].pilots[0].id == current_pilot.xws){
+                        quickBuild = quickBuilds[card].builds[build];
+                        threat = quickBuild.threat; 
+                        $('#name_bar').append('<span id="pilot_threat_value"></span>');
+                        $('#pilot_threat_value').append(threat);
+                        upgrades = quickBuild.pilots[0].upgrades;
+
+                        if (upgrades.hasOwnProperty('astromech')){
+                            astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/astromech.json');
+                            console.log(astromechs);
+                            for (var i = 0; i < astromechs.length; i++){
+                                if (astromechs[i].xws == upgrades.astromech[0]){
+                                    getUpgradeName(astromechs[i]);
+                                    getUpgradeText(astromechs[i]);
+                                    $('#pilot_text_box').append('<hr>');
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+        function getUpgradeText(upgrade){
+            quick_build_upgrade_text = '';
+            quick_build_upgrade_text += convertGameText(upgrade.sides[0].ability);
+            
+            if(upgrade.sides[0].hasOwnProperty('charges')){
+                value =upgrade.sides[0].charges.value;
+                if (upgrade.sides[0].charges.hasOwnProperty('recovers')){
+                    for (var i = 0; i < upgrade.sides[0].charges.recovers; i++){
+                        value += '⯅';
+                    }
+                }
+                quick_build_upgrade_text += '<div class="upgrade_stat"><span class="upgrade_stat_icon">' + convertIcon('charge')+' </span><span class="upgrade_stat_value">'+value + '</span></div>';
+                
+            }
+            $('#pilot_text_box').append('<span class="quick_build_upgrade_text">'+quick_build_upgrade_text + '</span>');
+        }
+        function getUpgradeName(upgrade){
+            
+            name = '';
+            if (upgrade.hasOwnProperty('limited')) {
+                    if (upgrade.limited > 0) {
+                        for (var i = 0; i < upgrade.limited; i++) {
+                            name += '•';
+                        }
+                        name += ' ';
+                    }
+                }
+                name += upgrade.name;
+                $('#pilot_text_box').append('<span class="quick_build_upgrade_name">'+name + '</span>');
+            
         }
 
         function getNameSection(){
@@ -206,7 +272,14 @@
                     getStat(current_ship.stats[i]);
                 }
             }
-            if (current_pilot.hasOwnProperty('charge')){
+            if (current_pilot.hasOwnProperty('charges')){
+                value = current_pilot.charges.value;
+                if (current_pilot.charges.hasOwnProperty('recovers')){
+                    for (var i = 0; i < current_pilot.charges.recovers; i++){
+                        value += '⯅';
+                    }
+                }
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charge')+' </span><span class="pilot_stat_value">'+value + '</span></div>');
                 
             }
             if (current_pilot.hasOwnProperty('force')){
@@ -447,6 +520,8 @@
                         return convertIcon('forcecharge');
                     case 'koiogranturn':
                         return convertIcon('kturn');
+                    case 'configuration':
+                        return convertIcon('config');
                     default:
                         return convertIcon(text.toString().replace(' ', '').toLowerCase());
                 }
