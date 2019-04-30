@@ -27,7 +27,7 @@ function getQuickBuild(){
     
     if (quickBuild.pilots[0].upgrades.hasOwnProperty('astromech')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.astromech.length; i++){
-            addUpgradeToPilotTextBox(getUpgradeByType('astromech',quickBuild.pilots[0].upgrades[i]);
+            addUpgradeToPilotTextBox(getUpgradeByType('astromech',quickBuild.pilots[0].upgrades[i]));
         }
     }
 }
