@@ -86,7 +86,7 @@ hr{
 #flavor_text, #pilot_caption{
     font-style: italic;
 }
-#ship_ability_name, .quick_build_upgrade_name{
+#ship_ability_name, .upgrade_name{
     font-weight: bold;
     font-style: italic;
 }
