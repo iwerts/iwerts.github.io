@@ -173,6 +173,7 @@ function getUpgradeText(upgrade){
         }
         
     if (upgrade.hasOwnProperty('force')){
+        console.log(upgrade.force);
         if ($('#force_stat_value').length == 0){
             value = upgrade.force.value;
             if (upgrade.force.hasOwnProperty('recovers')){
