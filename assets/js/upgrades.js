@@ -40,6 +40,7 @@ function getUpgradeByType(upgradeType, upgradeXWS){
 }
 
 function addUpgradeToPilotTextBox(upgrade){
+    console.log(upgrade);
     $('#pilot_text_box').append('<span id="upgrade_ability">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
 }
 
