@@ -158,65 +158,7 @@ console.log(astromechs);
             getFactionIcon();
         }
 
-        function getQuickBuild(){
-            quickBuild = '';
-            threat = 0;
-            for (var card = 0; card < quickBuilds.length; card++){
-                for (var build = 0; build < quickBuilds[card].builds.length; build++){
-                    if (quickBuilds[card].builds[build].pilots[0].id == current_pilot.xws){
-                        quickBuild = quickBuilds[card].builds[build];
-                        threat = quickBuild.threat; 
-                        $('#name_bar').append('<span id="pilot_threat_value"></span>');
-                        $('#pilot_threat_value').append(threat);
-                        upgrades = quickBuild.pilots[0].upgrades;
 
-                        if (upgrades.hasOwnProperty('astromech')){
-                            astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/astromech.json');
-                            console.log(astromechs);
-                            for (var i = 0; i < astromechs.length; i++){
-                                if (astromechs[i].xws == upgrades.astromech[0]){
-                                    getUpgradeName(astromechs[i]);
-                                    getUpgradeText(astromechs[i]);
-                                    $('#pilot_text_box').append('<hr>');
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        }
-        function getUpgradeText(upgrade){
-            quick_build_upgrade_text = '';
-            quick_build_upgrade_text += convertGameText(upgrade.sides[0].ability);
-            
-            if(upgrade.sides[0].hasOwnProperty('charges')){
-                value =upgrade.sides[0].charges.value;
-                if (upgrade.sides[0].charges.hasOwnProperty('recovers')){
-                    for (var i = 0; i < upgrade.sides[0].charges.recovers; i++){
-                        value += '⯅';
-                    }
-                }
-                quick_build_upgrade_text += '<div class="upgrade_stat"><span class="upgrade_stat_icon">' + convertIcon('charge')+' </span><span class="upgrade_stat_value">'+value + '</span></div>';
-                
-            }
-            $('#pilot_text_box').append('<span class="quick_build_upgrade_text">'+quick_build_upgrade_text + '</span>');
-        }
-        function getUpgradeName(upgrade){
-            
-            name = '';
-            if (upgrade.hasOwnProperty('limited')) {
-                    if (upgrade.limited > 0) {
-                        for (var i = 0; i < upgrade.limited; i++) {
-                            name += '•';
-                        }
-                        name += ' ';
-                    }
-                }
-                name += upgrade.name;
-                $('#pilot_text_box').append('<span class="quick_build_upgrade_name">'+name + '</span>');
-            
-        }
 
         function getNameSection(){
             $('#name_bar').append('<span id="pilot_name_section"></span>')
