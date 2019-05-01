@@ -16,7 +16,7 @@ var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/titl
 var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
 var quickBuild = '';
-var upgrades = [];
+var upgrades = new Array();
 function getQuickBuild(){
     for (var i = 0; i < quickBuilds.length; i++){
         for (var j = 0; j < quickBuilds[i].builds.length; j++){
