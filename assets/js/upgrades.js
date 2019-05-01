@@ -53,7 +53,7 @@ function getQuickBuild(){
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('force-power')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades['force-power'].length; i++){
-            upgrades.push([getUpgradeByType('force-power',quickBuild.pilots[0].upgrades.force_powers[i]), 0]);
+            upgrades.push([getUpgradeByType('force-power',quickBuild.pilots[0].upgrades['force-power'][i]), 0]);
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('gunner')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.gunner.length; i++){
@@ -77,7 +77,7 @@ function getQuickBuild(){
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('tactical-relay')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades['tactical-relay'].length; i++){
-            upgrades.push([getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.tactical_relays[i]), 0]);
+            upgrades.push([getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.['tactical-relay'][i]), 0]);
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('talent')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.talent.length; i++){
