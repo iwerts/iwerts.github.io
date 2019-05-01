@@ -77,7 +77,7 @@ function getQuickBuild(){
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('tactical-relay')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades['tactical-relay'].length; i++){
-            upgrades.push([getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades.['tactical-relay'][i]), 0]);
+            upgrades.push([getUpgradeByType('tactical-relay',quickBuild.pilots[0].upgrades['tactical-relay'][i]), 0]);
         }
     }if (quickBuild.pilots[0].upgrades.hasOwnProperty('talent')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.talent.length; i++){
