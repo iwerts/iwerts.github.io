@@ -20,6 +20,7 @@ var upgrades = new Array();
 
 
 function getQuickBuild(){
+    upgrades = new Array();
     for (var i = 0; i < quickBuilds.length; i++){
         for (var j = 0; j < quickBuilds[i].builds.length; j++){
             if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws){
