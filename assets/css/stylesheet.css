@@ -41,11 +41,13 @@ hr{
     align-content: center;
     justify-content: space-evenly;
 }
-#pilot_stats{
+#pilot_stats, .upgrade_text{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
+
+
 .pilot_stat, .upgrade_stat{
     display: flex;
     align-items: center;

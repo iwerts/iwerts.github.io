@@ -28,6 +28,7 @@ function getQuickBuild(){
             }
         }
     }
+    if (quickBuild.pilots[0].hasOwnProperty('upgrades')){
     
     if (quickBuild.pilots[0].upgrades.hasOwnProperty('astromech')){
         for (var i = 0; i < quickBuild.pilots[0].upgrades.astromech.length; i++){
@@ -101,8 +102,8 @@ function getQuickBuild(){
             upgrades.push([getUpgradeByType('turret',quickBuild.pilots[0].upgrades.turret[i]), 0]);
         }
     }
-
-    displayUpgrades();
+        displayUpgrades();
+}
 }
 
 function getUpgradeByType(upgradeType, upgradeXWS){
