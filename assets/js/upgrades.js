@@ -228,3 +228,20 @@ function getUpgradeText(upgrade){
 
     return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
+function getUpgradeAttack(upgrade, side){
+    if (upgrade.sides[side].hasOwnProperty('attack')){
+        arc = convertText(upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g, ''));
+        minRange = upgrade.sides[side].attack.minrange;
+        maxRange = upgrade.sides[side].attack.maxrange;
+        ordnance = '';
+        if (upgrade.sides[side].attack.ordnance){
+            ordnance = convertText('rangebonusindicator');
+        }
+
+        
+    }
+}
+
+function getUpgradeForce(upgrade){
+
+}
