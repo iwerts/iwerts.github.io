@@ -23,6 +23,7 @@ function getQuickBuild(){
     upgrades = new Array();
     for (var i = 0; i < quickBuilds.length; i++){
         for (var j = 0; j < quickBuilds[i].builds.length; j++){
+            console.log(quickBuilds[i].builds[j].pilots[0].id + ' ' + current_pilot.xws + ' : ' + quickBuilds[i].builds[j].pilots[0].id === current_pilot.xws);
             if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws){
                 quickBuild = quickBuilds[i].builds[j];
             }
@@ -211,10 +212,14 @@ function getUpgradeCharges(upgrade, side){
             value += '⯅';
         }
         return '<span class="upgrade_stat"><span class="upgrade_stat_icon">'+convertIcon('charge')+'</span><span class="upgrade_stat_value">'+value+'</span></span>';
+    } else {
+        return '';
     }
 }
 function getUpgradeAbility(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('ability')){
         return '<span class="upgrade_ability">'+convertGameText(upgrade.sides[side].ability)+'</span>';
+    } else {
+        return '';
     }
 }
