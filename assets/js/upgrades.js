@@ -147,7 +147,7 @@ function getUpgradeByType(upgradeType, upgradeXWS){
 
 function displayUpgrades(){
     for (var i = 0; i < upgrades.length; i++){
-        addUpgradeToPilotTextBox(upgrades[i][0]);
+        addUpgradeToPilotTextBox(upgrades[i][0], upgrades[i][1]);
     }
 }
 
