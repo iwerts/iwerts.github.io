@@ -223,3 +223,22 @@ function getUpgradeAbility(upgrade, side){
         return '';
     }
 }
+
+function getUpgradeFlavor(upgrade, side){
+    if (upgrade.sides[side].hasOwnProperty('text')){
+        return '<span class="upgrade_ability">'+convertGameText(upgrade.sides[side].text)+'</span>';
+    } else {
+        return '';
+    }
+}
+
+function getUpgradeActions(upgrade, side){
+    if (upgrade.sides[side].hasOwnProperty('actions')){
+        for (var i = 0; i < upgrade.sides[side].actions.length; i++){
+            $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+        }
+        return '';
+    } else {
+        return '';
+    }
+}
