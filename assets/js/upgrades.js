@@ -149,6 +149,7 @@ function displayUpgrades(){
 }
 
 function addUpgradeToPilotTextBox(upgrade){
+    console.log(upgrade);
     $('#pilot_text_box').append('<hr><span id="upgrade_ability">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
 }
 
@@ -200,7 +201,9 @@ function getUpgradeText(upgrade){
                 for (var i = 0; i < current_pilot.force.recovers + upgrade.sides[0].force.recovers; i++){
                     value += '⯅';
                 }
-            }
+            }   
+            $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge')+' </span><span class="pilot_stat_value" id="force_stat_value">'+value + '</span></div>');
+        
         }
     }
     }
