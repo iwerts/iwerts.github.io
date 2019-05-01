@@ -184,6 +184,7 @@ function getUpgradeText(upgrade, side){
     upgradeText = '';
     upgradeText += getUpgradeAbility(upgrade, side);
     upgradeText += getUpgradeCharges(upgrade, side);
+    upgradeText += getUpgradeActions(upgrade, side);
 
     return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
