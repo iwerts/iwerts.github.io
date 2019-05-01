@@ -17,6 +17,8 @@ var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/t
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
 var quickBuild = '';
 var upgrades = new Array();
+
+
 function getQuickBuild(){
     for (var i = 0; i < quickBuilds.length; i++){
         for (var j = 0; j < quickBuilds[i].builds.length; j++){
@@ -150,7 +152,7 @@ function displayUpgrades(){
 
 function addUpgradeToPilotTextBox(upgrade){
     console.log(upgrade);
-    $('#pilot_text_box').append('<hr><span id="upgrade_ability">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
+    $('#pilot_text_box').append('<hr><span id="upgrade_ability" class="card_field">'+getUpgradeName(upgrade)+ getUpgradeText(upgrade)+'</span>');
 }
 
 function getUpgrade(upgrades, upgradeXWS){
