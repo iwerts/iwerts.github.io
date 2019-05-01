@@ -200,8 +200,23 @@ function getUpgradeText(upgrade){
             $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge')+' </span><span class="pilot_stat_value" id="force_stat_value">'+value + '</span></div>');
         } else {
             value = upgrade.sides[0] + $('#force_stat_value').text().substring(0,1);
-            if (upgrade.sides[0].force.hasOwnProperty('recovers') || current_pilot.force.hasOwnProperty('recovers')){
-                for (var i = 0; i < current_pilot.force.recovers + upgrade.sides[0].force.recovers; i++){
+            if (upgrade.sides[0].force.hasOwnProperty('recovers')){
+                recovers = 0;
+                if (current_pilot.hasOwnProperty('force')){
+                    if (current_pilot.force.hasOwnProperty('recovers')){
+                        recovers += current_pilot.force.recovers;
+                    }
+                }
+                for (var i = 0; i < upgrades.length; i++){
+                    if (!(upgrades[i][0] === upgrade)){
+                        if (upgrades[i][0].sides[upgrades[i][1]].hasOwnProperty('force')){
+                            if (upgrades[i][0].sides[upgrades[i][1]].force.hasOwnProperty('recovers')){
+                                recovers += upgrades[i][0].sides[upgrades[i][1]].force.recovers;
+                            }
+                        }
+                    }
+                }
+                for (var i = 0; i < recovers; i++){
                     value += '⯅';
                 }
             }   
