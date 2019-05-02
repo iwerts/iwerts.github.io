@@ -198,7 +198,6 @@ function getUpgradeAttack(upgrade, side){
         if (upgrade.sides[side].attack.ordnance){
             ordnance = convertText('rangebonusindicator');
             return '<span class="attack_upgrade">'+arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
-    
         } else {
             $('#pilot_attack').append('<span class="upgrade_stat"><span class="upgrade_stat_icon">'+arc+'</span><span class="upgrade_stat_value">'+value+'</span></span>');
             return '';
