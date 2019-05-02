@@ -41,7 +41,7 @@ hr{
     align-content: center;
     justify-content: space-evenly;
 }
-#pilot_stats, .upgrade_text{
+#pilot_stats, .upgrade_text, #pilot_attack{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
