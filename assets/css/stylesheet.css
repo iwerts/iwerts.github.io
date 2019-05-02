@@ -43,7 +43,7 @@ hr{
 }
 #pilot_stats, .upgrade_text, #pilot_attack{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
 }
 
