@@ -185,20 +185,25 @@ function getUpgradeText(upgrade, side){
     upgradeText += getUpgradeAbility(upgrade, side);
     upgradeText += getUpgradeCharges(upgrade, side);
     upgradeText += getUpgradeActions(upgrade, side);
+    upgradeText += getUpgradeAttack(upgrade, side);
 
     return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
 function getUpgradeAttack(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('attack')){
         arc = convertText(upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g, ''));
+        value = upgrade.sides[side].attack.value;
         minRange = upgrade.sides[side].attack.minrange;
         maxRange = upgrade.sides[side].attack.maxrange;
         ordnance = '';
         if (upgrade.sides[side].attack.ordnance){
             ordnance = convertText('rangebonusindicator');
         }
+        return '<span class="attack_upgrade">'+arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
 
         
+    } else {
+        return '';
     }
 }
 
