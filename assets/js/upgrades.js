@@ -240,11 +240,17 @@ function getUpgradeFlavor(upgrade, side){
 
 function getUpgradeActions(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('actions')){
+        
         for (var i = 0; i < upgrade.sides[side].actions.length; i++){
-            $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+            if (upgrade.sides[side].actions[i].hasOwnProperty('linked')){
+                $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
+            } else {
+                $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+            }
         }
         return '';
     } else {
         return '';
     }
 }
+
