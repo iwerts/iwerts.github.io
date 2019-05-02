@@ -52,6 +52,7 @@ hr{
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex-grow:1;
 }
 #pilot_name_section, #ship_ability{
     display: flex;
