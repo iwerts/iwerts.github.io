@@ -32,7 +32,7 @@ hr{
     font-family: BankGothicMedium;
 }
 
-#pilot_initiative, .pilot_stat_value, #pilot_threat_value, .upgrade_stat_value{
+#pilot_initiative, .pilot_stat_value, #pilot_threat_value, .upgrade_stat_value, .attack_upgrade{
     font-family: Kimberly;
 }
 
