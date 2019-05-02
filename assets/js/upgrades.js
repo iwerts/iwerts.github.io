@@ -195,19 +195,22 @@ function getUpgradeAttack(upgrade, side){
         value = upgrade.sides[side].attack.value;
         minRange = upgrade.sides[side].attack.minrange;
         maxRange = upgrade.sides[side].attack.maxrange;
-        ordnance = '';
         if (upgrade.sides[side].attack.ordnance){
             ordnance = convertText('rangebonusindicator');
+            return '<span class="attack_upgrade">'+arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
+    
+        } else {
+            $('#pilot_attack').append('<span class="upgrade_stat"><span class="upgrade_stat_icon">'+arc+'</span><span class="upgrade_stat_value">'+value+'</span></span>');
+            return '';
         }
-        return '<span class="attack_upgrade">'+arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
-
+       
         
     } else {
         return '';
     }
 }
 
-function getUpgradeForce(upgrade){
+function getUpgradeForce(upgrade, side){
 
 }
 

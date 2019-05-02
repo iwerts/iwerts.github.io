@@ -279,7 +279,12 @@ console.log(astromechs);
         }
 
         function getAttack(attack) {
-            $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+attack.value + '</span></div>');
+            if ($('#pilot_attack').length == 0){
+                $('#pilot_stats').append('<div id="pilot_attack"></div>');
+                getAttack(attack);
+            } else {
+                $('#pilot_attack').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+attack.value + '</span></div>');
+            }
         }
 
         function getShipIcon() {
@@ -313,8 +318,6 @@ console.log(astromechs);
             }
         }
 
-
-
         function getActions() {
             for (var i = 0; i < current_ship.actions.length; i++) {
                 if (current_ship.actions[i].hasOwnProperty('linked')) {
@@ -325,47 +328,7 @@ console.log(astromechs);
             }
         }
 
-        function getStats() {
-            $('#pilot_stats').empty();
-            stats = updateField(current_ship, 'stats');
-            for (var i = 0; i < stats.length; i++) {
-                switch (stats[i].type) {
-                    case 'agility':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_agility" style="text-align: center; color: lightgreen;"></div>');
-                        $('#pilot_agility').append('<i class="xwing-miniatures-font">' + convertIcon('agility', 'lightgreen') + '</i><span>' + stats[i].value + '</span>');
-                        break;
-                    case 'hull':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_hull" style="text-align: center;color: yellow;"></div>');
-                        $('#pilot_hull').append('<i class="xwing-miniatures-font">' + convertIcon('hull', 'yellow') + '</i><span>' + stats[i].value + '</span>');
-                        break;
-                    case 'shields':
-                        $('#pilot_stats').append('<div class="w3-panel" id="pilot_shield" style="text-align: center;color: lightblue;"></div>');
-                        $('#pilot_shield').append('' + '<i class="xwing-miniatures-font">' + convertIcon('shield', 'lightblue') + '</i><span>' + stats[i].value + '</span>')
-                        break;
-                    case 'attack':
-                        switch (stats[i].arc) {
-                            case "Front Arc":
-                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_front_arc" style="text-align: center; color: red;"></div>');
-                                $('#pilot_front_arc').append('<i class="xwing-miniatures-font">' + convertIcon('frontarc', 'red') + '</i><span>' + stats[i].value + '</span>');
-                                break;
-                            case "Rear Arc":
-                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_rear_arc" style="text-align: center;color: red;"></div>');
-                                $('#pilot_rear_arc').append('<i class="xwing-miniatures-font">' + convertIcon('reararc', 'red') + '</i><span>' + stats[i].value + '</span>');
-                                break;
-                            case "Single Turret Arc":
-                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_single_turret_arc" style="text-align: center;color: red;"></div>');
-                                $('#pilot_single_turret_arc').append('<i class="xwing-miniatures-font">' + convertIcon('singleturretarc', 'red') + '</i><span>' + stats[i].value + '</span>');
-                                break;
-                            case "Double Turret Arc":
-                                $('#pilot_stats').append('<div class="w3-panel" id="pilot_double_turret_arc" style="text-align: center;color: red;"></div>');
-                                $('#pilot_double_turret_arc').append('<i class="xwing-miniatures-font">' + convertIcon('doubleturretarc', 'red') + '</i><span>' + stats[i].value + '</span>');
-                                break;
-
-                        }
-
-                }
-            }
-        }
+        
 
         function updateField(item, field) {
             if ((item).hasOwnProperty(field)) {
@@ -414,13 +377,7 @@ console.log(astromechs);
             if (color == null || color.toLowerCase() == 'white') {
                 color = 'black';
             }
-            switch(iconSymbol){
-                case 'Koiogran Turn':
-                    return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons']['kturn'] + '</i>';
-                default: 
-                    return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
-                
-            }
+             return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
             }
 
         function convertGameText(passedText) {
@@ -469,6 +426,8 @@ console.log(astromechs);
                         return convertIcon('kturn');
                     case 'configuration':
                         return convertIcon('config');
+                        case 'stationary':
+                        return convertIcon('stop');
                     default:
                         return convertIcon(text.toString().replace(' ', '').toLowerCase());
                 }
