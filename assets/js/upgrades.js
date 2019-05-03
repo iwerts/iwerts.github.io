@@ -248,8 +248,8 @@ function getUpgradeActions(upgrade, side){
                 
                 $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
             } else {
-                if ($('#'+upgrades.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+''+upgrades.sides[side].actions[i].difficulty).length() == 0){
-                    $('#'+upgrades.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+upgrades.sides[side].actions[i].difficulty).empty();
+                if ($('#'+upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+''+upgrade.sides[side].actions[i].difficulty).length() == 0){
+                    $('#'+upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+upgrade.sides[side].actions[i].difficulty).empty();
                     }
                     $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
                 
