@@ -248,7 +248,7 @@ function getUpgradeActions(upgrade, side){
                 
                 $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
             } else {
-                if ($('#'+upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+'red').length == 0){
+                if (!($('#'+upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+'red').length) == 0){
                     $('#'+upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+'red').empty();
                     }
                     $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
