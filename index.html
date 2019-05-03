@@ -259,12 +259,14 @@ console.log(astromechs);
             if (action.hasOwnProperty('linked')) {
                 getLinkedAction(action);
             } else {
-                $('#pilot_actions').append('<span class="pilot_action">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + '</span>');
+                $('#pilot_actions').append('<span class="pilot_action" id="'+action.type.toLowerCase().replace(/\s/g, '')+action.difficulty.toLowerCase()+'">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + '</span>');
             }
         }
 
         function getLinkedAction(action) {
-            $('#pilot_actions').append('<span class="pilot_action">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', 'white') + ' ' + convertIcon(action.linked.type.toLowerCase().replace(/\s/g, ''), action.linked.difficulty) + '</span>');
+            $('#pilot_actions').append('<span class="pilot_action" id="'+
+            action.type.toLowerCase().replace(/\s/g,'')+action.difficulty.toLowerCase() + '_linked_'+action.linked.type.toLowerCase().replace(/\s/g, '')+action.linked.difficulty.toLowerCase()+
+            '">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', 'white') + ' ' + convertIcon(action.linked.type.toLowerCase().replace(/\s/g, ''), action.linked.difficulty) + '</span>');
         }
 
         function getAttack(attack) {
@@ -306,18 +308,6 @@ console.log(astromechs);
                 $('#flavor_text').append(convertGameText(current_pilot.text));
             }
         }
-
-        function getActions() {
-            for (var i = 0; i < current_ship.actions.length; i++) {
-                if (current_ship.actions[i].hasOwnProperty('linked')) {
-                    $('#action_bar').append('<div class="card_field">' + convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + ' ' + convertIcon('linked', 'black') + ' ' + convertIcon(current_ship.actions[i].linked.type.toString().toLowerCase().replace(/\s/g, ''), current_ship.actions[i].linked.difficulty));
-                } else {
-                    $('#action_bar').append('<div class="card_field">' + convertIcon((current_ship.actions[i].type).toLowerCase().replace(/\s/g, ''), current_ship.actions[i].difficulty) + '</div>');
-                }
-            }
-        }
-
-        
 
         function updateField(item, field) {
             if ((item).hasOwnProperty(field)) {
