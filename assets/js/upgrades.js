@@ -250,8 +250,9 @@ function getUpgradeActions(upgrade, side){
             } else {
                 if ($('#'+upgrades.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+upgrades.sides[side].actions[i].difficulty).length() == 0){
                     $('#'+upgrades.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '')+upgrades.sides[side].actions[i].difficulty).empty();
-                    $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
-                }
+                    }
+                        $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+                
                 }
         }
         return '';
