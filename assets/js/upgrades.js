@@ -187,6 +187,7 @@ function getUpgradeText(upgrade, side){
     upgradeText += getUpgradeCharges(upgrade, side);
     upgradeText += getUpgradeActions(upgrade, side);
     upgradeText += getUpgradeAttack(upgrade, side);
+    upgradeText += getUpgradeGrants(upgrade, side);
 
     return '<br><span class="upgrade_text">'+upgradeText+'</span>';
 }
@@ -243,13 +244,18 @@ function getUpgradeFlavor(upgrade, side){
 
 function getUpgradeGrants(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('grants')){
-        switch (upgrade.sides[side].grants.type){
+        for (var i = 0; i < upgrade.sides[side].grants.length; i++){
+        switch (upgrade.sides[side].grants[i].type){
             case 'stat':
-                $('#pilot_stat_'+upgrade.sides[side].grants.value).val(upgrade.sides[side].grants.amount + $('#pilot_stat_'+upgrade.sides[side].grants.value).val()); 
+                var stat_type = "#pilot_stat"+upgrade.sides[side].grants[i].value;
+                var current_value = $(stat_type).val();
+                var modification_value = upgrade.sides[side].grants[i].amount;
+                var total_value = current_value+modification_value;
+                $(stat_type).val(total_value);
                 break;
             case 'action':
                 break;
-        }
+        }}
     }
 }
 
