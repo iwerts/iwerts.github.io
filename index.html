@@ -246,12 +246,12 @@ console.log(astromechs);
                     getAttack(stat);
                     break;
                     case 'charge':
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charges')+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charges')+' </span><span class="pilot_stat_value" id="pilot_stat_charges">'+stat.value + '</span></div>');
                 break;
-                case 'shields':
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('shield')+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+                    case 'shields':
+                    $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('shield')+' </span><span class="pilot_stat_value" id="pilot_stat_shields">'+stat.value + '</span></div>');
                 break;
-                default: $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+stat.value + '</span></div>');
+                default: $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value" id="pilot_stat_'+stat.type.toLowerCase().replace(/\s/g, '')+'">'+stat.value + '</span></div>');
             }
         }
 

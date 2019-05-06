@@ -241,6 +241,18 @@ function getUpgradeFlavor(upgrade, side){
     }
 }
 
+function getUpgradeGrants(upgrade, side){
+    if (upgrade.sides[side].hasOwnProperty('grants')){
+        switch (upgrade.sides[side].grants.type){
+            case 'stat':
+                $('#pilot_stat_'+upgrade.sides[side].grants.value).val(upgrade.sides[side].grants.amount + $('#pilot_stat_'+upgrade.sides[side].grants.value).val()); 
+                break;
+            case 'action':
+                break;
+        }
+    }
+}
+
 function getUpgradeActions(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('actions')){
         
@@ -261,5 +273,6 @@ function getUpgradeActions(upgrade, side){
         return '';
     }
 }
+
 
 
