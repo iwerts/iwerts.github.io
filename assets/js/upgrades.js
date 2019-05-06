@@ -183,6 +183,7 @@ function getUpgradeName(upgrade, side){
 function getUpgradeText(upgrade, side){
     upgradeText = '';
     upgradeText += getUpgradeAbility(upgrade, side);
+    upgradeText += getUpgradeFlavor(upgrade, side);
     upgradeText += getUpgradeCharges(upgrade, side);
     upgradeText += getUpgradeActions(upgrade, side);
     upgradeText += getUpgradeAttack(upgrade, side);
@@ -260,4 +261,5 @@ function getUpgradeActions(upgrade, side){
         return '';
     }
 }
+
 
