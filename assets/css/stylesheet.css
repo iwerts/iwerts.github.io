@@ -47,6 +47,10 @@ hr{
     justify-content: space-evenly;
 }
 
+.upgrade_text>*{
+    flex: 1 1 50%;
+}
+
 #pilot_attack{
     flex-grow: 1;
 }
