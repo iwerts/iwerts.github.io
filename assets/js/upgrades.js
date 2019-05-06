@@ -235,7 +235,7 @@ function getUpgradeAbility(upgrade, side){
 
 function getUpgradeFlavor(upgrade, side){
     if (upgrade.sides[side].hasOwnProperty('text')){
-        return '<span class="upgrade_ability">'+convertGameText(upgrade.sides[side].text)+'</span>';
+        return '<span class="upgrade_flavor">'+convertGameText(upgrade.sides[side].text)+'</span>';
     } else {
         return '';
     }

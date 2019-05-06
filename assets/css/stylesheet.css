@@ -99,7 +99,7 @@ hr{
     align-items: center;
     justify-content: space-evenly;
 }
-#flavor_text, #pilot_caption{
+#flavor_text, #pilot_caption, .upgrade_flavor{
     font-style: italic;
 }
 #ship_ability_name, .upgrade_name{
