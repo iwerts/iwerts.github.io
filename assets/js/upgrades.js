@@ -247,11 +247,11 @@ function getUpgradeGrants(upgrade, side){
         for (var i = 0; i < upgrade.sides[side].grants.length; i++){
         switch (upgrade.sides[side].grants[i].type){
             case 'stat':
-                var stat_type = "#pilot_stat"+upgrade.sides[side].grants[i].value;
+                var stat_type = "#pilot_stat_"+upgrade.sides[side].grants[i].value;
                 var current_value = $(stat_type).val();
                 var modification_value = upgrade.sides[side].grants[i].amount;
-                var total_value = current_value+modification_value;
-                $(stat_type).val(total_value);
+                var total_value = parseInt(current_value)+parseInt(modification_value);
+                $(stat_type).val(total_value + "*");
                 break;
             case 'action':
                 break;
