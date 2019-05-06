@@ -45,12 +45,17 @@ hr{
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
+    flex-wrap:wrap;
 }
+
 
 .upgrade_text>*{
     flex: 1 1 50%;
 }
 
+.upgrade_ability{
+    flex: 1 1 100%;
+}
 #pilot_attack{
     flex-grow: 1;
 }
