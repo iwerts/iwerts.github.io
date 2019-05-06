@@ -257,6 +257,7 @@ function getUpgradeGrants(upgrade, side){
                 break;
         }}
     }
+    return '';
 }
 
 function getUpgradeActions(upgrade, side){
