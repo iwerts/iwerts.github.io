@@ -130,18 +130,22 @@
         });
 
         $('form').change(function () {
-            $('.card_field').empty();
+            updateCard();
+        });
 
+        function updateCard(){
+            $('.card_field').empty();
             if (current_pilot != null) {
                 getNameBar();
                 getCardBody();
                 getCardFooter();
-                upgrades = new Array();
                 if ($('#quick_build').prop('checked')) {
                     getQuickBuild();
+                } else {
+                    upgrades = new Array();
                 }
             }
-        });
+        }
 
         function getNameBar() {
             getInitiative();

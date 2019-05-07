@@ -196,7 +196,7 @@ function flipUpgrade(xws){
             }
         }
     }
-    getPilotTextBox();
+    updateCard();
 }
 
 function getUpgradeText(upgrade, side) {
