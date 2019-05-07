@@ -197,7 +197,7 @@ function flipUpgrade(xws){
             }
         }
     }
-    updateCard();
+    displayUpgrades();
 }
 
 function getUpgradeText(upgrade, side) {
