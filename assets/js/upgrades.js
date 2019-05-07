@@ -177,13 +177,13 @@ function getUpgradeName(upgrade, side) {
         }
     }
     name += upgrade.sides[side].title;
-    return '<span class="upgrade_name" onclick="flipUpgrade(\''+upgrade.xws+'\')>' + name + '</span>';
+    return '<span class="upgrade_name" onclick="flipUpgrade(\''+upgrade.xws+'\')">' + name + '</span>';
 }
 
 function flipUpgrade(xws){
-    console.log(xws);
     for (var i = 0; i < upgrades.length; i++){
         if (upgrades[i][0].xws == xws){
+            console.log(upgrades[i][0]);
             switch (upgrades[i][1]){
                 case 0:
                     upgrades[i][1] = 1; 
