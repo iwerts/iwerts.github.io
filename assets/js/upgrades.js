@@ -158,7 +158,7 @@ function displayUpgrades() {
 
 function addUpgradeToPilotTextBox(upgrade, side) {
     console.log("Side " + side + ": " + upgrade);
-    $('#pilot_text_box').append('<hr><span id="upgrade_ability" class="card_field upgrade">' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</span>');
+    $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade">' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</div>');
 }
 
 function getUpgrade(upgrades, upgradeXWS) {
