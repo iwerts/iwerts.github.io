@@ -150,7 +150,7 @@ function getUpgradeByType(upgradeType, upgradeXWS) {
 }
 
 function displayUpgrades() {
-    $('.upgrade').empty();
+    $('.upgrade').remove();
     for (var i = 0; i < upgrades.length; i++) {
         addUpgradeToPilotTextBox(upgrades[i][0], upgrades[i][1]);
     }
@@ -158,7 +158,7 @@ function displayUpgrades() {
 
 function addUpgradeToPilotTextBox(upgrade, side) {
     console.log("Side " + side + ": " + upgrade);
-    $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade">' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</div>');
+    $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</div>');
 }
 
 function getUpgrade(upgrades, upgradeXWS) {
