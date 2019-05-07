@@ -196,6 +196,7 @@ function flipUpgrade(xws){
             }
         }
     }
+    getPilotTextBox();
 }
 
 function getUpgradeText(upgrade, side) {
