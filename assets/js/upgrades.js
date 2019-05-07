@@ -20,6 +20,7 @@ var upgrades = new Array();
 
 
 function getQuickBuild() {
+    if (upgrades.length == 0){
     upgrades = new Array();
     for (var i = 0; i < quickBuilds.length; i++) {
         for (var j = 0; j < quickBuilds[i].builds.length; j++) {
@@ -103,6 +104,7 @@ function getQuickBuild() {
                 upgrades.push([getUpgradeByType('turret', quickBuild.pilots[0].upgrades.turret[i]), 0]);
             }
         }
+    }
         displayUpgrades();
     }
 }
