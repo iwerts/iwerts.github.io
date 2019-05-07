@@ -250,12 +250,12 @@ function getUpgradeGrants(upgrade, side){
                 var stat_type = "#pilot_stat_"+upgrade.sides[side].grants[i].value;
                 var current_value = $(stat_type).text();
                 if ($(stat_type).length == 0){
-                    console.log("DOESN'T HAVE " + stat_type + "!");
-                } 
-                var modification_value = upgrade.sides[side].grants[i].amount;
-                
+                    $('#pilot_stats').append('<div class="upgrade_stat"><span class="upgrade_stat_icon">'+convertIcon(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, ''))+'</span><span class="upgrade_stat_value" id="pilot_stat_'+upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')+'>'+upgrade.sides[side].grants[i].amount+'</span></div>')
+                } else {
+                var modification_value = upgrade.sides[side].grants[i].amount;    
                 var total_value = parseInt(current_value)+parseInt(modification_value);
                 $(stat_type).text(total_value + "*");
+            }
                 break;
             case 'action':
                 break;
