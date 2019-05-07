@@ -19,21 +19,21 @@
                 });
             });
         });
-        
-    function returnJSON(url){
-        var http_request = new XMLHttpRequest();
-        http_request.open("GET", url, false);
-        http_request.send(null);
-        return JSON.parse(http_request.responseText);
-    }
+
+        function returnJSON(url) {
+            var http_request = new XMLHttpRequest();
+            http_request.open("GET", url, false);
+            http_request.send(null);
+            return JSON.parse(http_request.responseText);
+        }
 
 
     </script>
-<script src="https://iwerts.github.io/assets/js/upgrades.js"></script>
-<script>
-console.log(astromechs);
-</script>
-    
+    <script src="https://iwerts.github.io/assets/js/upgrades.js"></script>
+    <script>
+        console.log(astromechs);
+    </script>
+
 </head>
 
 
@@ -53,17 +53,17 @@ console.log(astromechs);
         <input type="checkbox" id="quick_build">
         <label id="quick_build_label">Quick Build?</label>
     </form>
-   <div id="card">
-    <div id="name_bar" class="card_field">
-    </div>
+    <div id="card">
+        <div id="name_bar" class="card_field">
+        </div>
 
-    <div id="card_body" class="card_field">
+        <div id="card_body" class="card_field">
 
-    </div>
+        </div>
 
-    <div id="card_footer" class="card_field">
+        <div id="card_footer" class="card_field">
+        </div>
     </div>
-</div>
     <script>
         var current_faction;
         var current_ship;
@@ -131,13 +131,14 @@ console.log(astromechs);
 
         $('form').change(function () {
             $('.card_field').empty();
-            
+
             if (current_pilot != null) {
                 getNameBar();
                 getCardBody();
                 getCardFooter();
-            if ($('#quick_build').prop('checked')){
-                getQuickBuild();}
+                if ($('#quick_build').prop('checked')) {
+                    getQuickBuild();
+                }
             }
         });
 
@@ -149,7 +150,7 @@ console.log(astromechs);
 
 
 
-        function getNameSection(){
+        function getNameSection() {
             $('#name_bar').append('<span id="pilot_name_section"></span>')
             getName();
             getCaption();
@@ -160,7 +161,7 @@ console.log(astromechs);
             getPilotActions();
         }
 
-        function getPilotInfo(){
+        function getPilotInfo() {
             $('#card_body').append('<span id="pilot_info"></span>');
             getPilotTextBox();
             getPilotStats();
@@ -208,24 +209,24 @@ console.log(astromechs);
                     getStat(current_ship.stats[i]);
                 }
             }
-            if (current_pilot.hasOwnProperty('charges')){
+            if (current_pilot.hasOwnProperty('charges')) {
                 value = current_pilot.charges.value;
-                if (current_pilot.charges.hasOwnProperty('recovers')){
-                    for (var i = 0; i < current_pilot.charges.recovers; i++){
+                if (current_pilot.charges.hasOwnProperty('recovers')) {
+                    for (var i = 0; i < current_pilot.charges.recovers; i++) {
                         value += '⯅';
                     }
                 }
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charge')+' </span><span class="pilot_stat_value">'+value + '</span></div>');
-                
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charge') + ' </span><span class="pilot_stat_value">' + value + '</span></div>');
+
             }
-            if (current_pilot.hasOwnProperty('force')){
+            if (current_pilot.hasOwnProperty('force')) {
                 value = current_pilot.force.value;
-                if (current_pilot.force.hasOwnProperty('recovers')){
-                    for (var i = 0; i < current_pilot.force.recovers; i++){
+                if (current_pilot.force.hasOwnProperty('recovers')) {
+                    for (var i = 0; i < current_pilot.force.recovers; i++) {
                         value += '⯅';
                     }
                 }
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge')+' </span><span class="pilot_stat_value" id="force_stat_value">'+value + '</span></div>');
+                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge') + ' </span><span class="pilot_stat_value" id="force_stat_value">' + value + '</span></div>');
             }
         }
 
@@ -241,17 +242,17 @@ console.log(astromechs);
         }
 
         function getStat(stat) {
-            switch(stat.type){
+            switch (stat.type) {
                 case 'attack':
                     getAttack(stat);
                     break;
-                    case 'charge':
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charges')+' </span><span class="pilot_stat_value" id="pilot_stat_charges">'+stat.value + '</span></div>');
-                break;
-                    case 'shields':
-                    $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('shield')+' </span><span class="pilot_stat_value" id="pilot_stat_shields">'+stat.value + '</span></div>');
-                break;
-                default: $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value" id="pilot_stat_'+stat.type.toLowerCase().replace(/\s/g, '')+'">'+stat.value + '</span></div>');
+                case 'charge':
+                    $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charges') + ' </span><span class="pilot_stat_value" id="pilot_stat_charges">' + stat.value + '</span></div>');
+                    break;
+                case 'shields':
+                    $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('shield') + ' </span><span class="pilot_stat_value" id="pilot_stat_shields">' + stat.value + '</span></div>');
+                    break;
+                default: $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value" id="pilot_stat_' + stat.type.toLowerCase().replace(/\s/g, '') + '">' + stat.value + '</span></div>');
             }
         }
 
@@ -259,22 +260,22 @@ console.log(astromechs);
             if (action.hasOwnProperty('linked')) {
                 getLinkedAction(action);
             } else {
-                $('#pilot_actions').append('<span class="pilot_action" id="'+action.type.toLowerCase().replace(/\s/g, '')+action.difficulty.toLowerCase()+'">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + '</span>');
+                $('#pilot_actions').append('<span class="pilot_action" id="' + action.type.toLowerCase().replace(/\s/g, '') + action.difficulty.toLowerCase() + '">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + '</span>');
             }
         }
 
         function getLinkedAction(action) {
-            $('#pilot_actions').append('<span class="pilot_action" id="'+
-            action.type.toLowerCase().replace(/\s/g,'')+action.difficulty.toLowerCase() + '_linked_'+action.linked.type.toLowerCase().replace(/\s/g, '')+action.linked.difficulty.toLowerCase()+
-            '">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', 'white') + ' ' + convertIcon(action.linked.type.toLowerCase().replace(/\s/g, ''), action.linked.difficulty) + '</span>');
+            $('#pilot_actions').append('<span class="pilot_action" id="' +
+                action.type.toLowerCase().replace(/\s/g, '') + action.difficulty.toLowerCase() + '_linked_' + action.linked.type.toLowerCase().replace(/\s/g, '') + action.linked.difficulty.toLowerCase() +
+                '">' + convertIcon(action.type.toLowerCase().replace(/\s/g, ''), action.difficulty) + ' ' + convertIcon('linked', 'white') + ' ' + convertIcon(action.linked.type.toLowerCase().replace(/\s/g, ''), action.linked.difficulty) + '</span>');
         }
 
         function getAttack(attack) {
-            if ($('#pilot_attack').length == 0){
+            if ($('#pilot_attack').length == 0) {
                 $('#pilot_stats').append('<div id="pilot_attack"></div>');
                 getAttack(attack);
             } else {
-                $('#pilot_attack').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, ''))+' </span><span class="pilot_stat_value">'+attack.value + '</span></div>');
+                $('#pilot_attack').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + attack.value + '</span></div>');
             }
         }
 
@@ -356,8 +357,8 @@ console.log(astromechs);
             if (color == null || color.toLowerCase() == 'white') {
                 color = 'black';
             }
-             return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
-            }
+            return '<i class="xwing-miniatures-font" style="color: ' + color + ';">' + iconsMap['icons'][iconSymbol] + '</i>';
+        }
 
         function convertGameText(passedText) {
             ret = '';
@@ -394,23 +395,23 @@ console.log(astromechs);
         }
 
         function convertText(text) {
-            console.log(text);
-            if (text != null) {
-                switch (text) {
-                    case 'criticalhit':
-                        return convertIcon('crit');
-                    case 'force':
-                        return convertIcon('forcecharge');
-                    case 'koiogranturn':
-                        return convertIcon('kturn');
-                    case 'configuration':
-                        return convertIcon('config');
-                        case 'stationary':
-                        return convertIcon('stop');
-                    default:
-                        return convertIcon(text.toString().replace(' ', '').toLowerCase());
-                }
+            switch (text) {
+                case 'criticalhit':
+                    return convertIcon('crit');
+                case 'force':
+                    return convertIcon('forcecharge');
+                case 'koiogranturn':
+                    return convertIcon('kturn');
+                case 'configuration':
+                    return convertIcon('config');
+                case 'stationary':
+                    return convertIcon('stop');
+                case 'shields':
+                    return convertIcon('shield');
+                default:
+                    return convertIcon(text.toString().replace(' ', '').toLowerCase());
             }
+        }
         }
     </script>
 </body>
