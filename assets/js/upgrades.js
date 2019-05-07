@@ -177,7 +177,22 @@ function getUpgradeName(upgrade, side) {
         }
     }
     name += upgrade.sides[side].title;
-    return '<span class="upgrade_name">' + name + '</span>';
+    return '<span class="upgrade_name" onclick="flipUpgrade('+upgrade+')>' + name + '</span>';
+}
+
+function flipUpgrade(upgrade){
+    for (var i = 0; i < upgrades.length; i++){
+        if (upgrades[i][0] == upgrade){
+            switch (upgrades[i][1]){
+                case 0:
+                    upgrades[i][1] = 1; 
+                    break;
+                case 1:
+                    upgrades[i][1] = 0;
+                    break;
+            }
+        }
+    }
 }
 
 function getUpgradeText(upgrade, side) {
@@ -189,6 +204,9 @@ function getUpgradeText(upgrade, side) {
     upgradeText += getUpgradeAttack(upgrade, side);
     upgradeText += getUpgradeGrants(upgrade, side);
 
+    if (upgrade.sides.length>1){
+        upgradeText += '<button type="button">Flip</button>';
+    }
     return '<br><span class="upgrade_text">' + upgradeText + '</span>';
 }
 function getUpgradeAttack(upgrade, side) {
@@ -228,7 +246,7 @@ function getUpgradeCharges(upgrade, side) {
 }
 function getUpgradeAbility(upgrade, side) {
     if (upgrade.sides[side].hasOwnProperty('ability')) {
-        return '<span class="upgrade_ability">' + convertGameText(upgrade.sides[side].ability) + '</span>';
+        return '<span class="upgrade_ability" >' + convertGameText(upgrade.sides[side].ability) + '</span>';
     } else {
         return '';
     }
