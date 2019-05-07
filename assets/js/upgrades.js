@@ -184,9 +184,11 @@ function getUpgradeName(upgrade, side) {
 }
 
 function flipUpgrade(xws){
+    
     for (var i = 0; i < upgrades.length; i++){
         if (upgrades[i][0].xws == xws){
             console.log(upgrades[i][0]);
+            if (upgrades[i][0].sides.length > 1){
             switch (upgrades[i][1]){
                 case 0:
                     upgrades[i][1] = 1; 
@@ -194,7 +196,7 @@ function flipUpgrade(xws){
                 case 1:
                     upgrades[i][1] = 0;
                     break;
-            }
+            }}
         }
     }
     displayUpgrades();
@@ -209,9 +211,6 @@ function getUpgradeText(upgrade, side) {
     upgradeText += getUpgradeAttack(upgrade, side);
     upgradeText += getUpgradeGrants(upgrade, side);
 
-    if (upgrade.sides.length>1){
-        upgradeText += '<button type="button">Flip</button>';
-    }
     return '<br><span class="upgrade_text">' + upgradeText + '</span>';
 }
 function getUpgradeAttack(upgrade, side) {
@@ -244,14 +243,14 @@ function getUpgradeCharges(upgrade, side) {
         for (var i = 0; i < upgrade.sides[side].charges.recovers; i++) {
             value += '⯅';
         }
-        return '<span class="upgrade_stat"><span class="upgrade_stat_icon">' + convertIcon('charge') + '</span><span class="upgrade_stat_value">' + value + '</span></span>';
+        return '<span class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertIcon('charge') + '</span><span class="upgrade_stat_value">' + value + '</span></span>';
     } else {
         return '';
     }
 }
 function getUpgradeAbility(upgrade, side) {
     if (upgrade.sides[side].hasOwnProperty('ability')) {
-        return '<span class="upgrade_ability" >' + convertGameText(upgrade.sides[side].ability) + '</span>';
+        return '<span class="upgrade_ability upgrade" >' + convertGameText(upgrade.sides[side].ability) + '</span>';
     } else {
         return '';
     }
@@ -259,7 +258,7 @@ function getUpgradeAbility(upgrade, side) {
 
 function getUpgradeFlavor(upgrade, side) {
     if (upgrade.sides[side].hasOwnProperty('text')) {
-        return '<span class="upgrade_flavor">' + convertGameText(upgrade.sides[side].text) + '</span>';
+        return '<span class="upgrade_flavor upgrade">' + convertGameText(upgrade.sides[side].text) + '</span>';
     } else {
         return '';
     }
@@ -273,7 +272,7 @@ function getUpgradeGrants(upgrade, side) {
                     var stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].value;
                     var current_value = $(stat_type).text();
                     if ($(stat_type).length == 0) {
-                        $('#pilot_stats').append('<div class="upgrade_stat"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + upgrade.sides[side].grants[i].amount + '*</span></div>')
+                        $('#pilot_stats').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + upgrade.sides[side].grants[i].amount + '*</span></div>')
                     } else {
                         var modification_value = upgrade.sides[side].grants[i].amount;
                         var total_value = parseInt(current_value) + parseInt(modification_value);
@@ -294,12 +293,12 @@ function getUpgradeActions(upgrade, side) {
         for (var i = 0; i < upgrade.sides[side].actions.length; i++) {
             if (upgrade.sides[side].actions[i].hasOwnProperty('linked')) {
 
-                $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
+                $('#pilot_actions').append('<span class="upgrade_action upgrade">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
             } else {
                 if (!($('#' + upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '') + 'red').length) == 0) {
                     $('#' + upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '') + 'red').remove();
                 }
-                $('#pilot_actions').append('<span class="upgrade_action">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+                $('#pilot_actions').append('<span class="upgrade_action upgrade">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
 
             }
         }
