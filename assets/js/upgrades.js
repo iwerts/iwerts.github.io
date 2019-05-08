@@ -267,7 +267,13 @@ function getUpgradeGrants(upgrade, side) {
             switch (upgrade.sides[side].grants[i].type) {
                 case 'stat':
                     var stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].value;
-                    var current_value = $(stat_type).text();
+                    var current_value = 0;
+                    for (var j = 0; j < current_ship.stats.length; j++){
+                            if (current_ship.stats[j].type == upgrade.sides[side].grants[i].value){
+                           current_value = current_ship.stats[j].value;
+
+                        }   
+                    }
                     if (('#pilot_stats ' + stat_type).length > 0){
                         $(stat_type).remove();
                     }
