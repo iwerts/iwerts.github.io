@@ -24,7 +24,6 @@ function getQuickBuild() {
     upgrades = new Array();
     for (var i = 0; i < quickBuilds.length; i++) {
         for (var j = 0; j < quickBuilds[i].builds.length; j++) {
-            console.log(quickBuilds[i].builds[j].pilots[0].id + ' ' + current_pilot.xws + ' : ' + quickBuilds[i].builds[j].pilots[0].id === current_pilot.xws);
             if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws) {
                 quickBuild = quickBuilds[i].builds[j];
             }
@@ -157,7 +156,6 @@ function displayUpgrades() {
 }
 
 function addUpgradeToPilotTextBox(upgrade, side) {
-    console.log("Side " + side + ": " + upgrade);
     $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</div>');
 }
 
@@ -187,7 +185,6 @@ function flipUpgrade(xws){
     
     for (var i = 0; i < upgrades.length; i++){
         if (upgrades[i][0].xws == xws){
-            console.log(upgrades[i][0]);
             if (upgrades[i][0].sides.length > 1){
             switch (upgrades[i][1]){
                 case 0:
