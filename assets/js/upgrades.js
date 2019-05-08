@@ -271,7 +271,7 @@ function getUpgradeGrants(upgrade, side) {
                     if (('#pilot_stats ' + stat_type).length > 0){
                         $(stat_type).remove();
                     }
-                    $('#pilot_stats').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + upgrade.sides[side].grants[i].amount + '*</span></div>')
+                    $('#pilot_stats').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + (parseInt(current_value) + upgrade.sides[side].grants[i].amount) + '*</span></div>')
                     break;
                 case 'action':
                     break;
