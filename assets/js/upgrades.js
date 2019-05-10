@@ -156,7 +156,7 @@ function displayUpgrades() {
 }
 
 function addUpgradeToPilotTextBox(upgrade, side) {
-    $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeName(upgrade, side) + getUpgradeText(upgrade, side) + '</div>');
+    $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeText(upgrade, side) + '</div>');
 }
 
 function getUpgrade(upgrades, upgradeXWS) {
@@ -211,7 +211,7 @@ function flipUpgrade(xws){
 }
 
 function getUpgradeText(upgrade, side) {
-    upgradeText = '';
+    upgradeText = getUpgradeName(upgrade, side);
     upgradeText += getUpgradeSlots(upgrade, side);
     upgradeText += getUpgradeAbility(upgrade, side);
     upgradeText += getUpgradeFlavor(upgrade, side);
