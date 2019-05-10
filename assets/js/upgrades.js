@@ -167,8 +167,19 @@ function getUpgrade(upgrades, upgradeXWS) {
     }
 }
 
+function getUpgradeSlots(upgrade, side){
+    if (upgrade.sides[side].hasOwnProperty('slots')){
+        output = '';
+        for (var i = 0; i < upgrade.sides[side].slots.length; i++){
+            output += convertText(upgrade.sides[side].slots[i].toLowerCase().replace(/\s/g, ''));
+        }
+        return '<span class="upgrade_slots">' + output + '</span>';
+    }
+}
+
 function getUpgradeName(upgrade, side) {
     name = '';
+
     if (upgrade.hasOwnProperty('limited')) {
         if (upgrade.limited > 0) {
             for (var i = 0; i < upgrade.limited; i++) {
@@ -201,6 +212,7 @@ function flipUpgrade(xws){
 
 function getUpgradeText(upgrade, side) {
     upgradeText = '';
+    upgradeText += getUpgradeSlots(upgrade, side);
     upgradeText += getUpgradeAbility(upgrade, side);
     upgradeText += getUpgradeFlavor(upgrade, side);
     upgradeText += getUpgradeCharges(upgrade, side);
@@ -231,7 +243,20 @@ function getUpgradeAttack(upgrade, side) {
 }
 
 function getUpgradeForce(upgrade, side) {
+    if (upgrade.sides[side].hasOwnProperty('force')){
+        value = upgrade.sides[side].force.amount
+        recovers = upgrade.sides[side].force.recovers;
+        if (current_pilot.hasOwnProperty('force')){
+            value += current_pilot.force.amount;
+            recovers = Number.max(recovers, current_pilot.force.recovers);
+            $('#pilot_stat_force').remove();
+        }
+        for (var i = 0; i < recovers; i++){
+            value += '⯅';
+        }
+        $('#pilot_stats').append('<div class="upgrade_stat upgrade" id="upgrade_stat_force">'+'<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
 
+    }
 }
 
 function getUpgradeCharges(upgrade, side) {
