@@ -173,7 +173,7 @@ function getUpgradeSlots(upgrade, side){
         for (var i = 0; i < upgrade.sides[side].slots.length; i++){
             output += convertText(upgrade.sides[side].slots[i].toLowerCase().replace(/\s/g, ''));
         }
-        return '<span class="upgrade_slots">' + output + '</span>';
+        return '<span class="upgrade_slots upgrade">' + output + '</span>';
     }
 }
 
@@ -189,7 +189,7 @@ function getUpgradeName(upgrade, side) {
         }
     }
     name += upgrade.sides[side].title;
-    return '<span class="upgrade_name" onclick="flipUpgrade(\''+upgrade.xws+'\')">' + name + '</span>';
+    return '<span class="upgrade_name upgrade" onclick="flipUpgrade(\''+upgrade.xws+'\')">' + name + '</span>';
 }
 
 function flipUpgrade(xws){
@@ -220,7 +220,7 @@ function getUpgradeText(upgrade, side) {
     upgradeText += getUpgradeAttack(upgrade, side);
     upgradeText += getUpgradeGrants(upgrade, side);
 
-    return '<br><span class="upgrade_text">' + upgradeText + '</span>';
+    return '<br><span class="upgrade_text upgrade">' + upgradeText + '</span>';
 }
 function getUpgradeAttack(upgrade, side) {
     if (upgrade.sides[side].hasOwnProperty('attack')) {
@@ -230,9 +230,9 @@ function getUpgradeAttack(upgrade, side) {
         maxRange = upgrade.sides[side].attack.maxrange;
         if (upgrade.sides[side].attack.ordnance) {
             ordnance = convertText('rangebonusindicator');
-            return '<span class="attack_upgrade">' + arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
+            return '<span class="attack_upgrade upgrade">' + arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
         } else {
-            $('#pilot_attack').append('<div class="upgrade_stat"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
+            $('#pilot_attack').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
             return '';
         }
 
