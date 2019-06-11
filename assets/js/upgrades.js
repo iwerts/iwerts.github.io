@@ -15,7 +15,7 @@ var techs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/tech.
 var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/title.json');
 var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
 var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
-var quickBuild = '';
+var quickBuild = [];
 var upgrades = new Array();
 
 
@@ -25,85 +25,93 @@ function getQuickBuild() {
     for (var i = 0; i < quickBuilds.length; i++) {
         for (var j = 0; j < quickBuilds[i].builds.length; j++) {
             if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws) {
-                quickBuild = quickBuilds[i].builds[j];
+                quickBuild.append(quickBuilds[i].builds[j]);
             }
         }
     }
-    if (quickBuild.pilots[0].hasOwnProperty('upgrades')) {
 
-        if (quickBuild.pilots[0].upgrades.hasOwnProperty('astromech')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.astromech.length; i++) {
+    if (quickBuild.length > 1){
+        
+    }
 
-                upgrades.push([getUpgradeByType('astromech', quickBuild.pilots[0].upgrades.astromech[i]), 0]);
+    for (var i = 0; i < quickBuild.length; i++){
+
+    if (quickbuild[i].pilots[0].hasOwnProperty('upgrades')) {
+
+        if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('astromech')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.astromech.length; i++) {
+
+                upgrades.push([getUpgradeByType('astromech', quickbuild[i].pilots[0].upgrades.astromech[i]), 0]);
             }
         }
-        if (quickBuild.pilots[0].upgrades.hasOwnProperty('cannon')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.cannon.length; i++) {
-                upgrades.push([getUpgradeByType('cannon', quickBuild.pilots[0].upgrades.cannon[i]), 0]);
+        if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('cannon')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.cannon.length; i++) {
+                upgrades.push([getUpgradeByType('cannon', quickbuild[i].pilots[0].upgrades.cannon[i]), 0]);
             }
         }
-        if (quickBuild.pilots[0].upgrades.hasOwnProperty('configuration')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.configuration.length; i++) {
-                upgrades.push([getUpgradeByType('configuration', quickBuild.pilots[0].upgrades.configuration[i]), 0]);
+        if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('configuration')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.configuration.length; i++) {
+                upgrades.push([getUpgradeByType('configuration', quickbuild[i].pilots[0].upgrades.configuration[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('crew')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.crew.length; i++) {
-                upgrades.push([getUpgradeByType('crew', quickBuild.pilots[0].upgrades.crew[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('crew')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.crew.length; i++) {
+                upgrades.push([getUpgradeByType('crew', quickbuild[i].pilots[0].upgrades.crew[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('device')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.device.length; i++) {
-                upgrades.push([getUpgradeByType('device', quickBuild.pilots[0].upgrades.device[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('device')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.device.length; i++) {
+                upgrades.push([getUpgradeByType('device', quickbuild[i].pilots[0].upgrades.device[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('force-power')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades['force-power'].length; i++) {
-                upgrades.push([getUpgradeByType('force-power', quickBuild.pilots[0].upgrades['force-power'][i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('force-power')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades['force-power'].length; i++) {
+                upgrades.push([getUpgradeByType('force-power', quickbuild[i].pilots[0].upgrades['force-power'][i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('gunner')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.gunner.length; i++) {
-                upgrades.push([getUpgradeByType('gunner', quickBuild.pilots[0].upgrades.gunner[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('gunner')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.gunner.length; i++) {
+                upgrades.push([getUpgradeByType('gunner', quickbuild[i].pilots[0].upgrades.gunner[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('illicit')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.illicit.length; i++) {
-                upgrades.push([getUpgradeByType('illicit', quickBuild.pilots[0].upgrades.illicit[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('illicit')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.illicit.length; i++) {
+                upgrades.push([getUpgradeByType('illicit', quickbuild[i].pilots[0].upgrades.illicit[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('missile')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.missile.length; i++) {
-                upgrades.push([getUpgradeByType('missile', quickBuild.pilots[0].upgrades.missile[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('missile')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.missile.length; i++) {
+                upgrades.push([getUpgradeByType('missile', quickbuild[i].pilots[0].upgrades.missile[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('modification')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.modification.length; i++) {
-                upgrades.push([getUpgradeByType('modification', quickBuild.pilots[0].upgrades.modification[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('modification')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.modification.length; i++) {
+                upgrades.push([getUpgradeByType('modification', quickbuild[i].pilots[0].upgrades.modification[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('sensor')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.sensor.length; i++) {
-                upgrades.push([getUpgradeByType('sensor', quickBuild.pilots[0].upgrades.sensor[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('sensor')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.sensor.length; i++) {
+                upgrades.push([getUpgradeByType('sensor', quickbuild[i].pilots[0].upgrades.sensor[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('tactical-relay')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades['tactical-relay'].length; i++) {
-                upgrades.push([getUpgradeByType('tactical-relay', quickBuild.pilots[0].upgrades['tactical-relay'][i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('tactical-relay')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades['tactical-relay'].length; i++) {
+                upgrades.push([getUpgradeByType('tactical-relay', quickbuild[i].pilots[0].upgrades['tactical-relay'][i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('talent')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.talent.length; i++) {
-                upgrades.push([getUpgradeByType('talent', quickBuild.pilots[0].upgrades.talent[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('talent')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.talent.length; i++) {
+                upgrades.push([getUpgradeByType('talent', quickbuild[i].pilots[0].upgrades.talent[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('tech')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.tech.length; i++) {
-                upgrades.push([getUpgradeByType('tech', quickBuild.pilots[0].upgrades.tech[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('tech')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.tech.length; i++) {
+                upgrades.push([getUpgradeByType('tech', quickbuild[i].pilots[0].upgrades.tech[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('title')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.title.length; i++) {
-                upgrades.push([getUpgradeByType('title', quickBuild.pilots[0].upgrades.title[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('title')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.title.length; i++) {
+                upgrades.push([getUpgradeByType('title', quickbuild[i].pilots[0].upgrades.title[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('torpedo')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.torpedo.length; i++) {
-                upgrades.push([getUpgradeByType('torpedo', quickBuild.pilots[0].upgrades.torpedo[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('torpedo')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.torpedo.length; i++) {
+                upgrades.push([getUpgradeByType('torpedo', quickbuild[i].pilots[0].upgrades.torpedo[i]), 0]);
             }
-        } if (quickBuild.pilots[0].upgrades.hasOwnProperty('turret')) {
-            for (var i = 0; i < quickBuild.pilots[0].upgrades.turret.length; i++) {
-                upgrades.push([getUpgradeByType('turret', quickBuild.pilots[0].upgrades.turret[i]), 0]);
+        } if (quickbuild[i].pilots[0].upgrades.hasOwnProperty('turret')) {
+            for (var i = 0; i < quickbuild[i].pilots[0].upgrades.turret.length; i++) {
+                upgrades.push([getUpgradeByType('turret', quickbuild[i].pilots[0].upgrades.turret[i]), 0]);
             }
         }
     }
+}
         displayUpgrades();
     }
 }

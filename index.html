@@ -7,6 +7,363 @@
     <link rel="stylesheet" href="assets/css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        var astromechs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/astromech.json');
+        var cannons = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/cannon.json');
+        var configurations = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/configuration.json');
+        var crews = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/crew.json');
+        var devices = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/device.json');
+        var force_powers = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/force-power.json');
+        var gunners = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/gunner.json');
+        var illicits = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/illicit.json');
+        var missiles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/missile.json');
+        var modifications = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/modification.json');
+        var sensors = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/sensor.json');
+        var tactical_relays = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/tactical-relay.json');
+        var talents = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/talent.json');
+        var techs = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/tech.json');
+        var titles = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/title.json');
+        var torpedoes = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/torpedo.json');
+        var turrets = returnJSON('https://iwerts.github.io/xwing-data2/data/upgrades/turret.json');
+        var quickBuild = [];
+        var upgrades = [];
+
+        function getQuickBuild() {
+            quickBuild = [];
+            for (var i = 0; i < quickBuilds.length; i++) {
+                for (var j = 0; j < quickBuilds[i].builds.length; j++) {
+                    if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws) {
+                        quickBuild.push(quickBuilds[i].builds[j]);
+                    }
+                }
+            }
+
+            if (quickBuild.length > 1) {
+                $('#quick_build_selector').remove();
+                $('#selection_form').append('<select id="quick_build_selector"></select>');
+                for (var i = 0; i < quickBuild.length; i++) {
+                    $('#quick_build_selector').append('<option id="' + quickBuild[i].pilots[0].id + '' + i + '">Build #' + (i + 1));
+                }
+            } else {
+                getUpgrades(quickBuild[0]);
+                $('#quick_build_selector').remove();
+            }
+        }
+
+
+        function getUpgradesByIndex(quickBuild, quick_build_index) {
+            console.log("TEST");
+            getUpgrades(quickBuild[quick_build_index]);
+        }
+
+        function getUpgrades(build) {
+            if (build != null) {
+                if (build.pilots[0].hasOwnProperty('upgrades')) {
+
+                    if (build.pilots[0].upgrades.hasOwnProperty('astromech')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.astromech.length; i++) {
+
+                            upgrades.push([getUpgradeByType('astromech', build.pilots[0].upgrades.astromech[i]), 0]);
+                        }
+                    }
+                    if (build.pilots[0].upgrades.hasOwnProperty('cannon')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.cannon.length; i++) {
+                            upgrades.push([getUpgradeByType('cannon', build.pilots[0].upgrades.cannon[i]), 0]);
+                        }
+                    }
+                    if (build.pilots[0].upgrades.hasOwnProperty('configuration')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.configuration.length; i++) {
+                            upgrades.push([getUpgradeByType('configuration', build.pilots[0].upgrades.configuration[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('crew')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.crew.length; i++) {
+                            upgrades.push([getUpgradeByType('crew', build.pilots[0].upgrades.crew[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('device')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.device.length; i++) {
+                            upgrades.push([getUpgradeByType('device', build.pilots[0].upgrades.device[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('force-power')) {
+                        for (var i = 0; i < build.pilots[0].upgrades['force-power'].length; i++) {
+                            upgrades.push([getUpgradeByType('force-power', build.pilots[0].upgrades['force-power'][i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('gunner')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.gunner.length; i++) {
+                            upgrades.push([getUpgradeByType('gunner', build.pilots[0].upgrades.gunner[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('illicit')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.illicit.length; i++) {
+                            upgrades.push([getUpgradeByType('illicit', build.pilots[0].upgrades.illicit[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('missile')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.missile.length; i++) {
+                            upgrades.push([getUpgradeByType('missile', build.pilots[0].upgrades.missile[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('modification')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.modification.length; i++) {
+                            upgrades.push([getUpgradeByType('modification', build.pilots[0].upgrades.modification[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('sensor')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.sensor.length; i++) {
+                            upgrades.push([getUpgradeByType('sensor', build.pilots[0].upgrades.sensor[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('tactical-relay')) {
+                        for (var i = 0; i < build.pilots[0].upgrades['tactical-relay'].length; i++) {
+                            upgrades.push([getUpgradeByType('tactical-relay', build.pilots[0].upgrades['tactical-relay'][i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('talent')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.talent.length; i++) {
+                            upgrades.push([getUpgradeByType('talent', build.pilots[0].upgrades.talent[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('tech')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.tech.length; i++) {
+                            upgrades.push([getUpgradeByType('tech', build.pilots[0].upgrades.tech[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('title')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.title.length; i++) {
+                            upgrades.push([getUpgradeByType('title', build.pilots[0].upgrades.title[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('torpedo')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.torpedo.length; i++) {
+                            upgrades.push([getUpgradeByType('torpedo', build.pilots[0].upgrades.torpedo[i]), 0]);
+                        }
+                    } if (build.pilots[0].upgrades.hasOwnProperty('turret')) {
+                        for (var i = 0; i < build.pilots[0].upgrades.turret.length; i++) {
+                            upgrades.push([getUpgradeByType('turret', build.pilots[0].upgrades.turret[i]), 0]);
+                        }
+                    }
+                }
+            }
+        }
+
+        function getUpgradeByType(upgradeType, upgradeXWS) {
+            switch (upgradeType) {
+                case 'astromech':
+                    return getUpgrade(astromechs, upgradeXWS);
+                case 'cannon':
+                    return getUpgrade(cannons, upgradeXWS);
+                case 'configuration':
+                    return getUpgrade(configurations, upgradeXWS);
+                case 'crew':
+                    return getUpgrade(crews, upgradeXWS);
+                case 'device':
+                    return getUpgrade(devices, upgradeXWS);
+                case 'force-power':
+                    return getUpgrade(force_powers, upgradeXWS);
+                case 'gunner':
+                    return getUpgrade(gunners, upgradeXWS);
+                case 'illicit':
+                    return getUpgrade(illicits, upgradeXWS);
+                case 'missile':
+                    return getUpgrade(missiles, upgradeXWS);
+                case 'modification':
+                    return getUpgrade(modifications, upgradeXWS);
+                case 'sensor':
+                    return getUpgrade(sensors, upgradeXWS);
+                case 'tactical-relay':
+                    return getUpgrade(tactical_relays, upgradeXWS);
+                case 'talent':
+                    return getUpgrade(talents, upgradeXWS);
+                case 'tech':
+                    return getUpgrade(techs, upgradeXWS);
+                case 'title':
+                    return getUpgrade(titles, upgradeXWS);
+                case 'torpedo':
+                    return getUpgrade(torpedoes, upgradeXWS);
+                case 'turret':
+                    return getUpgrade(turrets, upgradeXWS);
+
+            }
+        }
+
+        function displayUpgrades() {
+            $('.upgrade').remove();
+            for (var i = 0; i < upgrades.length; i++) {
+                addUpgradeToPilotTextBox(upgrades[i][0], upgrades[i][1]);
+            }
+        }
+
+        function addUpgradeToPilotTextBox(upgrade, side) {
+            $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeText(upgrade, side) + '</div>');
+        }
+
+        function getUpgrade(upgrades, upgradeXWS) {
+            for (var i = 0; i < upgrades.length; i++) {
+                if (upgrades[i].xws == upgradeXWS) {
+                    return upgrades[i];
+                }
+            }
+        }
+
+        function getUpgradeSlots(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('slots')) {
+                output = '';
+                for (var i = 0; i < upgrade.sides[side].slots.length; i++) {
+                    output += convertText(upgrade.sides[side].slots[i].toLowerCase().replace(/\s/g, ''));
+                }
+                return '<span class="upgrade_slots upgrade">' + output + '</span>';
+            }
+        }
+
+        function getUpgradeName(upgrade, side) {
+            name = '';
+
+            if (upgrade.hasOwnProperty('limited')) {
+                if (upgrade.limited > 0) {
+                    for (var i = 0; i < upgrade.limited; i++) {
+                        name += '•';
+                    }
+                    name += ' ';
+                }
+            }
+            name += upgrade.sides[side].title;
+            return '<span class="upgrade_name upgrade" onclick="flipUpgrade(\'' + upgrade.xws + '\')">' + name + '</span>';
+        }
+
+        function flipUpgrade(xws) {
+
+            for (var i = 0; i < upgrades.length; i++) {
+                if (upgrades[i][0].xws == xws) {
+                    if (upgrades[i][0].sides.length > 1) {
+                        switch (upgrades[i][1]) {
+                            case 0:
+                                upgrades[i][1] = 1;
+                                break;
+                            case 1:
+                                upgrades[i][1] = 0;
+                                break;
+                        }
+                    }
+                }
+            }
+            displayUpgrades();
+        }
+
+        function getUpgradeText(upgrade, side) {
+            upgradeText = getUpgradeName(upgrade, side);
+            upgradeText += getUpgradeSlots(upgrade, side);
+            upgradeText += getUpgradeAbility(upgrade, side);
+            upgradeText += getUpgradeFlavor(upgrade, side);
+            upgradeText += getUpgradeCharges(upgrade, side);
+            upgradeText += getUpgradeActions(upgrade, side);
+            upgradeText += getUpgradeAttack(upgrade, side);
+            upgradeText += getUpgradeGrants(upgrade, side);
+
+            return '<br><span class="upgrade_text upgrade">' + upgradeText + '</span>';
+        }
+        function getUpgradeAttack(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('attack')) {
+                arc = convertText(upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g, ''));
+                value = upgrade.sides[side].attack.value;
+                minRange = upgrade.sides[side].attack.minrange;
+                maxRange = upgrade.sides[side].attack.maxrange;
+                if (upgrade.sides[side].attack.ordnance) {
+                    ordnance = convertText('rangebonusindicator');
+                    return '<span class="attack_upgrade upgrade">' + arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
+                } else {
+                    $('#pilot_attack').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
+                    return '';
+                }
+
+
+            } else {
+                return '';
+            }
+        }
+
+        function getUpgradeForce(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('force')) {
+                value = upgrade.sides[side].force.amount
+                recovers = upgrade.sides[side].force.recovers;
+                if (current_pilot.hasOwnProperty('force')) {
+                    value += current_pilot.force.amount;
+                    recovers = Number.max(recovers, current_pilot.force.recovers);
+                    $('#pilot_stat_force').remove();
+                }
+                for (var i = 0; i < recovers; i++) {
+                    value += '⯅';
+                }
+                $('#pilot_stats').append('<div class="upgrade_stat upgrade" id="upgrade_stat_force">' + '<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
+
+            }
+        }
+
+        function getUpgradeCharges(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('charges')) {
+                value = upgrade.sides[side].charges.value;
+                for (var i = 0; i < upgrade.sides[side].charges.recovers; i++) {
+                    value += '⯅';
+                }
+                return '<span class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertIcon('charge') + '</span><span class="upgrade_stat_value">' + value + '</span></span>';
+            } else {
+                return '';
+            }
+        }
+        function getUpgradeAbility(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('ability')) {
+                return '<span class="upgrade_ability upgrade" >' + convertGameText(upgrade.sides[side].ability) + '</span>';
+            } else {
+                return '';
+            }
+        }
+
+        function getUpgradeFlavor(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('text')) {
+                return '<span class="upgrade_flavor upgrade">' + convertGameText(upgrade.sides[side].text) + '</span>';
+            } else {
+                return '';
+            }
+        }
+
+        function getUpgradeGrants(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('grants')) {
+                for (var i = 0; i < upgrade.sides[side].grants.length; i++) {
+                    switch (upgrade.sides[side].grants[i].type) {
+                        case 'stat':
+                            var stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].value;
+                            var current_value = 0;
+                            for (var j = 0; j < current_ship.stats.length; j++) {
+                                if (current_ship.stats[j].type == upgrade.sides[side].grants[i].value) {
+                                    current_value = current_ship.stats[j].value;
+
+                                }
+                            }
+                            if (('#pilot_stats ' + stat_type).length > 0) {
+                                $(stat_type).remove();
+                            }
+                            $('#pilot_stats').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + (parseInt(current_value) + parseInt(upgrade.sides[side].grants[i].amount)) + '*</span></div>')
+                            break;
+                        case 'action':
+                            break;
+                    }
+                }
+            }
+            return '';
+        }
+
+        function getUpgradeActions(upgrade, side) {
+            if (upgrade.sides[side].hasOwnProperty('actions')) {
+
+                for (var i = 0; i < upgrade.sides[side].actions.length; i++) {
+                    if (upgrade.sides[side].actions[i].hasOwnProperty('linked')) {
+
+                        $('#pilot_actions').append('<span class="upgrade_action upgrade">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].actions[i].difficulty) + ' ' + convertIcon(upgrade.sides[side].actions[i].linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].linked.difficulty) + '</span>');
+                    } else {
+                        if (!($('#' + upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '') + 'red').length) == 0) {
+                            $('#' + upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, '') + 'red').remove();
+                        }
+                        $('#pilot_actions').append('<span class="upgrade_action upgrade">' + convertIcon(upgrade.sides[side].actions[i].type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].actions[i].difficulty) + '</span>');
+
+                    }
+                }
+                return '';
+            } else {
+                return '';
+            }
+        }
+
+
+
+
         var iconsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json');
         var shipsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/ships-map.json');
         var quickBuilds = returnJSON('https://iwerts.github.io/xwsquickbuilds.json');
@@ -29,13 +386,13 @@
 
 
     </script>
-    <script src="https://iwerts.github.io/assets/js/upgrades.js"></script>
+
 </head>
 
 
 
 <body>
-    <form>
+    <form id="selection_form">
         <select id="faction">
             <option selected>Select Faction</option>
         </select>
@@ -46,8 +403,9 @@
             <option selected>Select Pilot</option>
         </select>
         <br>
-        <input type="checkbox" id="quick_build">
-        <label id="quick_build_label">Quick Build?</label>
+        <input type="checkbox" id="quick_build" disabled>
+        <label for="quick_build" id="quick_build_label" disabled>Quick Build?</label>
+
     </form>
     <div id="card">
         <div id="name_bar" class="card_field">
@@ -81,6 +439,8 @@
                             $("#ship").removeAttr("disabled");
                             $('#pilot').empty();
                             $('#pilot').prop("disabled", true);
+                            $('#quick_build').prop('disabled', true);
+                            $('#quick_build').prop('checked', false);
                             $('#ship').append('<option selected>Select Ship</option>');
                             $('#pilot').append('<option selected>Select Pilot</option>');
                             $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.pilots[i].ships[j], function (ship) {
@@ -101,6 +461,8 @@
                             $("#pilot").empty();
 
                             $("#pilot").removeAttr("disabled");
+                            $('#quick_build').prop('disabled', true);
+                            $('#quick_build').prop('checked', false);
                             $.getJSON('https://iwerts.github.io/xwing-data2/' + manifest.pilots[i].ships[j], function (ship) {
                                 if (ship.xws === $('#ship option:selected').val()) {
                                     current_ship = ship;
@@ -123,22 +485,29 @@
                     current_pilot = current_ship.pilots[i];
                 }
             }
+            $('#quick_build').removeAttr('disabled');
+            $('#quick_build').prop('checked', false);
+            upgrades = [];
+            getQuickBuild();
+        });
+
+        $('#quick_build_selector').change(function () {
+            upgrades = [];
+            getUpgrades(quickBuild[$('#quick_build_selector').prop('selectedIndex')]);
         });
 
         $('form').change(function () {
             updateCard();
         });
 
-        function updateCard(){
+        function updateCard() {
             $('.card_field').empty();
             if (current_pilot != null) {
                 getNameBar();
                 getCardBody();
                 getCardFooter();
                 if ($('#quick_build').prop('checked')) {
-                    getQuickBuild();
-                } else {
-                    upgrades = new Array();
+                    displayUpgrades();
                 }
             }
         }
@@ -227,10 +596,28 @@
                         value += '⯅';
                     }
                 }
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('forcecharge') + ' </span><span class="pilot_stat_value" id="force_stat_value">' + value + '</span></div>');
+                $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_force"><span class="pilot_stat_icon">' + convertIcon('forcecharge') + ' </span><span class="pilot_stat_value" id="force_stat_value">' + value + '</span></div>');
+                getForce(current_pilot.force.value);
             }
         }
 
+function getForce(shields){
+            for (var i = 0; i < shields; i++){
+                $('#pilot_stat_force').append('<span class="force_token" style="position: relative;" id="force_token_'+i+'" onclick="flipForce('+i+')">'+convertText("token-force-outline")+convertText("token-force") +'</span>');
+                $('#force_token_'+i + ' i').css('position', 'absolute');
+                $('#force_token_'+i + ' i').css('top', '0px');
+                $('#force_token_'+i + ' i').css('left', i+'em');
+            }
+        }
+
+        function flipForce(force_token_index){
+            var force_token = $('#force_token_' + force_token_index + ' i').first();
+            if (force_token.css("color") == "rgb(255, 0, 255)"){
+                force_token.css("color", "red");
+            } else {
+                force_token.css("color", "magenta");
+            }
+        }
 
         function getPilotActions() {
             if (current_ship.hasOwnProperty('actions')) {
@@ -251,11 +638,33 @@
                     $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_charges"><span class="pilot_stat_icon">' + convertIcon('charges') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
                     break;
                 case 'shields':
+
                     $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_shields"><span class="pilot_stat_icon">' + convertIcon('shield') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
+                    getShields(stat.value);
                     break;
                 default: $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_' + stat.type.toLowerCase().replace(/\s/g, '') + '"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
             }
         }
+
+        function getShields(shields){
+            for (var i = 0; i < shields; i++){
+                $('#pilot_stat_shields').append('<span class="shield_token" style="position: relative;" id="shield_token_'+i+'" onclick="flipShield('+i+')">'+convertText("token-shield-outline")+convertText("token-shield") +'</span>');
+                $('#shield_token_'+i + ' i').css('position', 'absolute');
+                $('#shield_token_'+i + ' i').css('top', '0px');
+                $('#shield_token_'+i + ' i').css('left', i+'em');
+            }
+        }
+
+        function flipShield(shield_token_index){
+            var shield_token = $('#shield_token_' + shield_token_index + ' i').first();
+            if (shield_token.css("color") == "rgb(0, 0, 255)"){
+                shield_token.css("color", "red");
+            } else {
+                shield_token.css("color", "blue");
+            }
+        }
+
+
 
         function getAction(action) {
             if (action.hasOwnProperty('linked')) {
@@ -412,7 +821,7 @@
                     return convertIcon(text.toString().replace(' ', '').toLowerCase());
             }
         }
-        
+
     </script>
 </body>
 
