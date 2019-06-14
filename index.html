@@ -183,7 +183,8 @@
         }
 
         function addUpgradeToPilotTextBox(upgrade, side) {
-            $('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + getUpgradeText(upgrade, side) + '</div>');
+            var text = getUpgradeText(upgrade, side);
+            //$('#pilot_text_box').append('<div id="upgrade_ability" class="card_field upgrade"><hr>' + text + '</div>');
         }
 
         function getUpgrade(upgrades, upgradeXWS) {
@@ -236,19 +237,43 @@
                 }
             }
             displayUpgrades();
+            sortStats();
         }
 
         function getUpgradeText(upgrade, side) {
-            upgradeText = getUpgradeName(upgrade, side);
-            upgradeText += getUpgradeSlots(upgrade, side);
-            upgradeText += getUpgradeAbility(upgrade, side);
-            upgradeText += getUpgradeFlavor(upgrade, side);
-            upgradeText += getUpgradeCharges(upgrade, side);
-            upgradeText += getUpgradeActions(upgrade, side);
-            upgradeText += getUpgradeAttack(upgrade, side);
-            upgradeText += getUpgradeGrants(upgrade, side);
 
-            return '<br><span class="upgrade_text upgrade">' + upgradeText + '</span>';
+            $("#pilot_text_box").append('<div class="upgrade_card upgrade" id="'+upgrade.xws+'"></div>');
+            $("#"+upgrade.xws).append(getUpgradeSlots(upgrade, side));
+
+            $("#"+upgrade.xws).append('<div class="upgrade_item upgrade" id="'+upgrade.xws+'_item"></div>');
+            
+            $("#"+upgrade.xws+"_item").append(getUpgradeName(upgrade, side));
+            $("#"+upgrade.xws+"_item").append('<div class="upgrade_body upgrade" id="'+upgrade.xws+'_body"></div>');
+            
+            $("#"+upgrade.xws+"_body").append(getUpgradeAbility(upgrade, side));
+            $("#"+upgrade.xws+"_body").append(getUpgradeFlavor(upgrade, side));
+            if (getUpgradeCharges(upgrade, side) == '' && getUpgradeAttack(upgrade, side) == ''){
+
+            } else {
+            $("#"+upgrade.xws+"_body").append('<div class="upgrade_info upgrade" id="'+upgrade.xws+'_specific_info"></div>');
+            $("#"+upgrade.xws+"_specific_info").append(getUpgradeCharges(upgrade, side));
+            $("#"+upgrade.xws+"_specific_info").append(getUpgradeAttack(upgrade, side));
+    
+        }
+            
+    /*  
+        upgradeText = getUpgradeSlots(upgrade, side);
+        upgradeText += getUpgradeName(upgrade, side);
+        upgradeText += getUpgradeAbility(upgrade, side);
+        upgradeText += getUpgradeFlavor(upgrade, side);
+        upgradeText += getUpgradeCharges(upgrade, side);
+        upgradeText += getUpgradeActions(upgrade, side);
+        upgradeText += getUpgradeAttack(upgrade, side);
+        upgradeText += getUpgradeGrants(upgrade, side);
+     
+         upgradeText += getUpgradeForce(upgrade, side);
+*/ 
+           // return '<br><span class="upgrade_text upgrade">' + upgradeText + '</span>';
         }
         function getUpgradeAttack(upgrade, side) {
             if (upgrade.sides[side].hasOwnProperty('attack')) {
@@ -260,7 +285,7 @@
                     ordnance = convertText('rangebonusindicator');
                     return '<span class="attack_upgrade upgrade">' + arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
                 } else {
-                    $('#pilot_attack').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
+                    $('#pilot_stats').append('<div class="upgrade_stat upgrade stat attack" id="' + upgrade.xws+ '_'+ upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g,'') + '"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
                     return '';
                 }
 
@@ -271,19 +296,23 @@
         }
 
         function getUpgradeForce(upgrade, side) {
+            
             if (upgrade.sides[side].hasOwnProperty('force')) {
-                value = upgrade.sides[side].force.amount
+                console.log(upgrade.xws + " has force");
+                value = upgrade.sides[side].force.value;
                 recovers = upgrade.sides[side].force.recovers;
                 if (current_pilot.hasOwnProperty('force')) {
-                    value += current_pilot.force.amount;
+                    value += current_pilot.force.value;
                     recovers = Number.max(recovers, current_pilot.force.recovers);
                     $('#pilot_stat_force').remove();
                 }
                 for (var i = 0; i < recovers; i++) {
                     value += '⯅';
                 }
-                $('#pilot_stats').append('<div class="upgrade_stat upgrade" id="upgrade_stat_force">' + '<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
-
+                $('#pilot_stats').append('<div class="pilot_stat upgrade stat" id="pilot_stat_force">' + '<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
+                return '';
+            } else {
+                return '';
             }
         }
 
@@ -319,7 +348,19 @@
                 for (var i = 0; i < upgrade.sides[side].grants.length; i++) {
                     switch (upgrade.sides[side].grants[i].type) {
                         case 'stat':
-                            var stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].value;
+                            var stat_type = '';
+                            var icon = '';
+                            switch (upgrade.sides[side].grants[i].value){
+                                case "attack":
+                                    stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].arc.toLowerCase().replace(/\s/g, '');
+                                    console.log(stat_type);
+                                    icon = upgrade.sides[side].grants[i].arc.toLowerCase().replace(/\s/g, '');
+                                    break;
+                                default:
+                                    stat_type = "#pilot_stat_" + upgrade.sides[side].grants[i].value;
+                                    icon = upgrade.sides[side].grants[i].value;
+                                    break;
+                            }
                             var current_value = 0;
                             for (var j = 0; j < current_ship.stats.length; j++) {
                                 if (current_ship.stats[j].type == upgrade.sides[side].grants[i].value) {
@@ -330,7 +371,7 @@
                             if (('#pilot_stats ' + stat_type).length > 0) {
                                 $(stat_type).remove();
                             }
-                            $('#pilot_stats').append('<div class="upgrade_stat upgrade"><span class="upgrade_stat_icon">' + convertText(upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '')) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + (parseInt(current_value) + parseInt(upgrade.sides[side].grants[i].amount)) + '*</span></div>')
+                            $('#pilot_stats').append('<div class="upgrade_stat stat upgrade" id="'+stat_type.replace('#','')+'"><span class="upgrade_stat_icon">' + convertText(icon) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + (parseInt(current_value) + parseInt(upgrade.sides[side].grants[i].amount)) + '*</span></div>')
                             break;
                         case 'action':
                             break;
@@ -408,15 +449,6 @@
 
     </form>
     <div id="card">
-        <div id="name_bar" class="card_field">
-        </div>
-
-        <div id="card_body" class="card_field">
-
-        </div>
-
-        <div id="card_footer" class="card_field">
-        </div>
     </div>
     <script>
         var current_faction;
@@ -501,18 +533,76 @@
         });
 
         function updateCard() {
-            $('.card_field').empty();
+            $('.card_field').remove();
             if (current_pilot != null) {
                 getNameBar();
+                getPilotStats();            
+                getPilotActions();
                 getCardBody();
                 getCardFooter();
                 if ($('#quick_build').prop('checked')) {
                     displayUpgrades();
                 }
+                sortStats();
             }
         }
 
+        function sortStats(){
+            $("div[class*=stat").sort(function(a, b){
+                a_value = 0;
+                b_value = 0;
+                
+                switch(a.id){
+                    case 'pilot_stat_agility':
+                        a_value = 2;
+                        break;
+                    case 'pilot_stat_hull':
+                        a_value = 3;
+                        break;
+                    case 'pilot_stat_shields':
+                        a_value = 4;
+                        break;
+                    case 'pilot_stat_charges':
+                        a_value = 5;
+                        break;
+                    case 'pilot_stat_force':
+                        a_value = 6;
+                        break;
+                    default:
+                        a_value = 1;
+                }
+                switch(b.id){
+                    case 'pilot_stat_agility':
+                        b_value = 2;
+                        break;
+                    case 'pilot_stat_hull':
+                        b_value = 3;
+                        break;
+                    case 'pilot_stat_shields':
+                        b_value = 4;
+                        break;
+                    case 'pilot_stat_charges':
+                        b_value = 5;
+                        break;
+                    case 'pilot_stat_force':
+                        b_value = 6;
+                        break;
+                    default:
+                        b_value = 1;
+                        break;
+                }
+
+               if (a_value < b_value){
+                    return -1;
+                } else {
+                    return 1;
+                }
+                
+            }).appendTo('#pilot_stats');
+        }
+
         function getNameBar() {
+            $("#card").append('<div id="name_bar" class="card_field"></div>');
             getInitiative();
             getNameSection();
             getFactionIcon();
@@ -527,17 +617,17 @@
         }
 
         function getCardBody() {
+            $("#card").append('<div id="card_body" class="card_field"></div>');
             getPilotInfo();
-            getPilotActions();
         }
 
         function getPilotInfo() {
             $('#card_body').append('<span id="pilot_info"></span>');
             getPilotTextBox();
-            getPilotStats();
         }
 
         function getCardFooter() {
+            $("#card").append('<div id="card_footer" class="card_field"></div>');
             getShipIcon();
             getShipName();
         }
@@ -573,7 +663,7 @@
 
         function getPilotStats() {
             if (current_ship.hasOwnProperty('stats')) {
-                $('#pilot_info').append('<hr><span id="pilot_stats"></span>');
+                $('#card').append('<div id="pilot_stats" class="card_field"></div>');
 
                 for (var i = 0; i < current_ship.stats.length; i++) {
                     getStat(current_ship.stats[i]);
@@ -586,7 +676,7 @@
                         value += '⯅';
                     }
                 }
-                $('#pilot_stats').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon('charge') + ' </span><span class="pilot_stat_value">' + value + '</span></div>');
+                $('#pilot_stats').append('<div class="pilot_stat stat" id="pilot_stat_charges"><span class="pilot_stat_icon">' + convertIcon('charge') + ' </span><span class="pilot_stat_value">' + value + '</span></div>');
 
             }
             if (current_pilot.hasOwnProperty('force')) {
@@ -596,8 +686,8 @@
                         value += '⯅';
                     }
                 }
-                $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_force"><span class="pilot_stat_icon">' + convertIcon('forcecharge') + ' </span><span class="pilot_stat_value" id="force_stat_value">' + value + '</span></div>');
-                getForce(current_pilot.force.value);
+                $('#pilot_stats').append('<div class="pilot_stat stat" id="pilot_stat_force"><span class="pilot_stat_icon">' + convertIcon('forcecharge') + ' </span><span class="pilot_stat_value" id="force_stat_value">' + value + '</span></div>');
+                //getForce(current_pilot.force.value);
             }
         }
 
@@ -621,7 +711,7 @@ function getForce(shields){
 
         function getPilotActions() {
             if (current_ship.hasOwnProperty('actions')) {
-                $('#card_body').append('<span id="pilot_actions"></span>');
+                $('#card').append('<div id="pilot_actions" class="card_field"></div>');
 
                 for (var i = 0; i < current_ship.actions.length; i++) {
                     getAction(current_ship.actions[i]);
@@ -635,14 +725,14 @@ function getForce(shields){
                     getAttack(stat);
                     break;
                 case 'charge':
-                    $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_charges"><span class="pilot_stat_icon">' + convertIcon('charges') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
+                    $('#pilot_stats').append('<div class="pilot_stat stat" id="pilot_stat_charges"><span class="pilot_stat_icon">' + convertIcon('charges') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
                     break;
                 case 'shields':
 
-                    $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_shields"><span class="pilot_stat_icon">' + convertIcon('shield') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
-                    getShields(stat.value);
+                    $('#pilot_stats').append('<div class="pilot_stat stat" id="pilot_stat_shields"><span class="pilot_stat_icon">' + convertIcon('shield') + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
+                    //getShields(stat.value);
                     break;
-                default: $('#pilot_stats').append('<div class="pilot_stat" id="pilot_stat_' + stat.type.toLowerCase().replace(/\s/g, '') + '"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
+                default: $('#pilot_stats').append('<div class="pilot_stat stat" id="pilot_stat_' + stat.type.toLowerCase().replace(/\s/g, '') + '"><span class="pilot_stat_icon">' + convertIcon(stat.type.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + stat.value + '</span></div>');
             }
         }
 
@@ -681,12 +771,7 @@ function getForce(shields){
         }
 
         function getAttack(attack) {
-            if ($('#pilot_attack').length == 0) {
-                $('#pilot_stats').append('<div id="pilot_attack"></div>');
-                getAttack(attack);
-            } else {
-                $('#pilot_attack').append('<div class="pilot_stat"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + attack.value + '</span></div>');
-            }
+              $('#pilot_stats').append('<div class="pilot_stat attack" id="pilot_stat_' + attack.arc.toLowerCase().replace(/\s/g, '')+ '"><span class="pilot_stat_icon">' + convertIcon(attack.arc.toLowerCase().replace(/\s/g, '')) + ' </span><span class="pilot_stat_value">' + attack.value + '</span></div>');
         }
 
         function getShipIcon() {
@@ -701,7 +786,7 @@ function getForce(shields){
 
         function getShipAbility() {
             if (current_pilot.hasOwnProperty('shipAbility')) {
-                $('#pilot_text_box').append('<span id="ship_ability"><span id="ship_ability_name"></span><span id="ship_ability_text"></span></span>');
+                $('#pilot_text_box').append('<hr><span id="ship_ability"><span id="ship_ability_name"></span><span id="ship_ability_text"></span></span>');
                 $('#ship_ability_name').append(current_pilot.shipAbility.name);
                 $('#ship_ability_text').append(convertGameText(current_pilot.shipAbility.text));
             }
