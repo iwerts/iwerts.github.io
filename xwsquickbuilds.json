@@ -7432,5 +7432,125 @@
           }
       ],
       "ship": "tie-sk-striker"
-  }
+  },
+  {
+    "expansion": "SWZ40",
+    "faction": "galactic-republic",
+    "builds": [
+        {
+            "threat": 3,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r2astromech"
+                        ],
+                        "force-power":[
+                          "heightenedperception"  
+                        ],
+                        "talent": [
+                            "outmaneuver"
+                        ],
+                        "sensor":[
+                            "collisiondetector"
+                        ]
+                    },
+                    "id": "anakinskywalker-nabooroyaln1starfighter"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r2a6"
+                        ],
+                        "talent": [
+                            "daredevil"
+                        ]
+                    },
+                    "id": "ricolie"
+                }
+            ]
+        },{
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r5astromech"
+                        ],
+                        "torpedo": [
+                            "plasmatorpedoes"
+                        ]
+                    },
+                    "id": "naboohandmaiden"
+                }
+            ]
+        }
+    ],
+    "ship": "nabooroyaln1starfighter"
+},
+{
+  "expansion": "SWZ40",
+  "faction": "galactic-republic",
+  "builds": [
+      {
+          "threat": 2,
+          "pilots": [
+              {
+                  "upgrades": {
+                      "talent": [
+                          "elusive"
+                      ],
+                      "sensor":[
+                          "collisiondetector"
+                      ]
+                  },
+                  "id": "padmeamidala"
+              }
+          ]
+      },
+      {
+          "threat": 2,
+          "pilots": [
+              {
+                  "upgrades": {
+                      "astromech": [
+                          "r3astromech"
+                      ],
+                      "sensor": [
+                          "passivesensors"
+                      ],
+                      "torpedo":[
+                          "plasmatorpedoes"
+                      ]
+                  },
+                  "id": "dineeellberger"
+              }
+          ]
+      },{
+          "threat": 2,
+          "pilots": [
+              {
+                  "upgrades": {
+                      "astromech": [
+                          "r2c4"
+                      ],
+                      "sensor":[
+                        "passivesensors"
+                      ],
+                      "torpedo": [
+                          "protontorpedoes"
+                      ]
+                  },
+                  "id": "bravoflightofficer"
+              }
+          ]
+      }
+  ],
+  "ship": "nabooroyaln1starfighter"
+}
 ]
