@@ -7620,5 +7620,89 @@
         }
     ],
     "ship": "resistancetransportpod"
+  },{
+    "expansion": "SWZ45",
+    "faction": "resistance",
+    "builds": [
+        {
+            "threat": 3,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "crew": [
+                            "leiaorgana", "korrsella"
+                        ],
+                        "talent":[
+                            "composure"   
+                        ]
+                    },
+                    "id": "covanell"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "astromech" :[
+                            "r5x3"
+                        ],"cannon":[
+                            "autoblaster"
+                        ], "crew":[
+                            "kaydelconnix"
+                            ],
+                            "modification":[
+                                "sparepartscanisters"   
+                            ]
+                    },
+                    "id": "pammichnerrogoode"
+                }
+            ]
+        }
+    ],
+    "ship": "resistancetransport"
+  },{
+    "expansion": "SWZ45",
+    "faction": "resistance",
+    "builds": [
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r2ha"
+                        ],
+                        "modification":[
+                            "angleddeflectors"   
+                        ],
+                        "torpedo":[
+                            "plasmatorpedoes"
+                        ]
+                    },
+                    "id": "nodinchavdri"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "crew" :[
+                            "larmadacy", "amilynholdo"
+                        ],"torpedo":[
+                           "plasmatorpedoes"
+                        ]
+                    },
+                    "id": "logisticsdivisionpilot"
+                }
+            ]
+        }
+    ],
+    "ship": "resistancetransport"
   }
 ]
