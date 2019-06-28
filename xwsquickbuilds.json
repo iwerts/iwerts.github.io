@@ -7595,7 +7595,7 @@
                 {
                     "upgrades": {
                         "cannon": [
-                            "autoblasters"
+                            "autoblaster"
                         ],
                         "modification":[
                             "afterburners"   
