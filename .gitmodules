@@ -1,6 +1,7 @@
 [submodule "xwing-miniatures-font"]
 	path = xwing-miniatures-font
 	url = https://github.com/geordanr/xwing-miniatures-font.git
+	branch = master
 [submodule "xwing-data2"]
 	path = xwing-data2
 	url = https://github.com/guidokessels/xwing-data2.git
