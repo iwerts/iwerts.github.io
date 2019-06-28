@@ -258,10 +258,12 @@
             $("#"+upgrade.xws+"_body").append('<div class="upgrade_info upgrade" id="'+upgrade.xws+'_specific_info"></div>');
             $("#"+upgrade.xws+"_specific_info").append(getUpgradeCharges(upgrade, side));
             $("#"+upgrade.xws+"_specific_info").append(getUpgradeAttack(upgrade, side));
-    
-        }
             
-    /*  
+        }
+      //  getUpgradeActions(upgrade, side);
+        getUpgradeForce(upgrade, side);
+        getUpgradeGrants(upgrade, side);
+        /*    
         upgradeText = getUpgradeSlots(upgrade, side);
         upgradeText += getUpgradeName(upgrade, side);
         upgradeText += getUpgradeAbility(upgrade, side);
@@ -270,9 +272,8 @@
         upgradeText += getUpgradeActions(upgrade, side);
         upgradeText += getUpgradeAttack(upgrade, side);
         upgradeText += getUpgradeGrants(upgrade, side);
-     
-         upgradeText += getUpgradeForce(upgrade, side);
-*/ 
+        upgradeText += getUpgradeForce(upgrade, side);
+*/
            // return '<br><span class="upgrade_text upgrade">' + upgradeText + '</span>';
         }
         function getUpgradeAttack(upgrade, side) {
@@ -283,9 +284,9 @@
                 maxRange = upgrade.sides[side].attack.maxrange;
                 if (upgrade.sides[side].attack.ordnance) {
                     ordnance = convertText('rangebonusindicator');
-                    return '<span class="attack_upgrade upgrade">' + arc + ' ' + value + '<br>' + ordnance + minRange + ' - ' + maxRange + '</span>';
+                    return '<span class="attack_upgrade upgrade"><span class="upgrade_attack_value upgrade" id="'+upgrade.xws+'_attack_value">' + arc + ' ' + value + '</span><span class="upgrade_attack_ordnance upgrade" id="'+upgrade.xws+'_ordnance">' + ordnance + minRange + ' - ' + maxRange + '</span>';
                 } else {
-                    $('#pilot_stats').append('<div class="upgrade_stat upgrade stat attack" id="' + upgrade.xws+ '_'+ upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g,'') + '"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
+                    $('#pilot_stats').append('<div class="upgrade_stat upgrade stat attack" id="' + upgrade.xws+ '_'+ upgrade.sides[side].attack.arc.toLowerCase().replace(/\s/g,'') + '"><span class="upgrade_stat_icon">' + arc + '</span><span class="upgrade_stat_value">' + value + '*</span><span class="attack_range">' + '(' + minRange + ' - ' + maxRange + ')</span></div>');
                     return '';
                 }
 
@@ -303,13 +304,13 @@
                 recovers = upgrade.sides[side].force.recovers;
                 if (current_pilot.hasOwnProperty('force')) {
                     value += current_pilot.force.value;
-                    recovers = Number.max(recovers, current_pilot.force.recovers);
+                    recovers = Math.max(recovers, current_pilot.force.recovers);
                     $('#pilot_stat_force').remove();
                 }
                 for (var i = 0; i < recovers; i++) {
                     value += '⯅';
                 }
-                $('#pilot_stats').append('<div class="pilot_stat upgrade stat" id="pilot_stat_force">' + '<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
+                $('#pilot_stats').append('<div class="upgrade_stat upgrade stat" id="upgrade_stat_force">' + '<span class="upgrade_stat_icon">' + convertIcon('forcecharge') + '</span><span class="upgrade_stat_value">' + value + '</span></div>');
                 return '';
             } else {
                 return '';
@@ -374,6 +375,18 @@
                             $('#pilot_stats').append('<div class="upgrade_stat stat upgrade" id="'+stat_type.replace('#','')+'"><span class="upgrade_stat_icon">' + convertText(icon) + '</span><span class="upgrade_stat_value" id="pilot_stat_' + upgrade.sides[side].grants[i].value.toLowerCase().replace(/\s/g, '') + '">' + (parseInt(current_value) + parseInt(upgrade.sides[side].grants[i].amount)) + '*</span></div>')
                             break;
                         case 'action':
+                            
+                            if (upgrade.sides[side].grants[i].value.hasOwnProperty('linked')){
+                                
+                $('#pilot_actions').append('<span class="upgrade_action upgrade">' + convertIcon(upgrade.sides[side].grants[i].value.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].grants[i].value.difficulty) + ' ' + convertIcon('linked', upgrade.sides[side].grants[i].value.difficulty) + ' ' + convertIcon(upgrade.sides[side].grants[i].value.linked.type.toLowerCase().replace(/\s/g, ''), upgrade.sides[side].grants[i].value.linked.difficulty) + '</span>');
+
+                            } else {
+                                if (!($('#' + upgrade.sides[side].grants[i].value.type.toLowerCase().replace(/\s/g, '') + 'red').length) == 0) {
+                                     $('#' + upgrade.sides[side].grants[i].value.type.toLowerCase().replace(/\s/g, '') + 'red').remove();
+                                } 
+                                $('#pilot_actions').append('<span class="upgrade_action upgrade">'+convertIcon(upgrade.sides[side].grants[i].value.type.toLowerCase().replace(/\s/g,''), upgrade.sides[side].grants[i].value.difficulty)+'</span>');
+                            }
+
                             break;
                     }
                 }
@@ -568,6 +581,9 @@
                     case 'pilot_stat_force':
                         a_value = 6;
                         break;
+                    case 'upgrade_stat_force':
+                        a_value = 6;
+                        break;
                     default:
                         a_value = 1;
                 }
@@ -585,6 +601,9 @@
                         b_value = 5;
                         break;
                     case 'pilot_stat_force':
+                        b_value = 6;
+                        break;
+                    case 'upgrade_stat_force':
                         b_value = 6;
                         break;
                     default:

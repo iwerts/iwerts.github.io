@@ -83,19 +83,13 @@ hr{
     max-width: 50%;
 }
 
-.upgrade_stat{
-    max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .attack_upgrade{
     display: flex;
+    align-items:center;
     max-width: 50%;
 }
 
-.pilot_stat{
+.pilot_stat, .upgrade_stat{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -123,6 +117,7 @@ hr{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    padding: 0 1em;
 }
 #flavor_text, #pilot_caption, .upgrade_flavor{
     font-style: italic;
@@ -146,4 +141,10 @@ hr{
     max-width: 50%;
     display: flex;
     flex-direction: row;
+}
+
+.upgrade_attack_value, .upgrade_attack_ordnance{
+    display: flex;
+    align-items: baseline;
+    width: 100%;
 }
