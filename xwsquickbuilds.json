@@ -7552,5 +7552,73 @@
       }
   ],
   "ship": "nabooroyaln1starfighter"
-}
+},
+{
+  "expansion": "SWZ45",
+  "faction": "resistance",
+  "builds": [
+      {
+          "threat": 1,
+          "pilots": [
+              {
+                  "upgrades": {
+                      "crew": [
+                          "pz4c0"
+                      ]
+                  },
+                  "id": "rosetico"
+              }
+          ]
+      },
+      {
+          "threat": 1,
+          "pilots": [
+              {
+                  "upgrades": {
+                      "talent":[
+                          "predator"
+                      ]
+                  },
+                  "id": "finn"
+              }
+          ]
+      }
+  ],
+  "ship": "resistancetransportpod"
+},{
+    "expansion": "SWZ45",
+    "faction": "resistance",
+    "builds": [
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "cannon": [
+                            "autoblasters"
+                        ],
+                        "modification":[
+                            "afterburners"   
+                        ]
+                    },
+                    "id": "bb8"
+                }
+            ]
+        },
+        {
+            "threat": 1,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "crew":[
+                            "ga97"
+                        ]
+                    },
+                    "id": "vimoradi"
+                }
+            ]
+        }
+    ],
+    "ship": "resistancetransportpod"
+  }
 ]
