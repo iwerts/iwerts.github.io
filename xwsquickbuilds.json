@@ -7797,5 +7797,82 @@
         }
     ],
     "ship": "modified-yt-1300-light-freighter"
+  },{
+    "expansion": "SWZ42",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 3,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "cannon":[
+                        "jammingbeam","heavylasercannon"  
+                        ],
+                        "modification":[
+                            "electronicbaffle"    
+                        ],
+                      "talent":[
+                        "squadleader"  
+                      ]
+                    },
+                    "id": "braylenstramm"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "cannon" :[
+                            "jammingbeam","ioncannon"
+                        ],"talent":["predator"]
+                        
+                    },
+                    "id": "bladesquadronveteran"
+                }
+            ]
+        }
+    ],
+    "ship": "a-sf-01-b-wing"
+  },{
+    "expansion": "SWZ42",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "modification":[
+                            "electronicbaffle"    
+                        ],
+                      "talent":[
+                          "elusive"  
+                      ]
+                    },
+                    "id": "tennumb"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "sensor" :[
+                            "firecontrolsystem"
+                        ],"torpedo":["advprotontorpedoes"]
+                        
+                    },
+                    "id": "bluesquadronpilot"
+                }
+            ]
+        }
+    ],
+    "ship": "a-sf-01-b-wing"
   }
 ]
