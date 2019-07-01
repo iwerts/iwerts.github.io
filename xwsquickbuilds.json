@@ -7705,11 +7705,11 @@
     ],
     "ship": "resistancetransport"
   },{
-    "expansion": "SWZ45",
+    "expansion": "SWZ39",
     "faction": "rebel-alliance",
     "builds": [
         {
-            "threat": 6,
+            "threat": 5,
             "pilots": [
                 {
                     "upgrades": {
@@ -7729,7 +7729,7 @@
                           "swarmtactics"  
                         ],
                       "title":[
-                        "milleniumfalcon"  
+                        "millenniumfalcon"  
                       ]
                     },
                     "id": "landocalrissian-modifiedyt1300lightfreighter"
@@ -7737,18 +7737,61 @@
             ]
         },
         {
-            "threat": 2,
+            "threat": 4,
             "pilots": [
                 {
                     "upgrades": {
                         
                         "crew" :[
-                            "larmadacy", "amilynholdo"
-                        ],"torpedo":[
-                           "plasmatorpedoes"
-                        ]
+                            "informant", "landocalrissian"
+                        ],"illicit":[
+                           "riggedcargochute"
+                        ], "modification":["engineupgrade"]
+                        
                     },
-                    "id": "logisticsdivisionpilot"
+                    "id": "outerrimsmuggler"
+                }
+            ]
+        }
+    ],
+    "ship": "modified-yt-1300-light-freighter"
+  },{
+    "expansion": "SWZ39",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 6,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "crew":[
+                          "c3po-crew","leiaorgana","r2d2-crew"
+                        ],
+                        "gunner":[
+                            "hansolo-gunner", "lukeskywalker"   
+                        ],
+                      "title":[
+                        "millenniumfalcon"  
+                      ]
+                    },
+                    "id": "chewbacca"
+                }
+            ]
+        },
+        {
+            "threat": 5,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "crew" :[
+                            "c3po-crew","leiaorgana","chewbacca-crew"
+                        ],"illicit":[
+                           "riggedcargochute"
+                        ], "title":["millenniumfalcon"]
+                        
+                    },
+                    "id": "hansolo-modifiedyt1300lightfreighter"
                 }
             ]
         }
