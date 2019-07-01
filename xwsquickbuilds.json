@@ -7706,7 +7706,7 @@
     "ship": "resistancetransport"
   },{
     "expansion": "SWZ45",
-    "faction": "rebelalliance",
+    "faction": "rebel-alliance",
     "builds": [
         {
             "threat": 6,
