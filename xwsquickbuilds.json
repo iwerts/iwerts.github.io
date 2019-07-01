@@ -7704,5 +7704,55 @@
         }
     ],
     "ship": "resistancetransport"
+  },{
+    "expansion": "SWZ45",
+    "faction": "rebelalliance",
+    "builds": [
+        {
+            "threat": 6,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r3astromech"
+                        ],
+                        "crew":[
+                          "niennunb"  
+                        ],
+                        "modification":[
+                            "engineupgrade", "hullupgrade"   
+                        ],
+                        "missile":[
+                            "homingmissiles"
+                        ],
+                        "talent":[
+                          "swarmtactics"  
+                        ],
+                      "title":[
+                        "milleniumfalcon"  
+                      ]
+                    },
+                    "id": "landocalrissian"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "crew" :[
+                            "larmadacy", "amilynholdo"
+                        ],"torpedo":[
+                           "plasmatorpedoes"
+                        ]
+                    },
+                    "id": "logisticsdivisionpilot"
+                }
+            ]
+        }
+    ],
+    "ship": "modifiedyt1300lightfreighter"
   }
 ]
