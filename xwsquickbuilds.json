@@ -7704,5 +7704,175 @@
         }
     ],
     "ship": "resistancetransport"
+  },{
+    "expansion": "SWZ39",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 5,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "astromech": [
+                            "r3astromech"
+                        ],
+                        "crew":[
+                          "niennunb"  
+                        ],
+                        "modification":[
+                            "engineupgrade", "hullupgrade"   
+                        ],
+                        "missile":[
+                            "homingmissiles"
+                        ],
+                        "talent":[
+                          "swarmtactics"  
+                        ],
+                      "title":[
+                        "millenniumfalcon"  
+                      ]
+                    },
+                    "id": "landocalrissian-modifiedyt1300lightfreighter"
+                }
+            ]
+        },
+        {
+            "threat": 4,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "crew" :[
+                            "informant", "landocalrissian"
+                        ],"illicit":[
+                           "riggedcargochute"
+                        ], "modification":["engineupgrade"]
+                        
+                    },
+                    "id": "outerrimsmuggler"
+                }
+            ]
+        }
+    ],
+    "ship": "modified-yt-1300-light-freighter"
+  },{
+    "expansion": "SWZ39",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 6,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "crew":[
+                          "c3po-crew","leiaorgana","r2d2-crew"
+                        ],
+                        "gunner":[
+                            "hansolo-gunner", "lukeskywalker"   
+                        ],
+                      "title":[
+                        "millenniumfalcon"  
+                      ]
+                    },
+                    "id": "chewbacca"
+                }
+            ]
+        },
+        {
+            "threat": 5,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "crew" :[
+                            "c3po-crew","leiaorgana","chewbacca-crew"
+                        ],"illicit":[
+                           "riggedcargochute"
+                        ], "title":["millenniumfalcon"]
+                        
+                    },
+                    "id": "hansolo-modifiedyt1300lightfreighter"
+                }
+            ]
+        }
+    ],
+    "ship": "modified-yt-1300-light-freighter"
+  },{
+    "expansion": "SWZ42",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 3,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "cannon":[
+                        "jammingbeam","heavylasercannon"  
+                        ],
+                        "modification":[
+                            "electronicbaffle"    
+                        ],
+                      "talent":[
+                        "squadleader"  
+                      ]
+                    },
+                    "id": "braylenstramm"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "cannon" :[
+                            "jammingbeam","ioncannon"
+                        ],"talent":["predator"]
+                        
+                    },
+                    "id": "bladesquadronveteran"
+                }
+            ]
+        }
+    ],
+    "ship": "a-sf-01-b-wing"
+  },{
+    "expansion": "SWZ42",
+    "faction": "rebel-alliance",
+    "builds": [
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        "modification":[
+                            "electronicbaffle"    
+                        ],
+                      "talent":[
+                          "elusive"  
+                      ]
+                    },
+                    "id": "tennumb"
+                }
+            ]
+        },
+        {
+            "threat": 2,
+            "pilots": [
+                {
+                    "upgrades": {
+                        
+                        "sensor" :[
+                            "firecontrolsystem"
+                        ],"torpedo":["advprotontorpedoes"]
+                        
+                    },
+                    "id": "bluesquadronpilot"
+                }
+            ]
+        }
+    ],
+    "ship": "a-sf-01-b-wing"
   }
 ]
