@@ -57,6 +57,7 @@
             console.log(selected_faction);
             for (var i = 0; i < pilots.length; i++) {
                 if (selected_faction == pilots[i].faction) {
+                    current_faction = pilots[i];
                     $('#ship').removeAttr('disabled');
                     faction_ships = [];
                     for (var j = 0; j < pilots[i].ships.length; j++) {
