@@ -7,17 +7,33 @@
     <link rel="stylesheet" href="assets/css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        var quick_builds = [];
         var ships = [];
         var pilots = [];
 
         var current_faction;
         var current_ship;
         var current_pilot;
+        var current_quick_build;
 
         var manifest = returnJSON('https://iwerts.github.io/xwing-data2/data/manifest.json');
         var factions = returnJSON('https://iwerts.github.io/xwing-data2/' + manifest.factions[0]);
 
-        for (var i = 0; i < manifest.pilots.length; i++) {
+        var upgrades = [];
+        var upgrades_by_type = [];
+        
+            for (let i = 0; i < manifest.upgrades.length; i++){
+                
+            let url = 'https://iwerts.github.io/xwing-data2/'+manifest.upgrades[i];
+            var patt=/([^/]*)\.[^.]*$/;
+            
+            let upgrade_type=patt.exec(url)[1];
+            $.getJSON(url, function(upgrades_by_type){
+                upgrades.push({upgrade_type, upgrades_by_type});
+            });    
+                 
+        }
+         for (var i = 0; i < manifest.pilots.length; i++) {
             var faction = manifest.pilots[i].faction, manifest_ships = manifest.pilots[i].ships;
 
 
@@ -27,6 +43,13 @@
             pilots.push(pilot);
 
         }
+        
+        var quick_build_cards = [];
+        $.getJSON('https://iwerts.github.io/xwsquickbuilds.json', function(quick_build_cards_from_json){
+            quick_build_cards = quick_build_cards_from_json;
+        });
+
+        
 
         function buildPilotSelector() {
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
@@ -78,7 +101,6 @@
         function buildFactionSelector() {
             $('#ship').empty().append('<option value="default" selected>Select Ship</option>');
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
-
         }
 
 
