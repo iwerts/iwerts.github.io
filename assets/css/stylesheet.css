@@ -32,6 +32,10 @@ hr{
     font-family: BankGothicMedium;
 }
 
+#ship_icon img{
+    color: black;
+}
+
 #pilot_initiative, .pilot_stat_value, #pilot_threat_value, .upgrade_stat_value, .attack_upgrade{
     font-family: Kimberly;
 }

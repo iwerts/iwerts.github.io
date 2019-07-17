@@ -1,7 +1,7 @@
 [
   {
       "expansion": "SWZ01",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -49,7 +49,7 @@
   },
   {
       "expansion": "SWZ01",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -97,7 +97,7 @@
   },
   {
       "expansion": "SWZ01",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -145,7 +145,7 @@
   },
   {
       "expansion": "SWZ01",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -194,7 +194,7 @@
   },
   {
       "expansion": "SWZ02",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -249,7 +249,7 @@
   },
   {
       "expansion": "SWZ02",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -301,7 +301,7 @@
   },
   {
       "expansion": "SWZ02",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -349,7 +349,7 @@
   },
   {
       "expansion": "SWZ02",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -391,7 +391,7 @@
   },
   {
       "expansion": "SWZ03",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -427,7 +427,7 @@
   },
   {
       "expansion": "SWZ03",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -466,7 +466,7 @@
   },
   {
       "expansion": "SWZ04",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 5,
@@ -531,7 +531,7 @@
   },
   {
       "expansion": "SWZ04",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 5,
@@ -595,7 +595,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -634,7 +634,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -676,7 +676,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -731,7 +731,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -773,7 +773,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -818,7 +818,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -866,7 +866,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -931,7 +931,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 4,
@@ -985,7 +985,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -1022,7 +1022,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -1077,7 +1077,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1117,7 +1117,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 4,
@@ -1171,7 +1171,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 5,
@@ -1228,7 +1228,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1273,7 +1273,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1317,7 +1317,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -1371,7 +1371,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1414,7 +1414,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1448,7 +1448,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -1491,7 +1491,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -1542,7 +1542,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 6,
@@ -1616,7 +1616,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 6,
@@ -1683,7 +1683,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 5,
@@ -1748,7 +1748,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1782,7 +1782,7 @@
   },
   {
       "expansion": "SWZ06",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 2,
@@ -1821,7 +1821,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -1872,7 +1872,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -1926,7 +1926,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -1979,7 +1979,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -2022,7 +2022,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -2064,7 +2064,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2103,7 +2103,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2148,7 +2148,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2196,7 +2196,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2247,7 +2247,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2289,7 +2289,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 4,
@@ -2320,7 +2320,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 4,
@@ -2359,7 +2359,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 4,
@@ -2404,7 +2404,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -2449,7 +2449,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2488,7 +2488,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -2536,7 +2536,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -2578,7 +2578,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2627,7 +2627,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2680,7 +2680,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2725,7 +2725,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2767,7 +2767,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2808,7 +2808,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -2847,7 +2847,7 @@
   },
   {
       "expansion": "SWZ07",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 4,
@@ -2907,7 +2907,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 6,
@@ -2974,7 +2974,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3031,7 +3031,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3082,7 +3082,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3159,7 +3159,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3205,7 +3205,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3261,7 +3261,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3306,7 +3306,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3363,7 +3363,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3410,7 +3410,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3455,7 +3455,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3495,7 +3495,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 4,
@@ -3543,7 +3543,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 4,
@@ -3586,7 +3586,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -3659,7 +3659,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3717,7 +3717,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3788,7 +3788,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3841,7 +3841,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3903,7 +3903,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -3955,7 +3955,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -4023,7 +4023,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -4065,7 +4065,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -4126,7 +4126,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 4,
@@ -4201,7 +4201,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -4254,7 +4254,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -4322,7 +4322,7 @@
   },
   {
       "expansion": "SWZ08",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -4359,7 +4359,7 @@
   },
   {
       "expansion": "SWZ12",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -4407,7 +4407,7 @@
   },
   {
       "expansion": "SWZ12",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -4453,7 +4453,7 @@
   },
   {
       "expansion": "SWZ13",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -4517,7 +4517,7 @@
   },
   {
       "expansion": "SWZ13",
-      "faction": "rebel-alliance",
+      "faction": "rebelalliance",
       "builds": [
           {
               "threat": 3,
@@ -4581,7 +4581,7 @@
   },
   {
       "expansion": "SWZ14",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -4638,7 +4638,7 @@
   },
   {
       "expansion": "SWZ14",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -4685,7 +4685,7 @@
   },
   {
       "expansion": "SWZ14",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -4751,7 +4751,7 @@
   },
   {
       "expansion": "SWZ14",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -4804,7 +4804,7 @@
   },
   {
       "expansion": "SWZ15",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 4,
@@ -4869,7 +4869,7 @@
   },
   {
       "expansion": "SWZ15",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -4933,7 +4933,7 @@
   },
   {
       "expansion": "SWZ16",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 4,
@@ -4991,7 +4991,7 @@
   },
   {
       "expansion": "SWZ16",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 4,
@@ -5056,7 +5056,7 @@
   },
   {
       "expansion": "SWZ17",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -5106,7 +5106,7 @@
   },
   {
       "expansion": "SWZ17",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 3,
@@ -5154,7 +5154,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 3,
@@ -5203,7 +5203,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 3,
@@ -5251,7 +5251,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 4,
@@ -5310,7 +5310,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 3,
@@ -5357,7 +5357,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 4,
@@ -5412,7 +5412,7 @@
   },
   {
       "expansion": "SWZ18",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 4,
@@ -5811,7 +5811,7 @@
   },
   {
       "expansion": "SWZ23",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -5861,7 +5861,7 @@
   },
   {
       "expansion": "SWZ23",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -6146,7 +6146,7 @@
   },
   {
       "expansion": "SWZ26",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 2,
@@ -6196,7 +6196,7 @@
   },
   {
       "expansion": "SWZ26",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 2,
@@ -6249,7 +6249,7 @@
   },
   {
       "expansion": "SWZ26",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 2,
@@ -6305,7 +6305,7 @@
   },
   {
       "expansion": "SWZ26",
-      "faction": "first-order",
+      "faction": "firstorder",
       "builds": [
           {
               "threat": 2,
@@ -6349,7 +6349,7 @@
   },
   {
       "expansion": "SWZ29",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 3,
@@ -6413,7 +6413,7 @@
   },
   {
       "expansion": "SWZ29",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 3,
@@ -6456,7 +6456,7 @@
   },
   {
       "expansion": "SWZ29",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 2,
@@ -6518,7 +6518,7 @@
   },
   {
       "expansion": "SWZ29",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 2,
@@ -6555,7 +6555,7 @@
   },
   {
       "expansion": "SWZ30",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 3,
@@ -6601,7 +6601,7 @@
   },
   {
       "expansion": "SWZ30",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 4,
@@ -6662,7 +6662,7 @@
   },
   {
       "expansion": "SWZ31",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 1,
@@ -6718,7 +6718,7 @@
   },
   {
       "expansion": "SWZ31",
-      "faction": "separatist-alliance",
+      "faction": "separatistalliance",
       "builds": [
           {
               "threat": 2,
@@ -6755,7 +6755,7 @@
   },
   {
       "expansion": "SWZ32",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 4,
@@ -6818,7 +6818,7 @@
   },
   {
       "expansion": "SWZ32",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -6866,7 +6866,7 @@
   },
   {
       "expansion": "SWZ32",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -6925,7 +6925,7 @@
   },
   {
       "expansion": "SWZ32",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 2,
@@ -6967,7 +6967,7 @@
   },
   {
       "expansion": "SWZ32",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 2,
@@ -7006,7 +7006,7 @@
   },
   {
       "expansion": "SWZ33",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -7064,7 +7064,7 @@
   },
   {
       "expansion": "SWZ33",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -7143,7 +7143,7 @@
   },
   {
       "expansion": "SWZ34",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -7195,7 +7195,7 @@
   },
   {
       "expansion": "SWZ34",
-      "faction": "galactic-republic",
+      "faction": "galacticrepublic",
       "builds": [
           {
               "threat": 3,
@@ -7240,7 +7240,7 @@
   },
   {
       "expansion": "SWZ37 ",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -7288,7 +7288,7 @@
   },
   {
       "expansion": "SWZ37 ",
-      "faction": "scum-and-villainy",
+      "faction": "scumandvillainy",
       "builds": [
           {
               "threat": 2,
@@ -7328,7 +7328,7 @@
   },
   {
       "expansion": "SWZ38",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 3,
@@ -7393,7 +7393,7 @@
   },
   {
       "expansion": "SWZ38",
-      "faction": "galactic-empire",
+      "faction": "galacticempire",
       "builds": [
           {
               "threat": 2,
@@ -7435,7 +7435,7 @@
   },
   {
     "expansion": "SWZ40",
-    "faction": "galactic-republic",
+    "faction": "galacticrepublic",
     "builds": [
         {
             "threat": 3,
@@ -7495,7 +7495,7 @@
 },
 {
   "expansion": "SWZ40",
-  "faction": "galactic-republic",
+  "faction": "galacticrepublic",
   "builds": [
       {
           "threat": 2,
@@ -7706,7 +7706,7 @@
     "ship": "resistancetransport"
   },{
     "expansion": "SWZ39",
-    "faction": "rebel-alliance",
+    "faction": "rebelalliance",
     "builds": [
         {
             "threat": 5,
@@ -7757,7 +7757,7 @@
     "ship": "modified-yt-1300-light-freighter"
   },{
     "expansion": "SWZ39",
-    "faction": "rebel-alliance",
+    "faction": "rebelalliance",
     "builds": [
         {
             "threat": 6,
@@ -7799,7 +7799,7 @@
     "ship": "modified-yt-1300-light-freighter"
   },{
     "expansion": "SWZ42",
-    "faction": "rebel-alliance",
+    "faction": "rebelalliance",
     "builds": [
         {
             "threat": 3,
@@ -7839,7 +7839,7 @@
     "ship": "a-sf-01-b-wing"
   },{
     "expansion": "SWZ42",
-    "faction": "rebel-alliance",
+    "faction": "rebelalliance",
     "builds": [
         {
             "threat": 2,

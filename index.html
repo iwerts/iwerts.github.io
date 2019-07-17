@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://iwerts.github.io/xwing-miniatures-font/dist/xwing-miniatures.css">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var quick_builds = [];
         var ships = [];
         var pilots = [];
 
@@ -21,19 +22,24 @@
 
         var upgrades = [];
         var upgrades_by_type = [];
-        
-            for (let i = 0; i < manifest.upgrades.length; i++){
-                
-            let url = 'https://iwerts.github.io/xwing-data2/'+manifest.upgrades[i];
-            var patt=/([^/]*)\.[^.]*$/;
-            
-            let upgrade_type=patt.exec(url)[1];
-            $.getJSON(url, function(upgrades_by_type){
-                upgrades.push({upgrade_type, upgrades_by_type});
-            });    
-                 
+
+        var quick_build_cards = [];
+        $.getJSON('https://iwerts.github.io/xwsquickbuilds.json', function (quick_build_cards_from_json) {
+            quick_build_cards = quick_build_cards_from_json;
+        });
+
+        for (let i = 0; i < manifest.upgrades.length; i++) {
+
+            let url = 'https://iwerts.github.io/xwing-data2/' + manifest.upgrades[i];
+            var patt = /([^/]*)\.[^.]*$/;
+
+            let upgrade_type = patt.exec(url)[1];
+            $.getJSON(url, function (upgrades_by_type) {
+                upgrades.push({ upgrade_type, upgrades_by_type });
+            });
         }
-         for (var i = 0; i < manifest.pilots.length; i++) {
+
+        for (var i = 0; i < manifest.pilots.length; i++) {
             var faction = manifest.pilots[i].faction, manifest_ships = manifest.pilots[i].ships;
 
 
@@ -43,30 +49,38 @@
             pilots.push(pilot);
 
         }
-        
-        var quick_build_cards = [];
-        $.getJSON('https://iwerts.github.io/xwsquickbuilds.json', function(quick_build_cards_from_json){
-            quick_build_cards = quick_build_cards_from_json;
-        });
 
-        
+
+
+        function getShip(faction, xws){
+            for (var i = 0; i < faction.ships.length; i++){
+                if (faction.ships[i].xws == xws){
+                    return faction.ships[i];
+                }
+            }
+        }
+
+        function getPilot(ship, xws){
+            for (var i = 0; i < ship.pilots.length; i++){
+                if (ship.pilots[i].xws == xws){
+                    return ship.pilots[i];
+                }
+            }
+        }
 
         function buildPilotSelector() {
+            current_ship = getShip(current_faction, $('#ship option:selected').val());
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
-            var selected_faction = $('#faction option:selected').val();
-            var selected_ship = $('#ship option:selected').val();
-            for (var i = 0; i < pilots.length; i++) {
-                if (pilots[i].faction == selected_faction){
-                    for (var j = 0; j < pilots[i].ships.length; j++){
-                        if (pilots[i].ships[j].xws == selected_ship){
-                            current_ship = pilots[i].ships[j];     
-                            $('#pilot').removeAttr('disabled');
-                            for (var k = 0; k < pilots[i].ships[j].pilots.length; k++){
-                                $('#pilot').append('<option value="' + pilots[i].ships[j].pilots[k].xws + '">' + pilots[i].ships[j].pilots[k].name + '</option>');
-                            }
-                        }
-                    }
-                }
+            $('#pilot').removeAttr('disabled');
+            for (var i = 0; i < current_ship.pilots.length; i++) {
+                $('#pilot').append('<option value="' + current_ship.pilots[i].xws + '">' +  current_ship.pilots[i].name + '</option>');
+            }
+        }
+
+        function buildQuickBuildSelector(){
+            current_pilot = getPilot(current_ship, $('#pilot option:selected').val());
+            for (var i = 0; i < quick_build_cards.length; i++){
+                if (quick_build_cards[i].faction
             }
         }
 
@@ -74,8 +88,7 @@
             $('#ship').empty().append('<option value="default" selected>Select Ship</option>');
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
             $('#pilot').attr('disabled', true);
-            selected_ship = null;
-
+            
             var selected_faction = $('#faction option:selected').val();
             console.log(selected_faction);
             for (var i = 0; i < pilots.length; i++) {
@@ -144,83 +157,10 @@
         }
 
         function getUpgrades(build) {
-            if (build != null) {
-                if (build.pilots[0].hasOwnProperty('upgrades')) {
+            var threat = build.threat;
+            var pilots = build.pilots;
 
-                    if (build.pilots[0].upgrades.hasOwnProperty('astromech')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.astromech.length; i++) {
-
-                            upgrades.push([getUpgradeByType('astromech', build.pilots[0].upgrades.astromech[i]), 0]);
-                        }
-                    }
-                    if (build.pilots[0].upgrades.hasOwnProperty('cannon')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.cannon.length; i++) {
-                            upgrades.push([getUpgradeByType('cannon', build.pilots[0].upgrades.cannon[i]), 0]);
-                        }
-                    }
-                    if (build.pilots[0].upgrades.hasOwnProperty('configuration')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.configuration.length; i++) {
-                            upgrades.push([getUpgradeByType('configuration', build.pilots[0].upgrades.configuration[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('crew')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.crew.length; i++) {
-                            upgrades.push([getUpgradeByType('crew', build.pilots[0].upgrades.crew[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('device')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.device.length; i++) {
-                            upgrades.push([getUpgradeByType('device', build.pilots[0].upgrades.device[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('force-power')) {
-                        for (var i = 0; i < build.pilots[0].upgrades['force-power'].length; i++) {
-                            upgrades.push([getUpgradeByType('force-power', build.pilots[0].upgrades['force-power'][i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('gunner')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.gunner.length; i++) {
-                            upgrades.push([getUpgradeByType('gunner', build.pilots[0].upgrades.gunner[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('illicit')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.illicit.length; i++) {
-                            upgrades.push([getUpgradeByType('illicit', build.pilots[0].upgrades.illicit[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('missile')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.missile.length; i++) {
-                            upgrades.push([getUpgradeByType('missile', build.pilots[0].upgrades.missile[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('modification')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.modification.length; i++) {
-                            upgrades.push([getUpgradeByType('modification', build.pilots[0].upgrades.modification[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('sensor')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.sensor.length; i++) {
-                            upgrades.push([getUpgradeByType('sensor', build.pilots[0].upgrades.sensor[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('tactical-relay')) {
-                        for (var i = 0; i < build.pilots[0].upgrades['tactical-relay'].length; i++) {
-                            upgrades.push([getUpgradeByType('tactical-relay', build.pilots[0].upgrades['tactical-relay'][i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('talent')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.talent.length; i++) {
-                            upgrades.push([getUpgradeByType('talent', build.pilots[0].upgrades.talent[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('tech')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.tech.length; i++) {
-                            upgrades.push([getUpgradeByType('tech', build.pilots[0].upgrades.tech[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('title')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.title.length; i++) {
-                            upgrades.push([getUpgradeByType('title', build.pilots[0].upgrades.title[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('torpedo')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.torpedo.length; i++) {
-                            upgrades.push([getUpgradeByType('torpedo', build.pilots[0].upgrades.torpedo[i]), 0]);
-                        }
-                    } if (build.pilots[0].upgrades.hasOwnProperty('turret')) {
-                        for (var i = 0; i < build.pilots[0].upgrades.turret.length; i++) {
-                            upgrades.push([getUpgradeByType('turret', build.pilots[0].upgrades.turret[i]), 0]);
-                        }
-                    }
-                }
-            }
+            console.log(pilots);
         }
 
         function getUpgradeByType(upgradeType, upgradeXWS) {
@@ -547,10 +487,10 @@
         <br>
         <input type="checkbox" id="quick_build" disabled>
         <label for="quick_build" id="quick_build_label" disabled>Quick Build?</label>
-
+<select id="quick_build" disabled>
+    <option value="default" selected>Select Quick Build</option>
+</select>
     </form>
-    <div id="card">
-    </div>
     <script>
 
 
@@ -590,14 +530,16 @@
                 }
             });
         };
+        
         $('#ship').change(function () {
             current_pilot = null;
             buildPilotSelector();
+            selected_ship = $('#ship option:selected');
         });
 
-        $('#pilot').change(function(){
-            for (var i = 0; i<current_ship.pilots.length; i++){
-                if ($('#pilot option:selected').val() == current_ship.pilots[i].xws){
+        $('#pilot').change(function () {
+            for (var i = 0; i < current_ship.pilots.length; i++) {
+                if ($('#pilot option:selected').val() == current_ship.pilots[i].xws) {
                     current_pilot = current_ship.pilots[i];
                 }
             }
@@ -905,7 +847,17 @@
 
         function getShipIcon() {
             $('#card_footer').append('<span id="ship_icon"></span>');
-            $('#ship_icon').append(convertShip(current_ship.xws));
+            for (var i = 0; i < pilots.length; i++) {
+                if (pilots[i] == current_faction) {
+                    console.log("BEEP BOOP");
+                    for (var j = 0; j < pilots[i].ships.length; j++) {
+                        if (pilots[i].ships[j].xws == current_ship.xws) {
+                            console.log('BOOP BEEP');
+                            //$('#ship_icon').append('<img src="'+current_ship.icon + '" style="filter: invert(100%); height: 2em;"/>');
+                        }
+                    }
+                }
+            }
         }
 
         function getShipName() {
