@@ -40,6 +40,7 @@
               "threat": 1,
               "pilots": [
                   {
+                    "upgrades":[],
                       "id": "academypilot"
                   }
               ]
@@ -87,7 +88,7 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "obsidiansquadronpilot"
                   }
               ]
@@ -107,7 +108,7 @@
                           "torpedo": [
                               "protontorpedoes"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "instinctiveaim"
                           ],
                           "astromech": [
@@ -141,7 +142,7 @@
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ01",
@@ -190,7 +191,7 @@
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ02",
@@ -245,7 +246,7 @@
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ02",
@@ -297,7 +298,7 @@
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ02",
@@ -345,7 +346,7 @@
               ]
           }
       ],
-      "ship": "ut-60d-u-wing"
+      "ship": "ut60duwing"
   },
   {
       "expansion": "SWZ02",
@@ -387,7 +388,7 @@
               ]
           }
       ],
-      "ship": "ut-60d-u-wing"
+      "ship": "ut60duwing"
   },
   {
       "expansion": "SWZ03",
@@ -423,7 +424,7 @@
               ]
           }
       ],
-      "ship": "tie-reaper"
+      "ship": "tiereaper"
   },
   {
       "expansion": "SWZ03",
@@ -462,7 +463,7 @@
               ]
           }
       ],
-      "ship": "tie-reaper"
+      "ship": "tiereaper"
   },
   {
       "expansion": "SWZ04",
@@ -489,7 +490,7 @@
                               "tacticalscrambler"
                           ],
                           "crew": [
-                              "chewbacca-crew"
+                              "chewbaccacrew"
                           ]
                       },
                       "id": "hansolo"
@@ -510,7 +511,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "hansolo-gunner"
+                              "hansologunner"
                           ],
                           "title": [
                               "landosmillenniumfalcon"
@@ -522,12 +523,12 @@
                       "id": "landocalrissian"
                   },
                   {
-                      "id": "l337-escapecraft"
+                      "id": "l337escapecraft"
                   }
               ]
           }
       ],
-      "ship": "customized-yt-1300-light-freighter"
+      "ship": "customizedyt1300lightfreighter"
   },
   {
       "expansion": "SWZ04",
@@ -539,7 +540,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "hansolo-gunner"
+                              "hansologunner"
                           ],
                           "title": [
                               "landosmillenniumfalcon"
@@ -565,7 +566,7 @@
                               "elusive"
                           ]
                       },
-                      "id": "landocalrissian-escapecraft"
+                      "id": "landocalrissianescapecraft"
                   }
               ]
           },
@@ -591,7 +592,7 @@
               ]
           }
       ],
-      "ship": "customized-yt-1300-light-freighter"
+      "ship": "customizedyt1300lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -630,7 +631,7 @@
               ]
           }
       ],
-      "ship": "a-sf-01-b-wing"
+      "ship": "asf01bwing"
   },
   {
       "expansion": "SWZ06",
@@ -672,7 +673,7 @@
               ]
           }
       ],
-      "ship": "a-sf-01-b-wing"
+      "ship": "asf01bwing"
   },
   {
       "expansion": "SWZ06",
@@ -727,7 +728,7 @@
               ]
           }
       ],
-      "ship": "arc-170-starfighter"
+      "ship": "arc170starfighter"
   },
   {
       "expansion": "SWZ06",
@@ -769,7 +770,7 @@
               ]
           }
       ],
-      "ship": "arc-170-starfighter"
+      "ship": "arc170starfighter"
   },
   {
       "expansion": "SWZ06",
@@ -814,7 +815,7 @@
               ]
           }
       ],
-      "ship": "attack-shuttle"
+      "ship": "attackshuttle"
   },
   {
       "expansion": "SWZ06",
@@ -843,7 +844,7 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "lowhhrick"
                   }
               ]
@@ -862,7 +863,7 @@
               ]
           }
       ],
-      "ship": "auzituck-gunship"
+      "ship": "auzituckgunship"
   },
   {
       "expansion": "SWZ06",
@@ -927,7 +928,7 @@
               ]
           }
       ],
-      "ship": "btl-s8-k-wing"
+      "ship": "btls8kwing"
   },
   {
       "expansion": "SWZ06",
@@ -981,7 +982,7 @@
               ]
           }
       ],
-      "ship": "e-wing"
+      "ship": "ewing"
   },
   {
       "expansion": "SWZ06",
@@ -1012,13 +1013,13 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "knavesquadronescort"
                   }
               ]
           }
       ],
-      "ship": "e-wing"
+      "ship": "ewing"
   },
   {
       "expansion": "SWZ06",
@@ -1073,7 +1074,7 @@
               ]
           }
       ],
-      "ship": "hwk-290-light-freighter"
+      "ship": "hwk290lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -1113,7 +1114,7 @@
               ]
           }
       ],
-      "ship": "hwk-290-light-freighter"
+      "ship": "hwk290lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -1134,7 +1135,7 @@
                               "lonewolf"
                           ]
                       },
-                      "id": "hansolo-modifiedyt1300lightfreighter"
+                      "id": "hansolomodifiedyt1300lightfreighter"
                   }
               ]
           },
@@ -1145,8 +1146,8 @@
                       "upgrades": {
                           "crew": [
                               "leiaorgana",
-                              "c3po-crew",
-                              "r2d2-crew"
+                              "c3pocrew",
+                              "r2d2crew"
                           ],
                           "title": [
                               "millenniumfalcon"
@@ -1167,7 +1168,7 @@
               ]
           }
       ],
-      "ship": "modified-yt-1300-light-freighter"
+      "ship": "modifiedyt1300lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -1194,7 +1195,7 @@
                               "swarmtactics"
                           ]
                       },
-                      "id": "landocalrissian-modifiedyt1300lightfreighter"
+                      "id": "landocalrissianmodifiedyt1300lightfreighter"
                   }
               ]
           },
@@ -1224,7 +1225,7 @@
               ]
           }
       ],
-      "ship": "modified-yt-1300-light-freighter"
+      "ship": "modifiedyt1300lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -1269,7 +1270,7 @@
               ]
           }
       ],
-      "ship": "rz-1-a-wing"
+      "ship": "rz1awing"
   },
   {
       "expansion": "SWZ06",
@@ -1313,7 +1314,7 @@
               ]
           }
       ],
-      "ship": "rz-1-a-wing"
+      "ship": "rz1awing"
   },
   {
       "expansion": "SWZ06",
@@ -1340,7 +1341,7 @@
                               "stealthdevice"
                           ]
                       },
-                      "id": "fennrau-sheathipedeclassshuttle"
+                      "id": "fennrausheathipedeclassshuttle"
                   }
               ]
           },
@@ -1355,19 +1356,19 @@
                           "title": [
                               "phantom"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "heightenedperception"
                           ],
                           "astromech": [
                               "chopper"
                           ]
                       },
-                      "id": "ezrabridger-sheathipedeclassshuttle"
+                      "id": "ezrabridgersheathipedeclassshuttle"
                   }
               ]
           }
       ],
-      "ship": "sheathipede-class-shuttle"
+      "ship": "sheathipedeclassshuttle"
   },
   {
       "expansion": "SWZ06",
@@ -1405,7 +1406,7 @@
                               "outmaneuver"
                           ]
                       },
-                      "id": "sabinewren-tielnfighter"
+                      "id": "sabinewrentielnfighter"
                   }
               ]
           }
@@ -1424,22 +1425,22 @@
                           "crew": [
                               "zeborrelios"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ],
                           "modification": [
                               "hullupgrade"
                           ]
                       },
-                      "id": "ezrabridger-tielnfighter"
+                      "id": "ezrabridgertielnfighter"
                   }
               ]
           },
           {
               "threat": 1,
               "pilots": [
-                  {
-                      "id": "zeborrelios-tielnfighter"
+                  {"upgrades":[],
+                      "id": "zeborreliostielnfighter"
                   }
               ]
           }
@@ -1487,7 +1488,7 @@
               ]
           }
       ],
-      "ship": "ut-60d-u-wing"
+      "ship": "ut60duwing"
   },
   {
       "expansion": "SWZ06",
@@ -1538,7 +1539,7 @@
               ]
           }
       ],
-      "ship": "ut-60d-u-wing"
+      "ship": "ut60duwing"
   },
   {
       "expansion": "SWZ06",
@@ -1553,7 +1554,7 @@
                               "ghost"
                           ],
                           "crew": [
-                              "chopper-crew",
+                              "choppercrew",
                               "herasyndulla"
                           ],
                           "turret": [
@@ -1593,7 +1594,7 @@
                               "elusive"
                           ]
                       },
-                      "id": "herasyndulla-vcx100lightfreighter"
+                      "id": "herasyndullavcx100lightfreighter"
                   },
                   {
                       "upgrades": {
@@ -1603,7 +1604,7 @@
                           "turret": [
                               "dorsalturret"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ]
                       },
@@ -1612,7 +1613,7 @@
               ]
           }
       ],
-      "ship": "vcx-100-light-freighter + attack-shuttle"
+      "ship": "vcx100lightfreighter + attackshuttle"
   },
   {
       "expansion": "SWZ06",
@@ -1674,12 +1675,12 @@
                               "r5astromech"
                           ]
                       },
-                      "id": "zeborrelios-sheathipedeclassshuttle"
+                      "id": "zeborreliossheathipedeclassshuttle"
                   }
               ]
           }
       ],
-      "ship": "vcx-100-light-freighter + sheathipede-class-shuttle"
+      "ship": "vcx100lightfreighter + sheathipedeclassshuttle"
   },
   {
       "expansion": "SWZ06",
@@ -1744,7 +1745,7 @@
               ]
           }
       ],
-      "ship": "yt-2400-light-freighter"
+      "ship": "yt2400lightfreighter"
   },
   {
       "expansion": "SWZ06",
@@ -1772,13 +1773,13 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "banditsquadronpilot"
                   }
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ06",
@@ -1817,7 +1818,7 @@
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ07",
@@ -1868,7 +1869,7 @@
               ]
           }
       ],
-      "ship": "alpha-class-star-wing"
+      "ship": "alphaclassstarwing"
   },
   {
       "expansion": "SWZ07",
@@ -1922,7 +1923,7 @@
               ]
           }
       ],
-      "ship": "alpha-class-star-wing"
+      "ship": "alphaclassstarwing"
   },
   {
       "expansion": "SWZ07",
@@ -1975,7 +1976,7 @@
               ]
           }
       ],
-      "ship": "lambda-class-t-4a-shuttle"
+      "ship": "lambdaclasst4ashuttle"
   },
   {
       "expansion": "SWZ07",
@@ -2018,7 +2019,7 @@
               ]
           }
       ],
-      "ship": "lambda-class-t-4a-shuttle"
+      "ship": "lambdaclasst4ashuttle"
   },
   {
       "expansion": "SWZ07",
@@ -2032,7 +2033,7 @@
                           "missile": [
                               "concussionmissiles"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ]
                       },
@@ -2051,7 +2052,7 @@
                           "modification": [
                               "munitionsfailsafe"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "instinctiveaim"
                           ]
                       },
@@ -2060,7 +2061,7 @@
               ]
           }
       ],
-      "ship": "tie-advanced-v1"
+      "ship": "tieadvancedv1"
   },
   {
       "expansion": "SWZ07",
@@ -2099,7 +2100,7 @@
               ]
           }
       ],
-      "ship": "tie-advanced-v1"
+      "ship": "tieadvancedv1"
   },
   {
       "expansion": "SWZ07",
@@ -2144,7 +2145,7 @@
               ]
           }
       ],
-      "ship": "tie-ag-aggressor"
+      "ship": "tieagaggressor"
   },
   {
       "expansion": "SWZ07",
@@ -2192,7 +2193,7 @@
               ]
           }
       ],
-      "ship": "tie-ag-aggressor"
+      "ship": "tieagaggressor"
   },
   {
       "expansion": "SWZ07",
@@ -2243,7 +2244,7 @@
               ]
           }
       ],
-      "ship": "tie-ca-punisher"
+      "ship": "tiecapunisher"
   },
   {
       "expansion": "SWZ07",
@@ -2285,7 +2286,7 @@
               ]
           }
       ],
-      "ship": "tie-ca-punisher"
+      "ship": "tiecapunisher"
   },
   {
       "expansion": "SWZ07",
@@ -2310,13 +2311,13 @@
           {
               "threat": 3,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "onyxsquadronace"
                   }
               ]
           }
       ],
-      "ship": "tie-d-defender"
+      "ship": "tieddefender"
   },
   {
       "expansion": "SWZ07",
@@ -2355,7 +2356,7 @@
               ]
           }
       ],
-      "ship": "tie-d-defender"
+      "ship": "tieddefender"
   },
   {
       "expansion": "SWZ07",
@@ -2400,7 +2401,7 @@
               ]
           }
       ],
-      "ship": "tie-d-defender"
+      "ship": "tieddefender"
   },
   {
       "expansion": "SWZ07",
@@ -2445,7 +2446,7 @@
               ]
           }
       ],
-      "ship": "tie-interceptor"
+      "ship": "tieinterceptor"
   },
   {
       "expansion": "SWZ07",
@@ -2484,7 +2485,7 @@
               ]
           }
       ],
-      "ship": "tie-interceptor"
+      "ship": "tieinterceptor"
   },
   {
       "expansion": "SWZ07",
@@ -2532,7 +2533,7 @@
               ]
           }
       ],
-      "ship": "tie-ph-phantom"
+      "ship": "tiephphantom"
   },
   {
       "expansion": "SWZ07",
@@ -2574,7 +2575,7 @@
               ]
           }
       ],
-      "ship": "tie-ph-phantom"
+      "ship": "tiephphantom"
   },
   {
       "expansion": "SWZ07",
@@ -2623,7 +2624,7 @@
               ]
           }
       ],
-      "ship": "tie-sa-bomber"
+      "ship": "tiesabomber"
   },
   {
       "expansion": "SWZ07",
@@ -2676,7 +2677,7 @@
               ]
           }
       ],
-      "ship": "tie-sa-bomber"
+      "ship": "tiesabomber"
   },
   {
       "expansion": "SWZ07",
@@ -2721,7 +2722,7 @@
               ]
           }
       ],
-      "ship": "tie-sa-bomber"
+      "ship": "tiesabomber"
   },
   {
       "expansion": "SWZ07",
@@ -2763,7 +2764,7 @@
               ]
           }
       ],
-      "ship": "tie-sk-striker"
+      "ship": "tieskstriker"
   },
   {
       "expansion": "SWZ07",
@@ -2804,7 +2805,7 @@
               ]
           }
       ],
-      "ship": "tie-sk-striker"
+      "ship": "tieskstriker"
   },
   {
       "expansion": "SWZ07",
@@ -2843,7 +2844,7 @@
               ]
           }
       ],
-      "ship": "tie-sk-striker"
+      "ship": "tieskstriker"
   },
   {
       "expansion": "SWZ07",
@@ -2903,7 +2904,7 @@
               ]
           }
       ],
-      "ship": "vt-49-decimator"
+      "ship": "vt49decimator"
   },
   {
       "expansion": "SWZ08",
@@ -2970,7 +2971,7 @@
               ]
           }
       ],
-      "ship": "aggressor-assault-fighter"
+      "ship": "aggressorassaultfighter"
   },
   {
       "expansion": "SWZ08",
@@ -3027,7 +3028,7 @@
               ]
           }
       ],
-      "ship": "btl-a4-y-wing"
+      "ship": "btla4ywing"
   },
   {
       "expansion": "SWZ08",
@@ -3078,7 +3079,7 @@
               ]
           }
       ],
-      "ship": "btl-a4-y-wing"
+      "ship": "btla4ywing"
   },
   {
       "expansion": "SWZ08",
@@ -3155,7 +3156,7 @@
               ]
           }
       ],
-      "ship": "g-1a-starfighter"
+      "ship": "g1astarfighter"
   },
   {
       "expansion": "SWZ08",
@@ -3201,7 +3202,7 @@
               ]
           }
       ],
-      "ship": "hwk-290-light-freighter"
+      "ship": "hwk290lightfreighter"
   },
   {
       "expansion": "SWZ08",
@@ -3257,7 +3258,7 @@
               ]
           }
       ],
-      "ship": "hwk-290-light-freighter"
+      "ship": "hwk290lightfreighter"
   },
   {
       "expansion": "SWZ08",
@@ -3302,7 +3303,7 @@
               ]
           }
       ],
-      "ship": "jumpmaster-5000"
+      "ship": "jumpmaster5000"
   },
   {
       "expansion": "SWZ08",
@@ -3359,7 +3360,7 @@
               ]
           }
       ],
-      "ship": "jumpmaster-5000"
+      "ship": "jumpmaster5000"
   },
   {
       "expansion": "SWZ08",
@@ -3406,7 +3407,7 @@
               ]
           }
       ],
-      "ship": "kihraxz-fighter"
+      "ship": "kihraxzfighter"
   },
   {
       "expansion": "SWZ08",
@@ -3451,7 +3452,7 @@
               ]
           }
       ],
-      "ship": "kihraxz-fighter"
+      "ship": "kihraxzfighter"
   },
   {
       "expansion": "SWZ08",
@@ -3491,7 +3492,7 @@
               ]
           }
       ],
-      "ship": "kihraxz-fighter"
+      "ship": "kihraxzfighter"
   },
   {
       "expansion": "SWZ08",
@@ -3534,12 +3535,12 @@
                               "fearless"
                           ]
                       },
-                      "id": "sabinewren-lancerclasspursuitcraft"
+                      "id": "sabinewrenlancerclasspursuitcraft"
                   }
               ]
           }
       ],
-      "ship": "lancer-class-pursuit-craft"
+      "ship": "lancerclasspursuitcraft"
   },
   {
       "expansion": "SWZ08",
@@ -3553,7 +3554,7 @@
                           "gunner": [
                               "veteranturretgunner"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "sense"
                           ],
                           "illicit": [
@@ -3582,7 +3583,7 @@
               ]
           }
       ],
-      "ship": "lancer-class-pursuit-craft"
+      "ship": "lancerclasspursuitcraft"
   },
   {
       "expansion": "SWZ08",
@@ -3655,7 +3656,7 @@
               ]
           }
       ],
-      "ship": "m12-l-kimogila-fighter"
+      "ship": "m12lkimogilafighter"
   },
   {
       "expansion": "SWZ08",
@@ -3713,7 +3714,7 @@
               ]
           }
       ],
-      "ship": "m3-a-interceptor"
+      "ship": "m3ainterceptor"
   },
   {
       "expansion": "SWZ08",
@@ -3784,7 +3785,7 @@
               ]
           }
       ],
-      "ship": "m3-a-interceptor"
+      "ship": "m3ainterceptor"
   },
   {
       "expansion": "SWZ08",
@@ -3837,7 +3838,7 @@
               ]
           }
       ],
-      "ship": "m3-a-interceptor"
+      "ship": "m3ainterceptor"
   },
   {
       "expansion": "SWZ08",
@@ -3899,7 +3900,7 @@
               ]
           }
       ],
-      "ship": "quadrijet-transfer-spacetug"
+      "ship": "quadrijettransferspacetug"
   },
   {
       "expansion": "SWZ08",
@@ -3951,7 +3952,7 @@
               ]
           }
       ],
-      "ship": "quadrijet-transfer-spacetug"
+      "ship": "quadrijettransferspacetug"
   },
   {
       "expansion": "SWZ08",
@@ -4019,7 +4020,7 @@
               ]
           }
       ],
-      "ship": "scurrg-h-6-bomber"
+      "ship": "scurrgh6bomber"
   },
   {
       "expansion": "SWZ08",
@@ -4061,7 +4062,7 @@
               ]
           }
       ],
-      "ship": "starviper-class-attack-platform"
+      "ship": "starviperclassattackplatform"
   },
   {
       "expansion": "SWZ08",
@@ -4104,7 +4105,7 @@
                               "contrabandcybernetics"
                           ]
                       },
-                      "id": "dalanoberos-starviperclassattackplatform"
+                      "id": "dalanoberosstarviperclassattackplatform"
                   }
               ]
           },
@@ -4122,7 +4123,7 @@
               ]
           }
       ],
-      "ship": "starviper-class-attack-platform"
+      "ship": "starviperclassattackplatform"
   },
   {
       "expansion": "SWZ08",
@@ -4197,7 +4198,7 @@
               ]
           }
       ],
-      "ship": "yv-666-light-freighter"
+      "ship": "yv666lightfreighter"
   },
   {
       "expansion": "SWZ08",
@@ -4250,7 +4251,7 @@
               ]
           }
       ],
-      "ship": "yv-666-light-freighter + z-95-af4-headhunter"
+      "ship": "yv666lightfreighter + z95af4headhunter"
   },
   {
       "expansion": "SWZ08",
@@ -4318,7 +4319,7 @@
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ08",
@@ -4349,13 +4350,13 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "binayrepirate"
                   }
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ12",
@@ -4403,7 +4404,7 @@
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ12",
@@ -4444,12 +4445,12 @@
                               "servomotorsfoils"
                           ]
                       },
-                      "id": "garvendreis-t65xwing"
+                      "id": "garvendreist65xwing"
                   }
               ]
           }
       ],
-      "ship": "t-65-x-wing"
+      "ship": "t65xwing"
   },
   {
       "expansion": "SWZ13",
@@ -4473,7 +4474,7 @@
                               "experthandling"
                           ]
                       },
-                      "id": "norrawexley-btla4ywing"
+                      "id": "norrawexleybtla4ywing"
                   }
               ]
           },
@@ -4513,7 +4514,7 @@
               ]
           }
       ],
-      "ship": "btl-a4-y-wing"
+      "ship": "btla4ywing"
   },
   {
       "expansion": "SWZ13",
@@ -4577,7 +4578,7 @@
               ]
           }
       ],
-      "ship": "btl-a4-y-wing"
+      "ship": "btla4ywing"
   },
   {
       "expansion": "SWZ14",
@@ -4675,7 +4676,7 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "obsidiansquadronpilot"
                   }
               ]
@@ -4783,10 +4784,10 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "academypilot"
                   },
-                  {
+                  {"upgrades":[],
                       "id": "academypilot"
                   }
               ]
@@ -4794,7 +4795,7 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "academypilot"
                   }
               ]
@@ -4818,7 +4819,7 @@
                               "afterburners",
                               "shieldupgrade"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ],
                           "sensor": [
@@ -4865,7 +4866,7 @@
               ]
           }
       ],
-      "ship": "tie-advanced-x1"
+      "ship": "tieadvancedx1"
   },
   {
       "expansion": "SWZ15",
@@ -4929,7 +4930,7 @@
               ]
           }
       ],
-      "ship": "tie-advanced-x1"
+      "ship": "tieadvancedx1"
   },
   {
       "expansion": "SWZ16",
@@ -4987,7 +4988,7 @@
               ]
           }
       ],
-      "ship": "firespray-class-patrol-craft"
+      "ship": "firesprayclasspatrolcraft"
   },
   {
       "expansion": "SWZ16",
@@ -5052,7 +5053,7 @@
               ]
           }
       ],
-      "ship": "firespray-class-patrol-craft"
+      "ship": "firesprayclasspatrolcraft"
   },
   {
       "expansion": "SWZ17",
@@ -5102,7 +5103,7 @@
               ]
           }
       ],
-      "ship": "fang-fighter"
+      "ship": "fangfighter"
   },
   {
       "expansion": "SWZ17",
@@ -5131,7 +5132,7 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "oldteroch"
                   }
               ]
@@ -5150,7 +5151,7 @@
               ]
           }
       ],
-      "ship": "fang-fighter"
+      "ship": "fangfighter"
   },
   {
       "expansion": "SWZ18",
@@ -5199,7 +5200,7 @@
               ]
           }
       ],
-      "ship": "tie-sf-fighter"
+      "ship": "tiesffighter"
   },
   {
       "expansion": "SWZ18",
@@ -5247,7 +5248,7 @@
               ]
           }
       ],
-      "ship": "tie-sf-fighter"
+      "ship": "tiesffighter"
   },
   {
       "expansion": "SWZ18",
@@ -5264,7 +5265,7 @@
                           "torpedo": [
                               "advprotontorpedoes"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "hate",
                               "predictiveshot"
                           ]
@@ -5306,7 +5307,7 @@
               ]
           }
       ],
-      "ship": "tie-vn-silencer"
+      "ship": "tievnsilencer"
   },
   {
       "expansion": "SWZ18",
@@ -5347,13 +5348,13 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "sienarjaemusengineer"
                   }
               ]
           }
       ],
-      "ship": "tie-vn-silencer"
+      "ship": "tievnsilencer"
   },
   {
       "expansion": "SWZ18",
@@ -5402,13 +5403,13 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "starkillerbasepilot"
                   }
               ]
           }
       ],
-      "ship": "upsilon-class-command-shuttle"
+      "ship": "upsilonclasscommandshuttle"
   },
   {
       "expansion": "SWZ18",
@@ -5468,7 +5469,7 @@
               ]
           }
       ],
-      "ship": "upsilon-class-command-shuttle"
+      "ship": "upsilonclasscommandshuttle"
   },
   {
       "expansion": "SWZ19",
@@ -5536,7 +5537,7 @@
               ]
           }
       ],
-      "ship": "mg-100-starfortress-sf-17"
+      "ship": "mg100starfortresssf17"
   },
   {
       "expansion": "SWZ19",
@@ -5602,7 +5603,7 @@
               ]
           }
       ],
-      "ship": "mg-100-starfortress-sf-17"
+      "ship": "mg100starfortresssf17"
   },
   {
       "expansion": "SWZ19",
@@ -5614,10 +5615,10 @@
                   {
                       "upgrades": {
                           "crew": [
-                              "chewbacca-crew-swz19"
+                              "chewbaccacrewswz19"
                           ]
                       },
-                      "id": "hansolo-scavengedyt1300"
+                      "id": "hansoloscavengedyt1300"
                   }
               ]
           },
@@ -5647,7 +5648,7 @@
               ]
           }
       ],
-      "ship": "scavenged-yt-1300"
+      "ship": "scavengedyt1300"
   },
   {
       "expansion": "SWZ19",
@@ -5659,7 +5660,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "rey-gunner"
+                              "reygunner"
                           ],
                           "title": [
                               "reysmillenniumfalcon"
@@ -5668,7 +5669,7 @@
                               "engineupgrade"
                           ]
                       },
-                      "id": "chewbacca-scavengedyt1300"
+                      "id": "chewbaccascavengedyt1300"
                   }
               ]
           },
@@ -5678,9 +5679,9 @@
                   {
                       "upgrades": {
                           "crew": [
-                              "chewbacca-crew-swz19",
-                              "hansolo-crew",
-                              "c3po-crew"
+                              "chewbaccacrewswz19",
+                              "hansolocrew",
+                              "c3pocrew"
                           ],
                           "talent": [
                               "debrisgambit"
@@ -5691,7 +5692,7 @@
               ]
           }
       ],
-      "ship": "scavenged-yt-1300"
+      "ship": "scavengedyt1300"
   },
   {
       "expansion": "SWZ22",
@@ -5749,7 +5750,7 @@
               ]
           }
       ],
-      "ship": "rz-2-a-wing"
+      "ship": "rz2awing"
   },
   {
       "expansion": "SWZ22",
@@ -5807,7 +5808,7 @@
               ]
           }
       ],
-      "ship": "rz-2-a-wing"
+      "ship": "rz2awing"
   },
   {
       "expansion": "SWZ23",
@@ -5851,13 +5852,13 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "overseeryushyn"
                   }
               ]
           }
       ],
-      "ship": "modified-tielnfighter"
+      "ship": "modifiedtielnfighter"
   },
   {
       "expansion": "SWZ23",
@@ -5899,13 +5900,13 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "miningguildsentry"
                   }
               ]
           }
       ],
-      "ship": "modified-tielnfighter"
+      "ship": "modifiedtielnfighter"
   },
   {
       "expansion": "SWZ25",
@@ -5970,12 +5971,12 @@
                               "integratedsfoils"
                           ]
                       },
-                      "id": "blacksquadronace-t70xwing"
+                      "id": "blacksquadronacet70xwing"
                   }
               ]
           }
       ],
-      "ship": "t-70-x-wing"
+      "ship": "t70xwing"
   },
   {
       "expansion": "SWZ25",
@@ -6022,13 +6023,13 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "jaycristubbs"
                   }
               ]
           }
       ],
-      "ship": "t-70-x-wing"
+      "ship": "t70xwing"
   },
   {
       "expansion": "SWZ25",
@@ -6078,13 +6079,13 @@
           {
               "threat": 2,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "redsquadronexpert"
                   }
               ]
           }
       ],
-      "ship": "t-70-x-wing"
+      "ship": "t70xwing"
   },
   {
       "expansion": "SWZ25",
@@ -6142,7 +6143,7 @@
               ]
           }
       ],
-      "ship": "t-70-x-wing"
+      "ship": "t70xwing"
   },
   {
       "expansion": "SWZ26",
@@ -6192,7 +6193,7 @@
               ]
           }
       ],
-      "ship": "tie-fo-fighter"
+      "ship": "tiefofighter"
   },
   {
       "expansion": "SWZ26",
@@ -6245,7 +6246,7 @@
               ]
           }
       ],
-      "ship": "tie-fo-fighter"
+      "ship": "tiefofighter"
   },
   {
       "expansion": "SWZ26",
@@ -6301,7 +6302,7 @@
               ]
           }
       ],
-      "ship": "tie-fo-fighter"
+      "ship": "tiefofighter"
   },
   {
       "expansion": "SWZ26",
@@ -6339,13 +6340,13 @@
           {
               "threat": 1,
               "pilots": [
-                  {
+                  {"upgrades":[],
                       "id": "lieutenantrivas"
                   }
               ]
           }
       ],
-      "ship": "tie-fo-fighter"
+      "ship": "tiefofighter"
   },
   {
       "expansion": "SWZ29",
@@ -6359,7 +6360,7 @@
                           "modification": [
                               "imperviumplating"
                           ],
-                          "tactical-relay": [
+                          "tacticalrelay": [
                               "tv94"
                           ],
                           "title": [
@@ -6381,7 +6382,7 @@
                           "modification": [
                               "shieldupgrade"
                           ],
-                          "tactical-relay": [
+                          "tacticalrelay": [
                               "kraken"
                           ],
                           "talent": [
@@ -6409,7 +6410,7 @@
               ]
           }
       ],
-      "ship": "belbullab-22-starfighter"
+      "ship": "belbullab22starfighter"
   },
   {
       "expansion": "SWZ29",
@@ -6424,7 +6425,7 @@
                               "imperviumplating",
                               "stealthdevice"
                           ],
-                          "tactical-relay": [
+                          "tacticalrelay": [
                               "kraken"
                           ],
                           "talent": [
@@ -6443,7 +6444,7 @@
                           "modification": [
                               "imperviumplating"
                           ],
-                          "tactical-relay": [
+                          "tacticalrelay": [
                               "tv94"
                           ]
                       },
@@ -6452,7 +6453,7 @@
               ]
           }
       ],
-      "ship": "belbullab-22-starfighter"
+      "ship": "belbullab22starfighter"
   },
   {
       "expansion": "SWZ29",
@@ -6514,7 +6515,7 @@
               ]
           }
       ],
-      "ship": "vulture-class-droid-fighter"
+      "ship": "vultureclassdroidfighter"
   },
   {
       "expansion": "SWZ29",
@@ -6551,7 +6552,7 @@
               ]
           }
       ],
-      "ship": "vulture-class-droid-fighter"
+      "ship": "vultureclassdroidfighter"
   },
   {
       "expansion": "SWZ30",
@@ -6585,7 +6586,7 @@
                               "countdooku",
                               "generalgrievous"
                           ],
-                          "tactical-relay": [
+                          "tacticalrelay": [
                               "k2b4"
                           ],
                           "title": [
@@ -6597,7 +6598,7 @@
               ]
           }
       ],
-      "ship": "sith-infiltrator"
+      "ship": "sithinfiltrator"
   },
   {
       "expansion": "SWZ30",
@@ -6617,7 +6618,7 @@
                           "crew": [
                               "perceptivecopilot"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "hate"
                           ],
                           "cannon": [
@@ -6645,7 +6646,7 @@
                           "title": [
                               "scimitar"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "brilliantevasion",
                               "predictiveshot"
                           ],
@@ -6658,7 +6659,7 @@
               ]
           }
       ],
-      "ship": "sith-infiltrator"
+      "ship": "sithinfiltrator"
   },
   {
       "expansion": "SWZ31",
@@ -6714,7 +6715,7 @@
               ]
           }
       ],
-      "ship": "vulture-class-droid-fighter"
+      "ship": "vultureclassdroidfighter"
   },
   {
       "expansion": "SWZ31",
@@ -6751,7 +6752,7 @@
               ]
           }
       ],
-      "ship": "vulture-class-droid-fighter"
+      "ship": "vultureclassdroidfighter"
   },
   {
       "expansion": "SWZ32",
@@ -6766,7 +6767,7 @@
                               "afterburners",
                               "shieldupgrade"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ],
                           "astromech": [
@@ -6788,7 +6789,7 @@
                           "modification": [
                               "shieldupgrade"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "battlemeditation",
                               "sense"
                           ],
@@ -6814,7 +6815,7 @@
               ]
           }
       ],
-      "ship": "delta-7-aethersprite"
+      "ship": "delta7aethersprite"
   },
   {
       "expansion": "SWZ32",
@@ -6828,7 +6829,7 @@
                           "modification": [
                               "sparepartscanisters"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "predictiveshot"
                           ],
                           "astromech": [
@@ -6847,7 +6848,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ],
                           "astromech": [
@@ -6862,7 +6863,7 @@
               ]
           }
       ],
-      "ship": "delta-7-aethersprite"
+      "ship": "delta7aethersprite"
   },
   {
       "expansion": "SWZ32",
@@ -6921,7 +6922,7 @@
               ]
           }
       ],
-      "ship": "v-19-torrent-starfighter"
+      "ship": "v19torrentstarfighter"
   },
   {
       "expansion": "SWZ32",
@@ -6963,7 +6964,7 @@
               ]
           }
       ],
-      "ship": "v-19-torrent-starfighter"
+      "ship": "v19torrentstarfighter"
   },
   {
       "expansion": "SWZ32",
@@ -7002,7 +7003,7 @@
               ]
           }
       ],
-      "ship": "v-19-torrent-starfighter"
+      "ship": "v19torrentstarfighter"
   },
   {
       "expansion": "SWZ33",
@@ -7060,7 +7061,7 @@
               ]
           }
       ],
-      "ship": "arc-170-starfighter"
+      "ship": "arc170starfighter"
   },
   {
       "expansion": "SWZ33",
@@ -7084,7 +7085,7 @@
                               "elusive"
                           ]
                       },
-                      "id": "oddball-arc170starfighter"
+                      "id": "oddballarc170starfighter"
                   }
               ]
           },
@@ -7139,7 +7140,7 @@
               ]
           }
       ],
-      "ship": "arc-170-starfighter"
+      "ship": "arc170starfighter"
   },
   {
       "expansion": "SWZ34",
@@ -7150,7 +7151,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "force-power": [
+                          "forcepower": [
                               "supernaturalreflexes"
                           ],
                           "configuration": [
@@ -7166,7 +7167,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "force-power": [
+                          "forcepower": [
                               "battlemeditation"
                           ],
                           "astromech": [
@@ -7191,7 +7192,7 @@
               ]
           }
       ],
-      "ship": "delta-7-aethersprite"
+      "ship": "delta7aethersprite"
   },
   {
       "expansion": "SWZ34",
@@ -7205,7 +7206,7 @@
                           "modification": [
                               "shieldupgrade"
                           ],
-                          "force-power": [
+                          "forcepower": [
                               "brilliantevasion"
                           ],
                           "astromech": [
@@ -7224,7 +7225,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "force-power": [
+                          "forcepower": [
                               "sense"
                           ],
                           "astromech": [
@@ -7236,7 +7237,7 @@
               ]
           }
       ],
-      "ship": "delta-7-aethersprite"
+      "ship": "delta7aethersprite"
   },
   {
       "expansion": "SWZ37 ",
@@ -7284,7 +7285,7 @@
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ37 ",
@@ -7324,7 +7325,7 @@
               ]
           }
       ],
-      "ship": "z-95-af4-headhunter"
+      "ship": "z95af4headhunter"
   },
   {
       "expansion": "SWZ38",
@@ -7389,7 +7390,7 @@
               ]
           }
       ],
-      "ship": "tie-sk-striker"
+      "ship": "tieskstriker"
   },
   {
       "expansion": "SWZ38",
@@ -7431,7 +7432,7 @@
               ]
           }
       ],
-      "ship": "tie-sk-striker"
+      "ship": "tieskstriker"
   },
   {
     "expansion": "SWZ40",
@@ -7445,7 +7446,7 @@
                         "astromech": [
                             "r2astromech"
                         ],
-                        "force-power":[
+                        "forcepower":[
                           "heightenedperception"  
                         ],
                         "talent": [
@@ -7455,7 +7456,7 @@
                             "collisiondetector"
                         ]
                     },
-                    "id": "anakinskywalker-nabooroyaln1starfighter"
+                    "id": "anakinskywalkernabooroyaln1starfighter"
                 }
             ]
         },
@@ -7732,7 +7733,7 @@
                         "millenniumfalcon"  
                       ]
                     },
-                    "id": "landocalrissian-modifiedyt1300lightfreighter"
+                    "id": "landocalrissianmodifiedyt1300lightfreighter"
                 }
             ]
         },
@@ -7754,7 +7755,7 @@
             ]
         }
     ],
-    "ship": "modified-yt-1300-light-freighter"
+    "ship": "modifiedyt1300lightfreighter"
   },{
     "expansion": "SWZ39",
     "faction": "rebelalliance",
@@ -7765,10 +7766,10 @@
                 {
                     "upgrades": {
                         "crew":[
-                          "c3po-crew","leiaorgana","r2d2-crew"
+                          "c3pocrew","leiaorgana","r2d2crew"
                         ],
                         "gunner":[
-                            "hansolo-gunner", "lukeskywalker"   
+                            "hansologunner", "lukeskywalker"   
                         ],
                       "title":[
                         "millenniumfalcon"  
@@ -7785,18 +7786,18 @@
                     "upgrades": {
                         
                         "crew" :[
-                            "c3po-crew","leiaorgana","chewbacca-crew"
+                            "c3pocrew","leiaorgana","chewbaccacrew"
                         ],"illicit":[
                            "riggedcargochute"
                         ], "title":["millenniumfalcon"]
                         
                     },
-                    "id": "hansolo-modifiedyt1300lightfreighter"
+                    "id": "hansolomodifiedyt1300lightfreighter"
                 }
             ]
         }
     ],
-    "ship": "modified-yt-1300-light-freighter"
+    "ship": "modifiedyt1300lightfreighter"
   },{
     "expansion": "SWZ42",
     "faction": "rebelalliance",
@@ -7836,7 +7837,7 @@
             ]
         }
     ],
-    "ship": "a-sf-01-b-wing"
+    "ship": "asf01bwing"
   },{
     "expansion": "SWZ42",
     "faction": "rebelalliance",
@@ -7873,6 +7874,6 @@
             ]
         }
     ],
-    "ship": "a-sf-01-b-wing"
+    "ship": "asf01bwing"
   }
 ]

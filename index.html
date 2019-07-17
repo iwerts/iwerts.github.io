@@ -83,8 +83,35 @@
             for (var i = 0; i < quick_build_cards.length; i++){
                 if (quick_build_cards[i].faction == current_faction.faction)
                  {
-                        console.log(quick_build_cards[i].ship.replace('-', '') + " : " + current_ship.xws);
-                     if (quick_build_cards[i].ship == current_ship.xws){
+                        if (quick_build_cards[i].ship == current_ship.xws){
+                            var display  = false;
+                            for (var j = 0; j < quick_build_cards[i].builds.length; j++){
+                                for (var k = 0; k < quick_build_cards[i].builds[j].pilots.length; k++){
+                                    display = display || quick_build_cards[i].builds[j].pilots[k].id == current_pilot.xws;
+                                    console.log(quick_build_cards[i].builds[j].pilots[k]);
+                                    for (var l = 0 ; l < quick_build_cards[i].builds[j].pilots[k].upgrades.length; l++){
+                                        var upgrade_type = Object.keys(quick_build_cards[i].builds[j].pilots[k].upgrades[l]);
+                                        for (var o = 0; o < quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type].length ; o++){
+                                            console.log(quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type][o]);
+                                            
+                                            for (var m = 0; m < upgrades.length ; m++){
+                                                if (upgrades[m].upgrade_type == upgrade_type){
+                                                    for (var n = 0; n < upgrades[m].upgrades_by_type.length; n++){
+                                                        if (upgrades[m].upgrades_by_type[n].xws == quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type][o]){
+                                                            console.log(upgrades[m].upgrades_by_type[n]);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            }
+                                        console.log(upgrade_type);
+                                    }
+                                }
+                            }
+                            if (display){
+                                console.log(quick_build_cards[i]);
+                            }
+                    
                     }
                  }
                      
@@ -166,48 +193,10 @@
         function getUpgrades(build) {
             var threat = build.threat;
             var pilots = build.pilots;
-
-            console.log(pilots);
         }
 
         function getUpgradeByType(upgradeType, upgradeXWS) {
-            switch (upgradeType) {
-                case 'astromech':
-                    return getUpgrade(astromechs, upgradeXWS);
-                case 'cannon':
-                    return getUpgrade(cannons, upgradeXWS);
-                case 'configuration':
-                    return getUpgrade(configurations, upgradeXWS);
-                case 'crew':
-                    return getUpgrade(crews, upgradeXWS);
-                case 'device':
-                    return getUpgrade(devices, upgradeXWS);
-                case 'force-power':
-                    return getUpgrade(force_powers, upgradeXWS);
-                case 'gunner':
-                    return getUpgrade(gunners, upgradeXWS);
-                case 'illicit':
-                    return getUpgrade(illicits, upgradeXWS);
-                case 'missile':
-                    return getUpgrade(missiles, upgradeXWS);
-                case 'modification':
-                    return getUpgrade(modifications, upgradeXWS);
-                case 'sensor':
-                    return getUpgrade(sensors, upgradeXWS);
-                case 'tactical-relay':
-                    return getUpgrade(tactical_relays, upgradeXWS);
-                case 'talent':
-                    return getUpgrade(talents, upgradeXWS);
-                case 'tech':
-                    return getUpgrade(techs, upgradeXWS);
-                case 'title':
-                    return getUpgrade(titles, upgradeXWS);
-                case 'torpedo':
-                    return getUpgrade(torpedoes, upgradeXWS);
-                case 'turret':
-                    return getUpgrade(turrets, upgradeXWS);
-
-            }
+            
         }
 
         function displayUpgrades() {
@@ -508,7 +497,6 @@
         });
 
         $('#quick_build').change(function(){
-            console.log('TEST');
             buildQuickBuildSelector();
         });
 
@@ -861,10 +849,8 @@
             $('#card_footer').append('<span id="ship_icon"></span>');
             for (var i = 0; i < pilots.length; i++) {
                 if (pilots[i] == current_faction) {
-                    console.log("BEEP BOOP");
                     for (var j = 0; j < pilots[i].ships.length; j++) {
                         if (pilots[i].ships[j].xws == current_ship.xws) {
-                            console.log('BOOP BEEP');
                             //$('#ship_icon').append('<img src="'+current_ship.icon + '" style="filter: invert(100%); height: 2em;"/>');
                         }
                     }
