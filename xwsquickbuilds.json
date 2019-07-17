@@ -45,7 +45,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ01",
@@ -93,7 +93,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ01",
@@ -1410,7 +1410,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ06",
@@ -1444,7 +1444,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ06",
@@ -4634,7 +4634,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ14",
@@ -4681,7 +4681,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ14",
@@ -4747,7 +4747,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ14",
@@ -4800,7 +4800,7 @@
               ]
           }
       ],
-      "ship": "tie-ln-fighter"
+      "ship": "tielnfighter"
   },
   {
       "expansion": "SWZ15",
@@ -5857,7 +5857,7 @@
               ]
           }
       ],
-      "ship": "modified-tie-ln-fighter"
+      "ship": "modified-tielnfighter"
   },
   {
       "expansion": "SWZ23",
@@ -5905,7 +5905,7 @@
               ]
           }
       ],
-      "ship": "modified-tie-ln-fighter"
+      "ship": "modified-tielnfighter"
   },
   {
       "expansion": "SWZ25",

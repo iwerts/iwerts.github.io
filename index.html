@@ -79,8 +79,15 @@
 
         function buildQuickBuildSelector(){
             current_pilot = getPilot(current_ship, $('#pilot option:selected').val());
+            var selectable_builds = [];
             for (var i = 0; i < quick_build_cards.length; i++){
-                if (quick_build_cards[i].faction
+                if (quick_build_cards[i].faction == current_faction.faction)
+                 {
+                        console.log(quick_build_cards[i].ship.replace('-', '') + " : " + current_ship.xws);
+                     if (quick_build_cards[i].ship == current_ship.xws){
+                    }
+                 }
+                     
             }
         }
 
@@ -498,6 +505,11 @@
             buildShipSelector();
             current_ship = null;
             current_pilot = null;
+        });
+
+        $('#quick_build').change(function(){
+            console.log('TEST');
+            buildQuickBuildSelector();
         });
 
         function newFunction() {
