@@ -9,19 +9,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+
+        var iconsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json');
+        var shipsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/ships-map.json');
+        
+
         var ships = [];
         var pilots = [];
 
         var current_faction;
         var current_ship;
         var current_pilot;
+        var current_quick_builds = [];
         var current_quick_build;
+
+        var current_upgrades = [];
 
         var manifest = returnJSON('https://iwerts.github.io/xwing-data2/data/manifest.json');
         var factions = returnJSON('https://iwerts.github.io/xwing-data2/' + manifest.factions[0]);
 
         var upgrades = [];
-        var upgrades_by_type = [];
 
         var quick_build_cards = [];
         $.getJSON('https://iwerts.github.io/xwsquickbuilds.json', function (quick_build_cards_from_json) {
@@ -35,7 +42,10 @@
 
             let upgrade_type = patt.exec(url)[1];
             $.getJSON(url, function (upgrades_by_type) {
-                upgrades.push({ upgrade_type, upgrades_by_type });
+                upgrades[upgrade_type] = {};
+                for (var j = 0; j< upgrades_by_type.length; j++){
+                    upgrades[upgrade_type][upgrades_by_type[j].xws] = upgrades_by_type[j];
+                }
             });
         }
 
@@ -52,17 +62,17 @@
 
 
 
-        function getShip(faction, xws){
-            for (var i = 0; i < faction.ships.length; i++){
-                if (faction.ships[i].xws == xws){
+        function getShip(faction, xws) {
+            for (var i = 0; i < faction.ships.length; i++) {
+                if (faction.ships[i].xws == xws) {
                     return faction.ships[i];
                 }
             }
         }
 
-        function getPilot(ship, xws){
-            for (var i = 0; i < ship.pilots.length; i++){
-                if (ship.pilots[i].xws == xws){
+        function getPilot(ship, xws) {
+            for (var i = 0; i < ship.pilots.length; i++) {
+                if (ship.pilots[i].xws == xws) {
                     return ship.pilots[i];
                 }
             }
@@ -73,48 +83,46 @@
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
             $('#pilot').removeAttr('disabled');
             for (var i = 0; i < current_ship.pilots.length; i++) {
-                $('#pilot').append('<option value="' + current_ship.pilots[i].xws + '">' +  current_ship.pilots[i].name + '</option>');
+                $('#pilot').append('<option value="' + current_ship.pilots[i].xws + '">' + current_ship.pilots[i].name + '</option>');
             }
         }
 
-        function buildQuickBuildSelector(){
+        function buildQuickBuildSelector() {
             current_pilot = getPilot(current_ship, $('#pilot option:selected').val());
-            var selectable_builds = [];
-            for (var i = 0; i < quick_build_cards.length; i++){
-                if (quick_build_cards[i].faction == current_faction.faction)
-                 {
-                        if (quick_build_cards[i].ship == current_ship.xws){
-                            var display  = false;
-                            for (var j = 0; j < quick_build_cards[i].builds.length; j++){
-                                for (var k = 0; k < quick_build_cards[i].builds[j].pilots.length; k++){
-                                    display = display || quick_build_cards[i].builds[j].pilots[k].id == current_pilot.xws;
-                                    console.log(quick_build_cards[i].builds[j].pilots[k]);
-                                    for (var l = 0 ; l < quick_build_cards[i].builds[j].pilots[k].upgrades.length; l++){
-                                        var upgrade_type = Object.keys(quick_build_cards[i].builds[j].pilots[k].upgrades[l]);
-                                        for (var o = 0; o < quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type].length ; o++){
-                                            console.log(quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type][o]);
-                                            
-                                            for (var m = 0; m < upgrades.length ; m++){
-                                                if (upgrades[m].upgrade_type == upgrade_type){
-                                                    for (var n = 0; n < upgrades[m].upgrades_by_type.length; n++){
-                                                        if (upgrades[m].upgrades_by_type[n].xws == quick_build_cards[i].builds[j].pilots[k].upgrades[upgrade_type][o]){
-                                                            console.log(upgrades[m].upgrades_by_type[n]);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            }
-                                        console.log(upgrade_type);
+            current_quick_builds = [];
+            for (var i = 0; i < quick_build_cards.length; i++) {
+                if (quick_build_cards[i].faction == current_faction.faction) {
+                    if (quick_build_cards[i].ship == current_ship.xws) {
+                        var display = false;
+                        for (var j = 0; j < quick_build_cards[i].builds.length; j++) {
+                            for (var k = 0; k < quick_build_cards[i].builds[j].pilots.length; k++) {
+                                if (quick_build_cards[i].builds[j].pilots[k].id == current_pilot.xws) {
+                                    if (k > 0) {
+                                        if (quick_build_cards[i].builds[j].pilots[0].id != quick_build_cards[i].builds[j].pilots[k].id) {
+                                            console.log("BUILD: " + i + "_" + j + "_" + k + " - DIFFERENT SHIPS\n\t-" + quick_build_cards[i].builds[j].pilots[0].id + "\n\t-" + quick_build_cards[i].builds[j].pilots[k].id);
+                                        } else {
+                                            console.log("BUILD: " + i + "_" + j + "_" + k + " - SAME SHIPS");
+                                        }
+                                    } else {
+                                        var card_number = i;
+                                        var build_number = j;
+                                        var build = quick_build_cards[i].builds[j];
+                                        current_quick_builds.push({ card_number, build_number, build });
                                     }
                                 }
                             }
-                            if (display){
-                                console.log(quick_build_cards[i]);
-                            }
-                    
+                        }
                     }
-                 }
-                     
+                }
+            }
+            $('#quick_build').empty();
+            for (var i = 0; i < current_quick_builds.length; i++) {
+                $('#quick_build').append('<option value="' + current_quick_builds[i].card_number + "_" + current_quick_builds[i].build_number + '">Quick Build #' + (i + 1) + '</option>');
+            }
+
+            if (current_quick_builds.length == 1) {
+                current_quick_build = current_quick_builds[0];
+                $('#' + current_quick_build.expansion + "_0").attr('selected', true);
             }
         }
 
@@ -122,7 +130,7 @@
             $('#ship').empty().append('<option value="default" selected>Select Ship</option>');
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
             $('#pilot').attr('disabled', true);
-            
+
             var selected_faction = $('#faction option:selected').val();
             console.log(selected_faction);
             for (var i = 0; i < pilots.length; i++) {
@@ -150,59 +158,34 @@
             $('#pilot').empty().append('<option value="default" selected>Select Pilot</option>');
         }
 
-
-
-        function getQuickBuild() {
-            quickBuild = [];
-            for (var i = 0; i < quickBuilds.length; i++) {
-                for (var j = 0; j < quickBuilds[i].builds.length; j++) {
-                    if (quickBuilds[i].builds[j].pilots[0].id == current_pilot.xws) {
-                        quickBuild.push(quickBuilds[i].builds[j]);
-                    }
+        function getUpgradesFromBuild(){
+            current_upgrades = [];
+            var keys = Object.keys(current_quick_build.build.pilots[0].upgrades);
+            for (var i = 0; i < keys.length; i++){
+                for (var j = 0; j < current_quick_build.build.pilots[0].upgrades[keys[i]].length; j++){
+                    var side = 0;
+                    var upgrade = upgrades[keys[i]][current_quick_build.build.pilots[0].upgrades[keys[i]][j]];
+                    current_upgrades.push({side, upgrade});
                 }
-            }
-
-            if (quickBuild.length > 1) {
-                if (selected_index != -1) {
-                    getUpgrade(quickBuild[selected_index]);
-                } else {
-                    $('#quick_build_selector').remove();
-                    $('#selection_form').append('<select id="quick_build_selector"></select>');
-                    for (var i = 0; i < quickBuild.length; i++) {
-                        $('#quick_build_selector').append('<option id="' + quickBuild[i].pilots[0].id + '' + i + '">Build #' + (i + 1));
-                    }
-                }
-            } else {
-                selected_index = -1;
-                getUpgrades(quickBuild[0]);
-                $('#quick_build_selector').remove();
             }
         }
 
+        function getQuickBuild() {
 
-        function getUpgradesByIndex(quickBuild, quick_build_index) {
-            console.log("TEST");
-            selected_index = quick_build_index;
-            getUpgrades(quickBuild[quick_build_index]);
         }
 
         function clearUpgrades() {
             $('.upgrade').remove();
         }
 
-        function getUpgrades(build) {
-            var threat = build.threat;
-            var pilots = build.pilots;
-        }
-
         function getUpgradeByType(upgradeType, upgradeXWS) {
-            
+
         }
 
         function displayUpgrades() {
             $('.upgrade').remove();
-            for (var i = 0; i < upgrades.length; i++) {
-                addUpgradeToPilotTextBox(upgrades[i][0], upgrades[i][1]);
+            for (var i = 0; i < current_upgrades.length; i++) {
+                addUpgradeToPilotTextBox(current_upgrades[i].upgrade, current_upgrades[i].side);
             }
         }
 
@@ -442,10 +425,7 @@
 
 
 
-        var iconsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/icons-map.json');
-        var shipsMap = returnJSON('https://iwerts.github.io/xwing-miniatures-font/src/json/ships-map.json');
-        var quickBuilds = returnJSON('https://iwerts.github.io/xwsquickbuilds.json');
-
+        
         for (var i = 0; i < factions.length; i++) {
             $("#faction").append('<option value="' + factions[i].xws + '">' + factions[i].name + '</option>');
         }
@@ -481,12 +461,16 @@
             <option value="default" selected>Select Pilot</option>
         </select>
         <br>
-        <input type="checkbox" id="quick_build" disabled>
+        <input type="checkbox" id="quick_build_checkbox" disabled>
         <label for="quick_build" id="quick_build_label" disabled>Quick Build?</label>
-<select id="quick_build" disabled>
-    <option value="default" selected>Select Quick Build</option>
-</select>
+        <select id="quick_build" disabled>
+            <option value="default" selected>Select Quick Build</option>
+        </select>
     </form>
+    <div id="card">
+        
+    </div>
+
     <script>
 
 
@@ -496,8 +480,8 @@
             current_pilot = null;
         });
 
-        $('#quick_build').change(function(){
-            buildQuickBuildSelector();
+        $('#quick_build_checkbox').change(function () {
+            $('#quick_build').attr('disabled', !($("#quick_build_checkbox").is(":checked")));
         });
 
         function newFunction() {
@@ -530,7 +514,7 @@
                 }
             });
         };
-        
+
         $('#ship').change(function () {
             current_pilot = null;
             buildPilotSelector();
@@ -543,7 +527,22 @@
                     current_pilot = current_ship.pilots[i];
                 }
             }
+
+
+            $('#quick_build_checkbox').removeAttr('disabled');
+            buildQuickBuildSelector();
         });
+
+        $('#quick_build_checkbox').change(function () {
+            var current_status = $("#quick_build_checkbox").is(":checked");
+            $("quick_build").attr('disabled', !current_status);
+            getUpgradesFromBuild();
+        });
+
+        $('#quick_build').change(function () {
+            getUpgradesFromBuild();
+        });
+
         function newFunction2() {
             $.getJSON('https://iwerts.github.io/xwing-data2/data/manifest.json', function (manifest) {
                 for (var i = 0; i < manifest.pilots.length; i++) {
@@ -578,17 +577,12 @@
                     current_pilot = current_ship.pilots[i];
                 }
             }
-            $('#quick_build').removeAttr('disabled');
-            $('#quick_build').prop('checked', false);
-            upgrades = [];
-            getQuickBuild();
+            $('#quick_build_checkbox').removeAttr('disabled');
+            $('#quick_build_checkbox').prop('checked', false);
+            $('#quick_build').empty().append('<option value="default" selected>Select Quick Build</option>');
+            buildQuickBuildSelector();
         });
 
-        $('#quick_build_selector').change(function () {
-            upgrades = [];
-            selected_index = $('#quick_build_selector').prop('selectedIndex');
-            getQuickBuild();
-        });
 
         $('form').change(function () {
             updateCard();
@@ -603,9 +597,6 @@
                 getCardBody();
                 getCardFooter();
                 if ($('#quick_build').prop('checked')) {
-                    if (quickBuild.length > 1) {
-
-                    }
                     displayUpgrades();
                 }
                 sortStats();

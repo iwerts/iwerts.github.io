@@ -108,7 +108,7 @@
                           "torpedo": [
                               "protontorpedoes"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "instinctiveaim"
                           ],
                           "astromech": [
@@ -490,7 +490,7 @@
                               "tacticalscrambler"
                           ],
                           "crew": [
-                              "chewbaccacrew"
+                              "chewbacca-crew"
                           ]
                       },
                       "id": "hansolo"
@@ -511,7 +511,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "hansologunner"
+                              "hansolo-gunner"
                           ],
                           "title": [
                               "landosmillenniumfalcon"
@@ -540,7 +540,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "hansologunner"
+                              "hansolo-gunner"
                           ],
                           "title": [
                               "landosmillenniumfalcon"
@@ -1146,8 +1146,8 @@
                       "upgrades": {
                           "crew": [
                               "leiaorgana",
-                              "c3pocrew",
-                              "r2d2crew"
+                              "c3po-crew",
+                              "r2d2-crew"
                           ],
                           "title": [
                               "millenniumfalcon"
@@ -1356,7 +1356,7 @@
                           "title": [
                               "phantom"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "heightenedperception"
                           ],
                           "astromech": [
@@ -1425,7 +1425,7 @@
                           "crew": [
                               "zeborrelios"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ],
                           "modification": [
@@ -1554,7 +1554,7 @@
                               "ghost"
                           ],
                           "crew": [
-                              "choppercrew",
+                              "chopper-crew",
                               "herasyndulla"
                           ],
                           "turret": [
@@ -1604,7 +1604,7 @@
                           "turret": [
                               "dorsalturret"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ]
                       },
@@ -2033,7 +2033,7 @@
                           "missile": [
                               "concussionmissiles"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ]
                       },
@@ -2052,7 +2052,7 @@
                           "modification": [
                               "munitionsfailsafe"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "instinctiveaim"
                           ]
                       },
@@ -3554,7 +3554,7 @@
                           "gunner": [
                               "veteranturretgunner"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "sense"
                           ],
                           "illicit": [
@@ -4819,7 +4819,7 @@
                               "afterburners",
                               "shieldupgrade"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ],
                           "sensor": [
@@ -5265,7 +5265,7 @@
                           "torpedo": [
                               "advprotontorpedoes"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "hate",
                               "predictiveshot"
                           ]
@@ -5615,7 +5615,7 @@
                   {
                       "upgrades": {
                           "crew": [
-                              "chewbaccacrewswz19"
+                              "chewbacca-crewswz19"
                           ]
                       },
                       "id": "hansoloscavengedyt1300"
@@ -5660,7 +5660,7 @@
                   {
                       "upgrades": {
                           "gunner": [
-                              "reygunner"
+                              "rey-gunner"
                           ],
                           "title": [
                               "reysmillenniumfalcon"
@@ -5679,9 +5679,9 @@
                   {
                       "upgrades": {
                           "crew": [
-                              "chewbaccacrewswz19",
-                              "hansolocrew",
-                              "c3pocrew"
+                              "chewbacca-crewswz19",
+                              "hansolo-crew",
+                              "c3po-crew"
                           ],
                           "talent": [
                               "debrisgambit"
@@ -6618,7 +6618,7 @@
                           "crew": [
                               "perceptivecopilot"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "hate"
                           ],
                           "cannon": [
@@ -6646,7 +6646,7 @@
                           "title": [
                               "scimitar"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "brilliantevasion",
                               "predictiveshot"
                           ],
@@ -6767,7 +6767,7 @@
                               "afterburners",
                               "shieldupgrade"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ],
                           "astromech": [
@@ -6789,7 +6789,7 @@
                           "modification": [
                               "shieldupgrade"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "battlemeditation",
                               "sense"
                           ],
@@ -6829,7 +6829,7 @@
                           "modification": [
                               "sparepartscanisters"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "predictiveshot"
                           ],
                           "astromech": [
@@ -6848,7 +6848,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ],
                           "astromech": [
@@ -7151,7 +7151,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "forcepower": [
+                          "force-power": [
                               "supernaturalreflexes"
                           ],
                           "configuration": [
@@ -7167,7 +7167,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "forcepower": [
+                          "force-power": [
                               "battlemeditation"
                           ],
                           "astromech": [
@@ -7206,7 +7206,7 @@
                           "modification": [
                               "shieldupgrade"
                           ],
-                          "forcepower": [
+                          "force-power": [
                               "brilliantevasion"
                           ],
                           "astromech": [
@@ -7225,7 +7225,7 @@
               "pilots": [
                   {
                       "upgrades": {
-                          "forcepower": [
+                          "force-power": [
                               "sense"
                           ],
                           "astromech": [
@@ -7446,7 +7446,7 @@
                         "astromech": [
                             "r2astromech"
                         ],
-                        "forcepower":[
+                        "force-power":[
                           "heightenedperception"  
                         ],
                         "talent": [
@@ -7766,10 +7766,10 @@
                 {
                     "upgrades": {
                         "crew":[
-                          "c3pocrew","leiaorgana","r2d2crew"
+                          "c3po-crew","leiaorgana","r2d2-crew"
                         ],
                         "gunner":[
-                            "hansologunner", "lukeskywalker"   
+                            "hansolo-gunner", "lukeskywalker"   
                         ],
                       "title":[
                         "millenniumfalcon"  
@@ -7786,7 +7786,7 @@
                     "upgrades": {
                         
                         "crew" :[
-                            "c3pocrew","leiaorgana","chewbaccacrew"
+                            "c3po-crew","leiaorgana","chewbacca-crew"
                         ],"illicit":[
                            "riggedcargochute"
                         ], "title":["millenniumfalcon"]
