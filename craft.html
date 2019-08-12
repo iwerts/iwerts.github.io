@@ -1,0 +1,377 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+    <script type="text/javascript" src="./making_history.js"></script>
+    <script type="text/javascript" src="./squad.js"></script>
+    <style>
+        /* @media print specifies CSS rules that only apply when printing */
+        @media print {
+
+            /* CSS reset to clear styles for printing */
+            html,
+            body,
+            div {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+
+            /* Hide everything on the page */
+            body * {
+                display: none;
+            }
+
+            #content,
+            #myImages,
+            #myImages * {
+                /* Only display the images we want printed */
+                /* all of the image's parent divs
+       leading up to the body must be un-hidden (displayed) too
+    */
+                display: block;
+                /* CSS reset to clear the specific visible divs for printing */
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+
+            /* We have line breaks in the DIV
+     to separate the images in the browser,
+     but do not want those line breaks when printing
+  */
+            #myImages br {
+                display: none;
+            }
+
+            img {
+                /* Only some browsers respect this rule: */
+                page-break-inside: avoid;
+                /* Almost all browsers respect this rule: */
+                page-break-after: always;
+            }
+        }
+
+        /* The @page rules specify additional printing directives that browsers may respect
+   Here we suggest printing in landscape (instead of portrait) with a small margin.
+   Browsers, however, are free to ignore or override these suggestions.
+   See also:
+    https://developer.mozilla.org/en-US/docs/CSS/@page
+    https://dev.w3.org/csswg/css3-page/#at-page-rule
+*/
+        @page {
+            /* Some browsers respect rules such as size: landscape */
+            margin: 1cm;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="file" id="files" name="files[]" multiple />
+    Read bytes:
+    <span class="readBytesButtons">
+        <button data-startbyte="0" data-endbyte="4">1-5</button>
+        <button data-startbyte="5" data-endbyte="14">6-15</button>
+        <button data-startbyte="6" data-endbyte="7">7-8</button>
+        <button>entire file</button>
+        <span class="splitByteButton">
+            <button>entire file</button>
+        </span>
+
+        <span >
+            <button id="makeImages">Make Images</button>
+        </span>
+
+        <div id="myDiagramDiv" style="width:100%; height:100%; background-color: #DAE4E4;"></div>
+        <div id="myImages">
+
+        </div>
+
+
+        <script>
+            
+            function init() {
+
+            
+                if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+
+                var $ = go.GraphObject.make;  // for conciseness in defining templates
+
+                myDiagram = $(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
+                    {
+                        "undoManager.isEnabled": true,  // enable undo & redo
+                        "layout": $(go.ForceDirectedLayout)
+                    });
+
+                // define a simple Node template
+                myDiagram.nodeTemplate =
+                    $(go.Node, "Auto",  // the Shape will go around the TextBlock
+                        $(go.Shape, "RoundedRectangle", { strokeWidth: 0, fill: "white" },
+                            // Shape.fill is bound to Node.data.color
+                            new go.Binding("fill", "color")),
+                        $(go.TextBlock,
+                            { margin: 8 },  // some room around the text
+                            // TextBlock.text is bound to Node.data.key
+                            new go.Binding("text", "name")),
+
+                    );
+
+                // but use the default Link template, by not setting Diagram.linkTemplate
+
+                // create the model data that will be represented by Nodes and Links
+                myDiagram.model = new go.GraphLinksModel(
+                    nodeDataArray, linkDataArray);
+                
+            }
+
+            function generateImages(width, height) {
+      // sanitize input
+      width = parseInt(width);
+      height = parseInt(height);
+      if (isNaN(width)) width = 100;
+      if (isNaN(height)) height = 100;
+      // Give a minimum size of 50x50
+      width = Math.max(width, 50);
+      height = Math.max(height, 50);
+
+
+
+      var imgDiv = document.getElementById('myImages');
+      imgDiv.innerHTML = ''; // clear out the old images, if any
+      var db = myDiagram.documentBounds.copy();
+      var boundswidth = db.width;
+      var boundsheight = db.height;
+      var imgWidth = width;
+      var imgHeight = height;
+      var p = db.position.copy();
+      for (var i = 0; i < boundsheight; i += imgHeight) {
+        for (var j = 0; j < boundswidth; j += imgWidth) {
+          img = myDiagram.makeImage({
+            scale: 1,
+            position: new go.Point(p.x + j, p.y + i),
+            size: new go.Size(imgWidth, imgHeight)
+          });
+          // Append the new HTMLImageElement to the #myImages div
+          img.className = 'images';
+          imgDiv.appendChild(img);
+          imgDiv.appendChild(document.createElement('br'));
+        }
+      }
+    }
+
+    var button = document.getElementById('makeImages');
+    button.addEventListener('click', function() {
+      var width = parseInt(document.getElementById('widthInput').value);
+      var height = parseInt(document.getElementById('heightInput').value);
+      generateImages(width, height);
+    }, false);
+
+    // Call it with some default values
+    generateImages(700, 960);
+
+            var part_master_list = {};
+
+            function init_parts() {
+                for (var i = 0; i < stock_parts.length; i++) {
+                    part_master_list[stock_parts[i].part] = stock_parts[i].name;
+                }
+
+                for (var i = 0; i < making_history_parts.length; i++) {
+                    part_master_list[making_history_parts[i].part] = making_history_parts[i].name;
+                }
+            }
+            var byte_content = '';
+
+            function readBlob(opt_startByte, opt_stopByte) {
+                var files = document.getElementById('files').files;
+                if (!files.length) {
+                    alert('Please select a file!');
+                    return;
+                }
+
+                var file = files[0];
+                var start = parseInt(opt_startByte) || 0;
+                var stop = parseInt(opt_stopByte) || file.size - 1;
+                var reader = new FileReader();
+
+                reader.onloadend = function (evt) {
+                    if (evt.target.readyState == FileReader.DONE) {
+                        byte_content = evt.target.result;
+                    }
+                };
+                var blob = file.slice(start, stop + 1);
+                reader.readAsBinaryString(blob);
+            }
+
+            document.querySelector('.readBytesButtons').addEventListener('click', function (evt) {
+                if (evt.target.tagName.toLowerCase() == 'button') {
+                    var startByte = evt.target.getAttribute('data-startbyte');
+                    var endByte = evt.target.getAttribute('data-endbyte');
+                    readBlob(startByte, endByte);
+                }
+            }, false);
+
+            document.querySelector('.splitByteButton').addEventListener('click', function (evt) {
+                if (evt.target.tagName.toLowerCase() == 'button') {
+                    splitByte();
+                }
+            }, false);
+
+            var ship = { parts: [] };
+
+            function splitByte() {
+                var temp_ship = byte_content.split('\r\nPART\r\n');
+                console.log(temp_ship.length);
+
+                var metadata = temp_ship[0];
+                var metadata_lines = metadata.split('\n');
+                for (var i = 0; i < metadata_lines.length; i++) {
+                    metadata_content = metadata_lines[i].split('=');
+                    key = metadata_content[0].trim();
+                    value = metadata_content[1].trim();
+
+                    if (ship[key] == null) {
+                        ship[key] = value;
+                    } else if (typeof ship[key] == 'string') {
+                        var temp = ship[key];
+                        ship[key] = [];
+                        ship[key].push(temp);
+                        ship[key].push(value);
+                    } else {
+                        ship[key].push(value);
+                    }
+                }
+
+                // Skip ship metadata
+                for (var i = 1; i < temp_ship.length; i++) {
+                    buildPart(temp_ship[i]);
+                }
+                buildDataArrays();
+            }
+
+            function getNames() {
+                for (var i = 0; i < ship.parts.length; i++) {
+                    var part_info = ship.parts[i].part.split('_')[0];
+                    ship.parts[i]['name'] = part_master_list[part_info];
+                    console.log(ship.parts[i].name);
+                }
+
+            }
+
+            function getMaxStage() {
+                var ret = -1;
+                for (var i = 0; i < ship.parts.length; i++) {
+                    ret = Math.max(ret, ship.parts[i].istg);
+                }
+                console.log(ret);
+                return ret;
+            }
+
+            function buildDataArrays() {
+                init_parts();
+                getNames();
+                for (var i = 0; i < ship.parts.length; i++) {
+
+
+                    nodeDataArray.push({ key: ship.parts[i].part, name: ship.parts[i].name, color: "white" });
+
+                    if ("link" in ship.parts[i]) {
+                        if (typeof ship.parts[i].link == 'object') {
+                            for (var j = 0; j < ship.parts[i].link.length; j++) {
+                                linkDataArray.push({ from: ship.parts[i].part, to: ship.parts[i].link[j] });
+                            }
+                        } else {
+                            linkDataArray.push({ from: ship.parts[i].part, to: ship.parts[i].link });
+                        }
+                    }
+                }
+            }
+
+            function buildPart(part) {
+                lines = part.split('\n');
+                line_number = 1;
+                var part = buildSection({}, lines);
+                ship.parts.push(part);
+            }
+
+            var line_number = 0;
+            var lines = [];
+            var nodeDataArray = [];
+            var linkDataArray = [];
+
+            function buildSection(section) {
+                var line = lines[line_number];
+
+                // Base Case: Line contains end-of-section marker (})
+                // Result: Return section
+                if (line.includes("}")) {
+                    return section;
+                }
+
+                // Case: Line contains start-of-section marker ({)
+                // Result: Create new section
+
+                if (line.includes('{')) {
+                    var title = "";
+
+                    if (line_number == 0) {
+                        title = "PART";
+                    } else {
+                        title = lines[line_number - 1];
+
+                    }
+
+                    if (section[title] == null) {
+                        section[title] = [];
+                    }
+
+                    line_number++;
+                    var new_section = buildSection({});
+
+
+
+                    section[title].push(new_section);
+                }
+
+                //  Case: Line has an assignment operator (=)
+                //  Result: create new key in section and assign value to it.
+
+                if (line.includes('=')) {
+                    var line_contents = line.split('=');
+                    var key = line_contents[0].trim();
+                    var value = line_contents[1].trim();
+                    if (section[key] == null) {
+                        section[key] = value;
+                    } else if (typeof section[key] == 'string') {
+                        var temp = section[key];
+                        section[key] = [];
+                        section[key].push(temp);
+                        section[key].push(value);
+                    } else {
+                        section[key].push(value);
+                    }
+
+                }
+                //  Finally: Continue to next line or return section
+
+                if (line_number + 1 < lines.length) {
+                    line_number++;
+                    return buildSection(section);
+                } else {
+                    return section;
+                }
+            }
+
+
+
+        </script>
+</body>
+
+</html>
