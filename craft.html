@@ -131,51 +131,6 @@
                 
             }
 
-            function generateImages(width, height) {
-      // sanitize input
-      width = parseInt(width);
-      height = parseInt(height);
-      if (isNaN(width)) width = 100;
-      if (isNaN(height)) height = 100;
-      // Give a minimum size of 50x50
-      width = Math.max(width, 50);
-      height = Math.max(height, 50);
-
-
-
-      var imgDiv = document.getElementById('myImages');
-      imgDiv.innerHTML = ''; // clear out the old images, if any
-      var db = myDiagram.documentBounds.copy();
-      var boundswidth = db.width;
-      var boundsheight = db.height;
-      var imgWidth = width;
-      var imgHeight = height;
-      var p = db.position.copy();
-      for (var i = 0; i < boundsheight; i += imgHeight) {
-        for (var j = 0; j < boundswidth; j += imgWidth) {
-          img = myDiagram.makeImage({
-            scale: 1,
-            position: new go.Point(p.x + j, p.y + i),
-            size: new go.Size(imgWidth, imgHeight)
-          });
-          // Append the new HTMLImageElement to the #myImages div
-          img.className = 'images';
-          imgDiv.appendChild(img);
-          imgDiv.appendChild(document.createElement('br'));
-        }
-      }
-    }
-
-    var button = document.getElementById('makeImages');
-    button.addEventListener('click', function() {
-      var width = parseInt(document.getElementById('widthInput').value);
-      var height = parseInt(document.getElementById('heightInput').value);
-      generateImages(width, height);
-    }, false);
-
-    // Call it with some default values
-    generateImages(700, 960);
-
             var part_master_list = {};
 
             function init_parts() {
